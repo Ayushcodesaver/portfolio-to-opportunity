@@ -175,6 +175,86 @@ export type Database = {
         }
         Relationships: []
       }
+      client_requirement_versions: {
+        Row: {
+          change_note: string | null
+          changed_by: string | null
+          content: string
+          created_at: string | null
+          description: string | null
+          id: string
+          requirement_id: string
+          title: string
+          version: number
+        }
+        Insert: {
+          change_note?: string | null
+          changed_by?: string | null
+          content: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          requirement_id: string
+          title: string
+          version: number
+        }
+        Update: {
+          change_note?: string | null
+          changed_by?: string | null
+          content?: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          requirement_id?: string
+          title?: string
+          version?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_requirement_versions_requirement_id_fkey"
+            columns: ["requirement_id"]
+            isOneToOne: false
+            referencedRelation: "client_requirements"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_requirements: {
+        Row: {
+          content: string
+          created_at: string | null
+          created_by: string | null
+          description: string | null
+          id: string
+          is_active: boolean | null
+          title: string
+          updated_at: string | null
+          version: number | null
+        }
+        Insert: {
+          content?: string
+          created_at?: string | null
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          is_active?: boolean | null
+          title: string
+          updated_at?: string | null
+          version?: number | null
+        }
+        Update: {
+          content?: string
+          created_at?: string | null
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          is_active?: boolean | null
+          title?: string
+          updated_at?: string | null
+          version?: number | null
+        }
+        Relationships: []
+      }
       comments: {
         Row: {
           content: string
@@ -230,6 +310,59 @@ export type Database = {
           user_b?: string
         }
         Relationships: []
+      }
+      daily_tasks: {
+        Row: {
+          attachment_url: string | null
+          created_at: string | null
+          created_by: string | null
+          day_number: number
+          deadline_at: string | null
+          description: string | null
+          id: string
+          points: number | null
+          priority: Database["public"]["Enums"]["task_priority"] | null
+          program_id: string
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          attachment_url?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          day_number: number
+          deadline_at?: string | null
+          description?: string | null
+          id?: string
+          points?: number | null
+          priority?: Database["public"]["Enums"]["task_priority"] | null
+          program_id: string
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          attachment_url?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          day_number?: number
+          deadline_at?: string | null
+          description?: string | null
+          id?: string
+          points?: number | null
+          priority?: Database["public"]["Enums"]["task_priority"] | null
+          program_id?: string
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "daily_tasks_program_id_fkey"
+            columns: ["program_id"]
+            isOneToOne: false
+            referencedRelation: "internship_programs"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       evaluations: {
         Row: {
@@ -300,6 +433,78 @@ export type Database = {
         }
         Relationships: []
       }
+      global_notifications: {
+        Row: {
+          body: string
+          category: string | null
+          created_at: string | null
+          created_by: string | null
+          id: string
+          link: string | null
+          priority: Database["public"]["Enums"]["notif_priority"] | null
+          title: string
+        }
+        Insert: {
+          body: string
+          category?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          id?: string
+          link?: string | null
+          priority?: Database["public"]["Enums"]["notif_priority"] | null
+          title: string
+        }
+        Update: {
+          body?: string
+          category?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          id?: string
+          link?: string | null
+          priority?: Database["public"]["Enums"]["notif_priority"] | null
+          title?: string
+        }
+        Relationships: []
+      }
+      internship_programs: {
+        Row: {
+          created_at: string | null
+          created_by: string | null
+          description: string | null
+          end_date: string
+          id: string
+          is_active: boolean | null
+          start_date: string
+          title: string
+          total_days: number
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          created_by?: string | null
+          description?: string | null
+          end_date: string
+          id?: string
+          is_active?: boolean | null
+          start_date: string
+          title: string
+          total_days: number
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          created_by?: string | null
+          description?: string | null
+          end_date?: string
+          id?: string
+          is_active?: boolean | null
+          start_date?: string
+          title?: string
+          total_days?: number
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       messages: {
         Row: {
           content: string
@@ -328,6 +533,35 @@ export type Database = {
             columns: ["conversation_id"]
             isOneToOne: false
             referencedRelation: "conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      notification_reads: {
+        Row: {
+          id: string
+          notification_id: string
+          read_at: string | null
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          notification_id: string
+          read_at?: string | null
+          user_id: string
+        }
+        Update: {
+          id?: string
+          notification_id?: string
+          read_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "notification_reads_notification_id_fkey"
+            columns: ["notification_id"]
+            isOneToOne: false
+            referencedRelation: "global_notifications"
             referencedColumns: ["id"]
           },
         ]
@@ -362,6 +596,36 @@ export type Database = {
           title?: string
           type?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      points_history: {
+        Row: {
+          created_at: string | null
+          id: string
+          intern_id: string
+          points: number
+          reason: string
+          source_id: string | null
+          source_type: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          intern_id: string
+          points: number
+          reason: string
+          source_id?: string | null
+          source_type?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          intern_id?: string
+          points?: number
+          reason?: string
+          source_id?: string | null
+          source_type?: string | null
         }
         Relationships: []
       }
@@ -428,6 +692,41 @@ export type Database = {
           username?: string
         }
         Relationships: []
+      }
+      program_enrollments: {
+        Row: {
+          current_day: number | null
+          id: string
+          intern_id: string
+          joined_at: string | null
+          points: number | null
+          program_id: string
+        }
+        Insert: {
+          current_day?: number | null
+          id?: string
+          intern_id: string
+          joined_at?: string | null
+          points?: number | null
+          program_id: string
+        }
+        Update: {
+          current_day?: number | null
+          id?: string
+          intern_id?: string
+          joined_at?: string | null
+          points?: number | null
+          program_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "program_enrollments_program_id_fkey"
+            columns: ["program_id"]
+            isOneToOne: false
+            referencedRelation: "internship_programs"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       project_likes: {
         Row: {
@@ -544,6 +843,59 @@ export type Database = {
         }
         Relationships: []
       }
+      task_submissions: {
+        Row: {
+          content: string | null
+          feedback: string | null
+          file_url: string | null
+          id: string
+          intern_id: string
+          points_awarded: number | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          status: Database["public"]["Enums"]["task_status"] | null
+          submission_url: string | null
+          submitted_at: string | null
+          task_id: string
+        }
+        Insert: {
+          content?: string | null
+          feedback?: string | null
+          file_url?: string | null
+          id?: string
+          intern_id: string
+          points_awarded?: number | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: Database["public"]["Enums"]["task_status"] | null
+          submission_url?: string | null
+          submitted_at?: string | null
+          task_id: string
+        }
+        Update: {
+          content?: string | null
+          feedback?: string | null
+          file_url?: string | null
+          id?: string
+          intern_id?: string
+          points_awarded?: number | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: Database["public"]["Enums"]["task_status"] | null
+          submission_url?: string | null
+          submitted_at?: string | null
+          task_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "task_submissions_task_id_fkey"
+            columns: ["task_id"]
+            isOneToOne: false
+            referencedRelation: "daily_tasks"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       ticket_messages: {
         Row: {
           content: string
@@ -654,6 +1006,7 @@ export type Database = {
       attendance_status: "present" | "absent" | "late" | "leave" | "holiday"
       difficulty_level: "beginner" | "intermediate" | "advanced"
       internship_type: "summer" | "winter" | "full_time"
+      notif_priority: "low" | "medium" | "high" | "urgent"
       portfolio_goal:
         | "frontend"
         | "backend"
@@ -662,6 +1015,8 @@ export type Database = {
         | "data"
         | "devops"
       project_status: "draft" | "pending" | "approved" | "rejected"
+      task_priority: "low" | "medium" | "high"
+      task_status: "pending" | "submitted" | "approved" | "rejected"
       ticket_priority: "low" | "medium" | "high"
       ticket_status: "open" | "in_progress" | "resolved" | "closed"
     }
@@ -795,6 +1150,7 @@ export const Constants = {
       attendance_status: ["present", "absent", "late", "leave", "holiday"],
       difficulty_level: ["beginner", "intermediate", "advanced"],
       internship_type: ["summer", "winter", "full_time"],
+      notif_priority: ["low", "medium", "high", "urgent"],
       portfolio_goal: [
         "frontend",
         "backend",
@@ -804,6 +1160,8 @@ export const Constants = {
         "devops",
       ],
       project_status: ["draft", "pending", "approved", "rejected"],
+      task_priority: ["low", "medium", "high"],
+      task_status: ["pending", "submitted", "approved", "rejected"],
       ticket_priority: ["low", "medium", "high"],
       ticket_status: ["open", "in_progress", "resolved", "closed"],
     },
