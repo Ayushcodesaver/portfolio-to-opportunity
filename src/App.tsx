@@ -12,6 +12,10 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 
+import InternDashboard from "./pages/intern/InternDashboard";
+import MyTasks from "./pages/intern/MyTasks";
+import GlobalAnnouncements from "./pages/intern/GlobalAnnouncements";
+import ClientRequirementsPage from "./pages/intern/ClientRequirementsPage";
 import Feed from "./pages/intern/Feed";
 import MyProjects from "./pages/intern/MyProjects";
 import CreateProject from "./pages/intern/CreateProject";
@@ -22,6 +26,12 @@ import Profile from "./pages/common/Profile";
 import Settings from "./pages/common/Settings";
 
 import HRDashboard from "./pages/hr/HRDashboard";
+import HRPrograms from "./pages/hr/HRPrograms";
+import HRProgramTasks from "./pages/hr/HRProgramTasks";
+import HRProgramEnroll from "./pages/hr/HRProgramEnroll";
+import HRSubmissions from "./pages/hr/HRSubmissions";
+import HRBroadcast from "./pages/hr/HRBroadcast";
+import HRClientRequirements from "./pages/hr/HRClientRequirements";
 import HRInterns from "./pages/hr/HRInterns";
 import HREvaluations from "./pages/hr/HREvaluations";
 import HRAttendance from "./pages/hr/HRAttendance";
@@ -51,6 +61,10 @@ const App = () => (
 
             {/* Intern shell */}
             <Route element={<ProtectedRoute><AppShell variant="intern" /></ProtectedRoute>}>
+              <Route path="/dashboard" element={<InternDashboard />} />
+              <Route path="/tasks" element={<MyTasks />} />
+              <Route path="/announcements" element={<GlobalAnnouncements />} />
+              <Route path="/requirements" element={<ClientRequirementsPage />} />
               <Route path="/feed" element={<Feed />} />
               <Route path="/my-projects" element={<MyProjects />} />
               <Route path="/create-project" element={<CreateProject />} />
@@ -65,6 +79,12 @@ const App = () => (
             <Route element={<ProtectedRoute requireRole="hr"><AppShell variant="hr" /></ProtectedRoute>}>
               <Route path="/hr" element={<Navigate to="/hr/dashboard" replace />} />
               <Route path="/hr/dashboard" element={<HRDashboard />} />
+              <Route path="/hr/programs" element={<HRPrograms />} />
+              <Route path="/hr/programs/:id/tasks" element={<HRProgramTasks />} />
+              <Route path="/hr/programs/:id/enroll" element={<HRProgramEnroll />} />
+              <Route path="/hr/submissions" element={<HRSubmissions />} />
+              <Route path="/hr/broadcast" element={<HRBroadcast />} />
+              <Route path="/hr/requirements" element={<HRClientRequirements />} />
               <Route path="/hr/interns" element={<HRInterns />} />
               <Route path="/hr/evaluations" element={<HREvaluations />} />
               <Route path="/hr/attendance" element={<HRAttendance />} />

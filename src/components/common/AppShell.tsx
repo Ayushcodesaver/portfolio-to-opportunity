@@ -3,7 +3,8 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
   Home, FolderKanban, PlusSquare, Sparkles, BarChart3, Bell,
   Settings, LogOut, Users as UsersIcon, ClipboardCheck, Calendar,
-  Inbox, Ticket, Shield, ShieldCheck, FileText, Activity, Bot, Cpu
+  Inbox, Ticket, Shield, ShieldCheck, FileText, Activity, Bot, Cpu,
+  Target, Megaphone, LayoutDashboard
 } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
 import { useAuth } from "@/context/AuthContext";
@@ -13,18 +14,26 @@ import { cn } from "@/lib/utils";
 interface NavItem { to: string; label: string; icon: any; }
 
 const internNav: NavItem[] = [
+  { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { to: "/tasks", label: "My Tasks", icon: Target },
+  { to: "/announcements", label: "Announcements", icon: Megaphone },
+  { to: "/requirements", label: "Client Requirements", icon: FileText },
   { to: "/feed", label: "Feed", icon: Home },
   { to: "/my-projects", label: "My Projects", icon: FolderKanban },
   { to: "/create-project", label: "Create Project", icon: PlusSquare },
   { to: "/ai-assistant", label: "AI Assistant", icon: Sparkles },
-  { to: "/internship-progress", label: "My Progress", icon: BarChart3 },
+  { to: "/internship-progress", label: "Progress", icon: BarChart3 },
   { to: "/notifications", label: "Notifications", icon: Bell },
   { to: "/settings", label: "Settings", icon: Settings },
 ];
 
 const hrNav: NavItem[] = [
   { to: "/hr/dashboard", label: "Overview", icon: Home },
-  { to: "/hr/interns", label: "Intern Management", icon: UsersIcon },
+  { to: "/hr/programs", label: "Programs", icon: Calendar },
+  { to: "/hr/submissions", label: "Submissions", icon: ClipboardCheck },
+  { to: "/hr/broadcast", label: "Broadcast", icon: Megaphone },
+  { to: "/hr/requirements", label: "Client Requirements", icon: FileText },
+  { to: "/hr/interns", label: "Interns", icon: UsersIcon },
   { to: "/hr/evaluations", label: "Evaluations", icon: ClipboardCheck },
   { to: "/hr/attendance", label: "Attendance", icon: Calendar },
   { to: "/hr/inbox", label: "Inbox", icon: Inbox },
