@@ -42,7 +42,7 @@ export default function InternshipProgress() {
   ];
 
   const milestones = [
-    { title: "Joined DevForge", done: true },
+    { title: "Joined Xebure", done: true },
     { title: "Created first project", done: data.projects.length > 0 },
     { title: "Got first approval", done: approvedCount > 0 },
     { title: "5 projects shipped", done: approvedCount >= 5 },

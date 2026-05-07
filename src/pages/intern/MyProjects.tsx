@@ -48,7 +48,7 @@ export default function MyProjects() {
     <div className="container max-w-7xl py-8">
       <PageHeader
         title="My Projects"
-        description="Manage your DevForge portfolio."
+        description="Manage your Xebure portfolio."
         action={
           <Link to="/create-project">
             <Button className="bg-gradient-primary"><Plus className="h-4 w-4 mr-1.5" />New project</Button>

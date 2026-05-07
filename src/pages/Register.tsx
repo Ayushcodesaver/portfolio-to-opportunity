@@ -79,7 +79,7 @@ export default function Register() {
     }).eq("id", data.user.id);
 
     setLoading(false);
-    toast.success("Welcome to DevForge!");
+    toast.success("Welcome to Xebure!");
     navigate("/feed");
   };
 
