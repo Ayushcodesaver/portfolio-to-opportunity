@@ -16,7 +16,7 @@ Deno.serve(async (req) => {
       body: JSON.stringify({
         model: "google/gemini-3-flash-preview",
         messages: [
-          { role: "system", content: "You are DevForge AI, a friendly coding assistant for student interns. Help with code reviews, project ideas, descriptions, debugging, and career advice. Be concise, practical, and encouraging." },
+          { role: "system", content: "You are Xebure AI, a friendly coding assistant for student interns. Help with code reviews, project ideas, descriptions, debugging, and career advice. Be concise, practical, and encouraging." },
           ...messages,
         ],
         stream: true,

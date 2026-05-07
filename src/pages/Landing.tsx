@@ -32,7 +32,7 @@ const showcaseProjects = [
 ];
 
 const testimonials = [
-  { name: "Sarah Chen", role: "Frontend Intern → Junior Dev @ Stripe", quote: "DevForge transformed how I document my work. The AI feedback was a game-changer for my resume." },
+  { name: "Sarah Chen", role: "Frontend Intern → Junior Dev @ Stripe", quote: "Xebure transformed how I document my work. The AI feedback was a game-changer for my resume." },
   { name: "Marcus Patel", role: "Backend Intern @ Shopify", quote: "I went from 0 to 12 real projects in 90 days. Got 4 job offers before my internship even ended." },
   { name: "Lila Romero", role: "Fullstack Intern @ Vercel", quote: "The community feedback pushed me to ship better code. I've never grown faster as a developer." },
 ];
@@ -310,7 +310,7 @@ export default function Landing() {
           ))}
         </div>
         <div className="container mt-10 pt-6 border-t border-border/50 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} DevForge. All rights reserved.</p>
+          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Xebure. All rights reserved.</p>
           <div className="flex gap-3">
             {[Github, Twitter, Linkedin].map((Ic, i) => (
               <a key={i} href="#" className="p-2 rounded-lg hover:bg-primary/10 hover:text-primary transition-colors">
