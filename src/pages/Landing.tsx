@@ -44,6 +44,17 @@ export default function Landing() {
   const { user } = useAuth();
   const [scrolled, setScrolled] = useState(false);
 
+  const { data: stats } = useQuery({
+    queryKey: ["landing-stats"],
+    queryFn: async () => {
+      const [interns, projects] = await Promise.all([
+        supabase.from("profiles").select("id", { count: "exact", head: true }),
+        supabase.from("projects").select("id", { count: "exact", head: true }).eq("status", "approved"),
+      ]);
+      return { interns: interns.count ?? 0, projects: projects.count ?? 0 };
+    },
+  });
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
