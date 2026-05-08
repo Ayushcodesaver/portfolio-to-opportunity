@@ -8,6 +8,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/common/Logo";
 import { useAuth } from "@/context/AuthContext";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 
 const features = [
   { icon: Sparkles, title: "AI Assistant", desc: "Get AI-powered help to improve your code, descriptions, and projects.", color: "from-violet-500 to-purple-600" },
