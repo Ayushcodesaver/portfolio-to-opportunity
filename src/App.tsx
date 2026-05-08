@@ -12,6 +12,16 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 
+import Features from "./pages/marketing/Features";
+import HowItWorks from "./pages/marketing/HowItWorks";
+import Showcase from "./pages/marketing/Showcase";
+import Blog from "./pages/marketing/Blog";
+import Guides from "./pages/marketing/Guides";
+import FAQ from "./pages/marketing/FAQ";
+import Support from "./pages/marketing/Support";
+import Privacy from "./pages/marketing/Privacy";
+import Terms from "./pages/marketing/Terms";
+
 import InternDashboard from "./pages/intern/InternDashboard";
 import MyTasks from "./pages/intern/MyTasks";
 import GlobalAnnouncements from "./pages/intern/GlobalAnnouncements";
@@ -58,6 +68,17 @@ const App = () => (
             <Route path="/" element={<Landing />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+
+            {/* Marketing pages */}
+            <Route path="/features" element={<Features />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
+            <Route path="/showcase" element={<Showcase />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/guides" element={<Guides />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/support" element={<Support />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
 
             {/* Intern shell */}
             <Route element={<ProtectedRoute><AppShell variant="intern" /></ProtectedRoute>}>

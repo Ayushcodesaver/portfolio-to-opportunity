@@ -68,10 +68,11 @@ export default function Landing() {
         <div className="container flex h-16 items-center justify-between">
           <Logo />
           <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-            <a href="#features" className="hover:text-foreground transition-colors">Features</a>
-            <a href="#how" className="hover:text-foreground transition-colors">How it works</a>
-            <a href="#showcase" className="hover:text-foreground transition-colors">Showcase</a>
-            <a href="#stories" className="hover:text-foreground transition-colors">Stories</a>
+            <Link to="/features" className="hover:text-foreground transition-colors">Features</Link>
+            <Link to="/how-it-works" className="hover:text-foreground transition-colors">How it works</Link>
+            <Link to="/showcase" className="hover:text-foreground transition-colors">Showcase</Link>
+            <Link to="/blog" className="hover:text-foreground transition-colors">Blog</Link>
+            <Link to="/faq" className="hover:text-foreground transition-colors">FAQ</Link>
           </div>
           <div className="flex items-center gap-2">
             {user ? (
@@ -310,14 +311,16 @@ export default function Landing() {
             </p>
           </div>
           {[
-            { title: "Platform", links: ["Features", "How it works", "Showcase"] },
-            { title: "Resources", links: ["Blog", "Guides", "FAQ", "Support"] },
-            { title: "Legal", links: ["Privacy", "Terms", "Cookies"] },
+            { title: "Platform", links: [["Features","/features"],["How it works","/how-it-works"],["Showcase","/showcase"]] },
+            { title: "Resources", links: [["Blog","/blog"],["Guides","/guides"],["FAQ","/faq"],["Support","/support"]] },
+            { title: "Legal", links: [["Privacy","/privacy"],["Terms","/terms"]] },
           ].map((col) => (
             <div key={col.title}>
               <h4 className="font-semibold mb-3">{col.title}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                {col.links.map((l) => <li key={l}><a href="#" className="hover:text-primary transition-colors">{l}</a></li>)}
+                {col.links.map(([l, href]) => (
+                  <li key={l}><Link to={href} className="hover:text-primary transition-colors">{l}</Link></li>
+                ))}
               </ul>
             </div>
           ))}
