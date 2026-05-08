@@ -68,10 +68,11 @@ export default function Landing() {
         <div className="container flex h-16 items-center justify-between">
           <Logo />
           <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-            <a href="#features" className="hover:text-foreground transition-colors">Features</a>
-            <a href="#how" className="hover:text-foreground transition-colors">How it works</a>
-            <a href="#showcase" className="hover:text-foreground transition-colors">Showcase</a>
-            <a href="#stories" className="hover:text-foreground transition-colors">Stories</a>
+            <Link to="/features" className="hover:text-foreground transition-colors">Features</Link>
+            <Link to="/how-it-works" className="hover:text-foreground transition-colors">How it works</Link>
+            <Link to="/showcase" className="hover:text-foreground transition-colors">Showcase</Link>
+            <Link to="/blog" className="hover:text-foreground transition-colors">Blog</Link>
+            <Link to="/faq" className="hover:text-foreground transition-colors">FAQ</Link>
           </div>
           <div className="flex items-center gap-2">
             {user ? (
