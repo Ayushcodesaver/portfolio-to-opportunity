@@ -12,6 +12,16 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 
+import Features from "./pages/marketing/Features";
+import HowItWorks from "./pages/marketing/HowItWorks";
+import Showcase from "./pages/marketing/Showcase";
+import Blog from "./pages/marketing/Blog";
+import Guides from "./pages/marketing/Guides";
+import FAQ from "./pages/marketing/FAQ";
+import Support from "./pages/marketing/Support";
+import Privacy from "./pages/marketing/Privacy";
+import Terms from "./pages/marketing/Terms";
+
 import InternDashboard from "./pages/intern/InternDashboard";
 import MyTasks from "./pages/intern/MyTasks";
 import GlobalAnnouncements from "./pages/intern/GlobalAnnouncements";
