@@ -76,6 +76,29 @@ export default function Feed() {
     qc.invalidateQueries({ queryKey: ["feed"] });
   };
 
+  const { data: myStats } = useQuery({
+    queryKey: ["my-feed-stats", user?.id],
+    enabled: !!user,
+    queryFn: async () => {
+      const { data: myProjects } = await supabase
+        .from("projects").select("id").eq("user_id", user!.id);
+      const ids = (myProjects ?? []).map((p) => p.id);
+      const [likes, comments] = await Promise.all([
+        ids.length
+          ? supabase.from("project_likes").select("id", { count: "exact", head: true }).in("project_id", ids)
+          : Promise.resolve({ count: 0 } as any),
+        ids.length
+          ? supabase.from("comments").select("id", { count: "exact", head: true }).in("project_id", ids)
+          : Promise.resolve({ count: 0 } as any),
+      ]);
+      return {
+        projects: ids.length,
+        likes: likes.count ?? 0,
+        comments: comments.count ?? 0,
+      };
+    },
+  });
+
   return (
     <div className="container max-w-7xl py-8">
       <div className="grid lg:grid-cols-[1fr_2fr_1fr] gap-6">
@@ -90,9 +113,9 @@ export default function Feed() {
           </div>
           <div className="glass rounded-xl p-5 space-y-2">
             <p className="text-xs uppercase text-muted-foreground tracking-wider mb-2">Quick stats</p>
-            <div className="flex justify-between text-sm"><span>Projects</span><span className="text-primary font-semibold">0</span></div>
-            <div className="flex justify-between text-sm"><span>Likes received</span><span className="text-primary font-semibold">0</span></div>
-            <div className="flex justify-between text-sm"><span>Comments</span><span className="text-primary font-semibold">0</span></div>
+            <div className="flex justify-between text-sm"><span>Projects</span><span className="text-primary font-semibold">{myStats?.projects ?? 0}</span></div>
+            <div className="flex justify-between text-sm"><span>Likes received</span><span className="text-primary font-semibold">{myStats?.likes ?? 0}</span></div>
+            <div className="flex justify-between text-sm"><span>Comments</span><span className="text-primary font-semibold">{myStats?.comments ?? 0}</span></div>
           </div>
         </aside>
 

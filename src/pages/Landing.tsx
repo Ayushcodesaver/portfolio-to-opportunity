@@ -8,6 +8,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/common/Logo";
 import { useAuth } from "@/context/AuthContext";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 
 const features = [
   { icon: Sparkles, title: "AI Assistant", desc: "Get AI-powered help to improve your code, descriptions, and projects.", color: "from-violet-500 to-purple-600" },
@@ -41,6 +43,17 @@ export default function Landing() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [scrolled, setScrolled] = useState(false);
+
+  const { data: stats } = useQuery({
+    queryKey: ["landing-stats"],
+    queryFn: async () => {
+      const [interns, projects] = await Promise.all([
+        supabase.from("profiles").select("id", { count: "exact", head: true }),
+        supabase.from("projects").select("id", { count: "exact", head: true }).eq("status", "approved"),
+      ]);
+      return { interns: interns.count ?? 0, projects: projects.count ?? 0 };
+    },
+  });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -125,9 +138,9 @@ export default function Landing() {
 
             <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto mt-20">
               {[
-                { v: "500+", l: "Active Interns" },
-                { v: "1,200+", l: "Projects Built" },
-                { v: "50+", l: "Companies Hiring" },
+                { v: `${stats?.interns ?? 0}`, l: "Active Interns" },
+                { v: `${stats?.projects ?? 0}`, l: "Projects Built" },
+                { v: "Live", l: "Real-time Platform" },
               ].map((s) => (
                 <div key={s.l} className="text-center">
                   <div className="text-3xl md:text-4xl font-bold text-gradient">{s.v}</div>
