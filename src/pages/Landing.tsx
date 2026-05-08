@@ -311,14 +311,16 @@ export default function Landing() {
             </p>
           </div>
           {[
-            { title: "Platform", links: ["Features", "How it works", "Showcase"] },
-            { title: "Resources", links: ["Blog", "Guides", "FAQ", "Support"] },
-            { title: "Legal", links: ["Privacy", "Terms", "Cookies"] },
+            { title: "Platform", links: [["Features","/features"],["How it works","/how-it-works"],["Showcase","/showcase"]] },
+            { title: "Resources", links: [["Blog","/blog"],["Guides","/guides"],["FAQ","/faq"],["Support","/support"]] },
+            { title: "Legal", links: [["Privacy","/privacy"],["Terms","/terms"]] },
           ].map((col) => (
             <div key={col.title}>
               <h4 className="font-semibold mb-3">{col.title}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                {col.links.map((l) => <li key={l}><a href="#" className="hover:text-primary transition-colors">{l}</a></li>)}
+                {col.links.map(([l, href]) => (
+                  <li key={l}><Link to={href} className="hover:text-primary transition-colors">{l}</Link></li>
+                ))}
               </ul>
             </div>
           ))}
