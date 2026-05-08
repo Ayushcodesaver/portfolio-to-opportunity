@@ -69,6 +69,17 @@ const App = () => (
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
 
+            {/* Marketing pages */}
+            <Route path="/features" element={<Features />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
+            <Route path="/showcase" element={<Showcase />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/guides" element={<Guides />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/support" element={<Support />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+
             {/* Intern shell */}
             <Route element={<ProtectedRoute><AppShell variant="intern" /></ProtectedRoute>}>
               <Route path="/dashboard" element={<InternDashboard />} />
