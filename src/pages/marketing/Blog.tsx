@@ -1,35 +1,98 @@
-import { MarketingLayout, Card3D } from "@/components/marketing/MarketingLayout";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import { Calendar, ArrowRight } from "lucide-react";
-
-const posts = [
-  { title: "How to make the most of your first 30 days as an intern", date: "May 2026", tag: "Onboarding", excerpt: "A practical playbook for showing up, shipping early, and earning trust fast." },
-  { title: "Building a portfolio recruiters actually read", date: "Apr 2026", tag: "Career", excerpt: "Stop listing tutorials. Here's how to frame projects so they tell a story." },
-  { title: "Why daily check-ins beat weekly reports", date: "Apr 2026", tag: "Productivity", excerpt: "Tight feedback loops compound. Long ones rot. The data, and what to do." },
-  { title: "AI-assisted code review for interns", date: "Mar 2026", tag: "AI", excerpt: "Use AI as a senior dev that's always available — without becoming dependent." },
-  { title: "Designing internship tracks that don't suck", date: "Mar 2026", tag: "HR", excerpt: "What we learned from running 90-day programs across 12 companies." },
-  { title: "From intern to full-time: 5 stories", date: "Feb 2026", tag: "Stories", excerpt: "Five Xebure interns share the exact projects that landed them offers." },
-];
+import { MarketingLayout, Card3D } from "@/components/marketing/MarketingLayout";
+import { supabase } from "@/integrations/supabase/client";
+import { formatDistanceToNow } from "date-fns";
 
 export default function Blog() {
+  const [activeCat, setActiveCat] = useState<string | null>(null);
+
+  const { data: categories } = useQuery({
+    queryKey: ["blog-categories"],
+    queryFn: async () => {
+      const { data } = await supabase.from("blog_categories").select("*").order("name");
+      return data ?? [];
+    },
+  });
+
+  const { data: posts, isLoading } = useQuery({
+    queryKey: ["blog-posts", activeCat],
+    queryFn: async () => {
+      let q = supabase
+        .from("blog_posts")
+        .select("id, slug, title, excerpt, cover_image_url, published_at, category_id, author_id, blog_categories(name, slug)")
+        .eq("status", "published")
+        .order("published_at", { ascending: false });
+      if (activeCat) q = q.eq("category_id", activeCat);
+      const { data } = await q;
+      return data ?? [];
+    },
+  });
+
   return (
     <MarketingLayout
       eyebrow="Blog"
       title="Notes from the field."
       subtitle="Playbooks, stories, and lessons from internships happening right now on Xebure."
     >
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {posts.map((p, i) => (
-          <Card3D key={p.title} delay={i * 0.04}>
-            <div className="text-xs uppercase tracking-wider text-primary-glow mb-3">{p.tag}</div>
-            <h3 className="text-xl font-semibold mb-2">{p.title}</h3>
-            <p className="text-sm text-muted-foreground mb-4">{p.excerpt}</p>
-            <div className="flex items-center justify-between text-xs text-muted-foreground">
-              <span className="flex items-center gap-1.5"><Calendar className="h-3 w-3" /> {p.date}</span>
-              <span className="flex items-center gap-1 text-primary">Read <ArrowRight className="h-3 w-3" /></span>
-            </div>
-          </Card3D>
+      {/* Category filters */}
+      <div className="flex flex-wrap gap-2 mb-10">
+        <button
+          onClick={() => setActiveCat(null)}
+          className={`px-4 py-1.5 rounded-full text-xs uppercase tracking-wider transition ${
+            activeCat === null ? "bg-primary text-primary-foreground" : "glass border border-primary/20 hover:border-primary/50"
+          }`}
+        >
+          All
+        </button>
+        {categories?.map((c: any) => (
+          <button
+            key={c.id}
+            onClick={() => setActiveCat(c.id)}
+            className={`px-4 py-1.5 rounded-full text-xs uppercase tracking-wider transition ${
+              activeCat === c.id ? "bg-primary text-primary-foreground" : "glass border border-primary/20 hover:border-primary/50"
+            }`}
+          >
+            {c.name}
+          </button>
         ))}
       </div>
+
+      {isLoading ? (
+        <p className="text-center text-muted-foreground py-12">Loading…</p>
+      ) : (posts?.length ?? 0) === 0 ? (
+        <div className="text-center py-16 glass rounded-2xl">
+          <p className="text-muted-foreground">No posts published yet. Check back soon.</p>
+        </div>
+      ) : (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {posts!.map((p: any, i: number) => (
+            <Link key={p.id} to={`/blog/${p.slug}`}>
+              <Card3D delay={i * 0.04} className="h-full cursor-pointer">
+                {p.cover_image_url && (
+                  <img src={p.cover_image_url} alt={p.title} className="w-full h-40 object-cover rounded-lg mb-4" />
+                )}
+                <div className="text-xs uppercase tracking-wider text-primary-glow mb-3">
+                  {p.blog_categories?.name ?? "Uncategorized"}
+                </div>
+                <h3 className="text-xl font-semibold mb-2 line-clamp-2">{p.title}</h3>
+                <p className="text-sm text-muted-foreground mb-4 line-clamp-3">{p.excerpt}</p>
+                <div className="flex items-center justify-between text-xs text-muted-foreground">
+                  <span className="flex items-center gap-1.5">
+                    <Calendar className="h-3 w-3" />
+                    {p.published_at ? formatDistanceToNow(new Date(p.published_at), { addSuffix: true }) : "Draft"}
+                  </span>
+                  <span className="flex items-center gap-1 text-primary">
+                    Read <ArrowRight className="h-3 w-3" />
+                  </span>
+                </div>
+              </Card3D>
+            </Link>
+          ))}
+        </div>
+      )}
     </MarketingLayout>
   );
 }

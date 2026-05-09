@@ -16,6 +16,8 @@ import Features from "./pages/marketing/Features";
 import HowItWorks from "./pages/marketing/HowItWorks";
 import Showcase from "./pages/marketing/Showcase";
 import Blog from "./pages/marketing/Blog";
+import BlogPost from "./pages/marketing/BlogPost";
+import HRBlog from "./pages/hr/HRBlog";
 import Guides from "./pages/marketing/Guides";
 import FAQ from "./pages/marketing/FAQ";
 import Support from "./pages/marketing/Support";
@@ -74,6 +76,7 @@ const App = () => (
             <Route path="/how-it-works" element={<HowItWorks />} />
             <Route path="/showcase" element={<Showcase />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/guides" element={<Guides />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/support" element={<Support />} />
@@ -111,6 +114,7 @@ const App = () => (
               <Route path="/hr/attendance" element={<HRAttendance />} />
               <Route path="/hr/inbox" element={<HRInbox />} />
               <Route path="/hr/tickets" element={<HRTickets />} />
+              <Route path="/hr/blog" element={<HRBlog />} />
             </Route>
 
             {/* Admin shell */}
