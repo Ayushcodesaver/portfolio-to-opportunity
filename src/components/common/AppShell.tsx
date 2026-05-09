@@ -38,6 +38,7 @@ const hrNav: NavItem[] = [
   { to: "/hr/attendance", label: "Attendance", icon: Calendar },
   { to: "/hr/inbox", label: "Inbox", icon: Inbox },
   { to: "/hr/tickets", label: "Tickets", icon: Ticket },
+  { to: "/hr/blog", label: "Blog", icon: FileText },
 ];
 
 const adminNav: NavItem[] = [
