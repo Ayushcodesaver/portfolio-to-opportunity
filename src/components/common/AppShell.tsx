@@ -4,7 +4,7 @@ import {
   Home, FolderKanban, PlusSquare, Sparkles, BarChart3, Bell,
   Settings, LogOut, Users as UsersIcon, ClipboardCheck, Calendar,
   Inbox, Ticket, Shield, ShieldCheck, FileText, Activity, Bot, Cpu,
-  Target, Megaphone, LayoutDashboard
+  Target, Megaphone, LayoutDashboard, Trophy
 } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
 import { useAuth } from "@/context/AuthContext";
@@ -24,6 +24,7 @@ const internNav: NavItem[] = [
   { to: "/ai-assistant", label: "AI Assistant", icon: Sparkles },
   { to: "/internship-progress", label: "Progress", icon: BarChart3 },
   { to: "/notifications", label: "Notifications", icon: Bell },
+  { to: "/leaderboard", label: "Leaderboard", icon: Trophy },
   { to: "/settings", label: "Settings", icon: Settings },
 ];
 
@@ -38,6 +39,7 @@ const hrNav: NavItem[] = [
   { to: "/hr/attendance", label: "Attendance", icon: Calendar },
   { to: "/hr/inbox", label: "Inbox", icon: Inbox },
   { to: "/hr/tickets", label: "Tickets", icon: Ticket },
+  { to: "/hr/blog", label: "Blog", icon: FileText },
 ];
 
 const adminNav: NavItem[] = [

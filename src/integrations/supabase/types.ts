@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      achievements: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          icon: string | null
+          id: string
+          key: string
+          name: string
+          points: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          icon?: string | null
+          id?: string
+          key: string
+          name: string
+          points?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          icon?: string | null
+          id?: string
+          key?: string
+          name?: string
+          points?: number | null
+        }
+        Relationships: []
+      }
       admin_settings: {
         Row: {
           key: string
@@ -175,6 +205,147 @@ export type Database = {
         }
         Relationships: []
       }
+      blog_categories: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          id: string
+          name: string
+          slug: string
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          name: string
+          slug: string
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          name?: string
+          slug?: string
+        }
+        Relationships: []
+      }
+      blog_comments: {
+        Row: {
+          content: string
+          created_at: string | null
+          id: string
+          post_id: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string | null
+          id?: string
+          post_id: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string | null
+          id?: string
+          post_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "blog_comments_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: false
+            referencedRelation: "blog_posts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      blog_post_likes: {
+        Row: {
+          created_at: string | null
+          id: string
+          post_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          post_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          post_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "blog_post_likes_post_id_fkey"
+            columns: ["post_id"]
+            isOneToOne: false
+            referencedRelation: "blog_posts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      blog_posts: {
+        Row: {
+          author_id: string
+          body: string
+          category_id: string | null
+          cover_image_url: string | null
+          created_at: string | null
+          excerpt: string | null
+          id: string
+          published_at: string | null
+          slug: string
+          status: Database["public"]["Enums"]["blog_status"]
+          title: string
+          updated_at: string | null
+          views_count: number | null
+        }
+        Insert: {
+          author_id: string
+          body?: string
+          category_id?: string | null
+          cover_image_url?: string | null
+          created_at?: string | null
+          excerpt?: string | null
+          id?: string
+          published_at?: string | null
+          slug: string
+          status?: Database["public"]["Enums"]["blog_status"]
+          title: string
+          updated_at?: string | null
+          views_count?: number | null
+        }
+        Update: {
+          author_id?: string
+          body?: string
+          category_id?: string | null
+          cover_image_url?: string | null
+          created_at?: string | null
+          excerpt?: string | null
+          id?: string
+          published_at?: string | null
+          slug?: string
+          status?: Database["public"]["Enums"]["blog_status"]
+          title?: string
+          updated_at?: string | null
+          views_count?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "blog_posts_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "blog_categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       client_requirement_versions: {
         Row: {
           change_note: string | null
@@ -308,6 +479,30 @@ export type Database = {
           last_message_at?: string | null
           user_a?: string
           user_b?: string
+        }
+        Relationships: []
+      }
+      daily_streaks: {
+        Row: {
+          current_streak: number
+          last_check_in: string | null
+          longest_streak: number
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          current_streak?: number
+          last_check_in?: string | null
+          longest_streak?: number
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          current_streak?: number
+          last_check_in?: string | null
+          longest_streak?: number
+          updated_at?: string | null
+          user_id?: string
         }
         Relationships: []
       }
@@ -967,6 +1162,27 @@ export type Database = {
         }
         Relationships: []
       }
+      user_achievements: {
+        Row: {
+          achievement_key: string
+          earned_at: string | null
+          id: string
+          user_id: string
+        }
+        Insert: {
+          achievement_key: string
+          earned_at?: string | null
+          id?: string
+          user_id: string
+        }
+        Update: {
+          achievement_key?: string
+          earned_at?: string | null
+          id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string | null
@@ -990,9 +1206,22 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      leaderboard_v: {
+        Row: {
+          badges_count: number | null
+          monthly_points: number | null
+          total_points: number | null
+          user_id: string | null
+          weekly_points: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
+      award_achievement: {
+        Args: { _key: string; _user: string }
+        Returns: undefined
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -1000,10 +1229,27 @@ export type Database = {
         }
         Returns: boolean
       }
+      record_streak: {
+        Args: never
+        Returns: {
+          current_streak: number
+          last_check_in: string | null
+          longest_streak: number
+          updated_at: string | null
+          user_id: string
+        }
+        SetofOptions: {
+          from: "*"
+          to: "daily_streaks"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
     }
     Enums: {
       app_role: "intern" | "hr" | "admin"
       attendance_status: "present" | "absent" | "late" | "leave" | "holiday"
+      blog_status: "draft" | "published" | "archived"
       difficulty_level: "beginner" | "intermediate" | "advanced"
       internship_type: "summer" | "winter" | "full_time"
       notif_priority: "low" | "medium" | "high" | "urgent"
@@ -1148,6 +1394,7 @@ export const Constants = {
     Enums: {
       app_role: ["intern", "hr", "admin"],
       attendance_status: ["present", "absent", "late", "leave", "holiday"],
+      blog_status: ["draft", "published", "archived"],
       difficulty_level: ["beginner", "intermediate", "advanced"],
       internship_type: ["summer", "winter", "full_time"],
       notif_priority: ["low", "medium", "high", "urgent"],

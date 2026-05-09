@@ -16,6 +16,8 @@ import Features from "./pages/marketing/Features";
 import HowItWorks from "./pages/marketing/HowItWorks";
 import Showcase from "./pages/marketing/Showcase";
 import Blog from "./pages/marketing/Blog";
+import BlogPost from "./pages/marketing/BlogPost";
+import HRBlog from "./pages/hr/HRBlog";
 import Guides from "./pages/marketing/Guides";
 import FAQ from "./pages/marketing/FAQ";
 import Support from "./pages/marketing/Support";
@@ -32,6 +34,7 @@ import CreateProject from "./pages/intern/CreateProject";
 import AIAssistant from "./pages/intern/AIAssistant";
 import InternshipProgress from "./pages/intern/InternshipProgress";
 import Notifications from "./pages/intern/Notifications";
+import Leaderboard from "./pages/intern/Leaderboard";
 import Profile from "./pages/common/Profile";
 import Settings from "./pages/common/Settings";
 
@@ -74,6 +77,7 @@ const App = () => (
             <Route path="/how-it-works" element={<HowItWorks />} />
             <Route path="/showcase" element={<Showcase />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/guides" element={<Guides />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/support" element={<Support />} />
@@ -92,6 +96,7 @@ const App = () => (
               <Route path="/ai-assistant" element={<AIAssistant />} />
               <Route path="/internship-progress" element={<InternshipProgress />} />
               <Route path="/notifications" element={<Notifications />} />
+              <Route path="/leaderboard" element={<Leaderboard />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/profile/:username" element={<Profile />} />
             </Route>
@@ -111,6 +116,7 @@ const App = () => (
               <Route path="/hr/attendance" element={<HRAttendance />} />
               <Route path="/hr/inbox" element={<HRInbox />} />
               <Route path="/hr/tickets" element={<HRTickets />} />
+              <Route path="/hr/blog" element={<HRBlog />} />
             </Route>
 
             {/* Admin shell */}
