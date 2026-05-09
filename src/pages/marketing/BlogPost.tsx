@@ -67,16 +67,13 @@ export default function BlogPost() {
     queryFn: async () => {
       const { data } = await supabase
         .from("blog_posts")
-        .select("*, blog_categories(name, slug), profiles!blog_posts_author_id_fkey:profiles(id, username, full_name, avatar_url, bio)")
+        .select("*, blog_categories(name, slug)")
         .eq("slug", slug!)
         .maybeSingle();
-      // fallback: profiles join may not work without FK; do separate fetch
-      if (data && !(data as any).profiles) {
-        const { data: prof } = await supabase
-          .from("profiles").select("id, username, full_name, avatar_url, bio").eq("id", (data as any).author_id).maybeSingle();
-        (data as any).profiles = prof;
-      }
-      return data;
+      if (!data) return null;
+      const { data: prof } = await supabase
+        .from("profiles").select("id, username, full_name, avatar_url, bio").eq("id", data.author_id).maybeSingle();
+      return { ...data, profiles: prof } as any;
     },
   });
 
