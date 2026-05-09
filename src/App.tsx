@@ -34,6 +34,7 @@ import CreateProject from "./pages/intern/CreateProject";
 import AIAssistant from "./pages/intern/AIAssistant";
 import InternshipProgress from "./pages/intern/InternshipProgress";
 import Notifications from "./pages/intern/Notifications";
+import Leaderboard from "./pages/intern/Leaderboard";
 import Profile from "./pages/common/Profile";
 import Settings from "./pages/common/Settings";
 
@@ -95,6 +96,7 @@ const App = () => (
               <Route path="/ai-assistant" element={<AIAssistant />} />
               <Route path="/internship-progress" element={<InternshipProgress />} />
               <Route path="/notifications" element={<Notifications />} />
+              <Route path="/leaderboard" element={<Leaderboard />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/profile/:username" element={<Profile />} />
             </Route>
