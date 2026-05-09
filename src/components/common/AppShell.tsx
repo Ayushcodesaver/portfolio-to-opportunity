@@ -4,7 +4,7 @@ import {
   Home, FolderKanban, PlusSquare, Sparkles, BarChart3, Bell,
   Settings, LogOut, Users as UsersIcon, ClipboardCheck, Calendar,
   Inbox, Ticket, Shield, ShieldCheck, FileText, Activity, Bot, Cpu,
-  Target, Megaphone, LayoutDashboard
+  Target, Megaphone, LayoutDashboard, Trophy
 } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
 import { useAuth } from "@/context/AuthContext";
