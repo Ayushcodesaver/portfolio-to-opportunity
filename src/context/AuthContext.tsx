@@ -34,7 +34,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setSession(sess);
       setUser(sess?.user ?? null);
       if (sess?.user) {
-        setTimeout(() => fetchRoles(sess.user.id), 0);
+        setTimeout(() => {
+          fetchRoles(sess.user.id);
+          // Fire-and-forget daily streak check-in
+          supabase.rpc("record_streak").then(() => {});
+        }, 0);
       } else {
         setRoles([]);
       }
@@ -43,7 +47,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     supabase.auth.getSession().then(({ data: { session: sess } }) => {
       setSession(sess);
       setUser(sess?.user ?? null);
-      if (sess?.user) fetchRoles(sess.user.id);
+      if (sess?.user) {
+        fetchRoles(sess.user.id);
+        supabase.rpc("record_streak").then(() => {});
+      }
       setLoading(false);
     });
 
