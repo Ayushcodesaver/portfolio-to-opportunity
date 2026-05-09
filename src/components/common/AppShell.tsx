@@ -24,6 +24,7 @@ const internNav: NavItem[] = [
   { to: "/ai-assistant", label: "AI Assistant", icon: Sparkles },
   { to: "/internship-progress", label: "Progress", icon: BarChart3 },
   { to: "/notifications", label: "Notifications", icon: Bell },
+  { to: "/leaderboard", label: "Leaderboard", icon: Trophy },
   { to: "/settings", label: "Settings", icon: Settings },
 ];
 
