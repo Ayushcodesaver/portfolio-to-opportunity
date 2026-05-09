@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      achievements: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          icon: string | null
+          id: string
+          key: string
+          name: string
+          points: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          icon?: string | null
+          id?: string
+          key: string
+          name: string
+          points?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          icon?: string | null
+          id?: string
+          key?: string
+          name?: string
+          points?: number | null
+        }
+        Relationships: []
+      }
       admin_settings: {
         Row: {
           key: string
@@ -449,6 +479,30 @@ export type Database = {
           last_message_at?: string | null
           user_a?: string
           user_b?: string
+        }
+        Relationships: []
+      }
+      daily_streaks: {
+        Row: {
+          current_streak: number
+          last_check_in: string | null
+          longest_streak: number
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          current_streak?: number
+          last_check_in?: string | null
+          longest_streak?: number
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          current_streak?: number
+          last_check_in?: string | null
+          longest_streak?: number
+          updated_at?: string | null
+          user_id?: string
         }
         Relationships: []
       }
@@ -1108,6 +1162,27 @@ export type Database = {
         }
         Relationships: []
       }
+      user_achievements: {
+        Row: {
+          achievement_key: string
+          earned_at: string | null
+          id: string
+          user_id: string
+        }
+        Insert: {
+          achievement_key: string
+          earned_at?: string | null
+          id?: string
+          user_id: string
+        }
+        Update: {
+          achievement_key?: string
+          earned_at?: string | null
+          id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string | null
@@ -1131,15 +1206,44 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      leaderboard_v: {
+        Row: {
+          badges_count: number | null
+          monthly_points: number | null
+          total_points: number | null
+          user_id: string | null
+          weekly_points: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
+      award_achievement: {
+        Args: { _key: string; _user: string }
+        Returns: undefined
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
           _user_id: string
         }
         Returns: boolean
+      }
+      record_streak: {
+        Args: never
+        Returns: {
+          current_streak: number
+          last_check_in: string | null
+          longest_streak: number
+          updated_at: string | null
+          user_id: string
+        }
+        SetofOptions: {
+          from: "*"
+          to: "daily_streaks"
+          isOneToOne: true
+          isSetofReturn: false
+        }
       }
     }
     Enums: {
