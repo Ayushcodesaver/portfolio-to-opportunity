@@ -102,7 +102,7 @@ export function MarketingLayout({ eyebrow, title, subtitle, children }: Marketin
               initial={{ opacity: 0, y: 30, rotateX: -15 }}
               animate={{ opacity: 1, y: 0, rotateX: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-5xl md:text-7xl font-bold mb-6 text-gradient leading-tight"
+              className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 text-gradient leading-[1.05]"
               style={{ transformStyle: "preserve-3d" }}
             >
               {title}
