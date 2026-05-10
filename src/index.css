@@ -123,26 +123,56 @@
 }
 
 @layer utilities {
-  .animate-orb {
-    animation: orb 8s ease-in-out infinite;
-  }
+  .animate-orb { animation: orb 8s ease-in-out infinite; }
   @keyframes orb {
     0%, 100% { transform: translate(0, 0) scale(1); }
     33% { transform: translate(30px, -30px) scale(1.1); }
     66% { transform: translate(-20px, 20px) scale(0.95); }
   }
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
+  .animate-float { animation: float 6s ease-in-out infinite; }
   @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
   }
-  .animate-pulse-glow {
-    animation: pulseGlow 3s ease-in-out infinite;
-  }
+  .animate-pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
   @keyframes pulseGlow {
     0%, 100% { box-shadow: 0 0 20px hsl(258 90% 66% / 0.3); }
     50% { box-shadow: 0 0 40px hsl(258 90% 66% / 0.6); }
+  }
+
+  /* 3D depth utilities */
+  .tilt-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+    will-change: transform;
+  }
+  .tilt-3d:hover {
+    transform: perspective(1000px) rotateX(4deg) rotateY(-4deg) translateY(-4px) translateZ(8px);
+    box-shadow: 0 20px 40px -15px hsl(258 90% 66% / 0.35), 0 0 30px -8px hsl(258 90% 66% / 0.25);
+  }
+  .tilt-3d-soft {
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+    will-change: transform;
+  }
+  .tilt-3d-soft:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px -10px hsl(258 90% 66% / 0.3);
+  }
+
+  .glass, .glass-strong {
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Mobile-safe container padding */
+  .container { @apply px-4 sm:px-6 lg:px-8; }
+
+  /* Safe-area insets for notched devices */
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+  .safe-top { padding-top: env(safe-area-inset-top); }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .tilt-3d:hover, .tilt-3d-soft:hover { transform: none; }
+    .animate-orb, .animate-float, .animate-pulse-glow { animation: none; }
   }
 }
