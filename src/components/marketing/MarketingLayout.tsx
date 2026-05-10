@@ -44,9 +44,36 @@ export function MarketingLayout({ eyebrow, title, subtitle, children }: Marketin
             ) : (
               <>
                 <Button variant="ghost" onClick={() => navigate("/login")} className="hidden sm:inline-flex">Sign in</Button>
-                <Button onClick={() => navigate("/register")} className="bg-gradient-primary hover:opacity-90 glow-violet">Join as Intern</Button>
+                <Button onClick={() => navigate("/register")} className="bg-gradient-primary hover:opacity-90 glow-violet">Join</Button>
               </>
             )}
+            {/* Mobile menu */}
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="md:hidden h-9 w-9">
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-72 bg-card border-border/50">
+                <div className="flex flex-col gap-1 mt-8">
+                  {[
+                    ["Features", "/features"],
+                    ["How it works", "/how-it-works"],
+                    ["Showcase", "/showcase"],
+                    ["Blog", "/blog"],
+                    ["Guides", "/guides"],
+                    ["FAQ", "/faq"],
+                    ["Support", "/support"],
+                    ["Privacy", "/privacy"],
+                    ["Terms", "/terms"],
+                  ].map(([label, href]) => (
+                    <Link key={href} to={href} className="px-3 py-3 rounded-lg text-sm hover:bg-primary/10 hover:text-primary-glow transition-colors">
+                      {label}
+                    </Link>
+                  ))}
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </nav>
