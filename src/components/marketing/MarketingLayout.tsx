@@ -1,9 +1,10 @@
 import { ReactNode, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Github, Twitter, Linkedin, ArrowLeft } from "lucide-react";
+import { Github, Twitter, Linkedin, ArrowLeft, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/common/Logo";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useAuth } from "@/context/AuthContext";
 
 interface MarketingLayoutProps {
