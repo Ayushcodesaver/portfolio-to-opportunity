@@ -9,10 +9,10 @@ import { toast } from "sonner";
 type Msg = { role: "user" | "assistant"; content: string };
 
 const QUICK_PROMPTS = [
-  "Improve my project description",
-  "Review my code for bugs",
-  "Suggest a tech stack for an e-commerce app",
-  "Write a great commit message for me",
+  "How do I submit a task?",
+  "When do I get my certificate?",
+  "What's the difference between Basic, Pro, and Premium?",
+  "How do I join a community?",
 ];
 
 export default function AIAssistant() {
@@ -91,8 +91,9 @@ export default function AIAssistant() {
               <div className="p-4 rounded-full bg-primary/10 mb-4">
                 <Sparkles className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-lg font-semibold">How can I help today?</h3>
-              <p className="text-sm text-muted-foreground mb-6">Ask me anything about code, projects, or career.</p>
+              <h3 className="text-lg font-semibold">XEBURE Assistant</h3>
+              <p className="text-sm text-muted-foreground mb-1">Ask me anything about the XEBURE platform.</p>
+              <p className="text-xs text-muted-foreground/70 mb-6">Tasks · Certificates · Plans · Communities · Projects</p>
               <div className="grid sm:grid-cols-2 gap-2 max-w-xl w-full">
                 {QUICK_PROMPTS.map((p) => (
                   <button key={p} onClick={() => send(p)}
