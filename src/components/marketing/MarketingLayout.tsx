@@ -1,9 +1,10 @@
 import { ReactNode, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Github, Twitter, Linkedin, ArrowLeft } from "lucide-react";
+import { Github, Twitter, Linkedin, ArrowLeft, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/common/Logo";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useAuth } from "@/context/AuthContext";
 
 interface MarketingLayoutProps {
@@ -43,9 +44,36 @@ export function MarketingLayout({ eyebrow, title, subtitle, children }: Marketin
             ) : (
               <>
                 <Button variant="ghost" onClick={() => navigate("/login")} className="hidden sm:inline-flex">Sign in</Button>
-                <Button onClick={() => navigate("/register")} className="bg-gradient-primary hover:opacity-90 glow-violet">Join as Intern</Button>
+                <Button onClick={() => navigate("/register")} className="bg-gradient-primary hover:opacity-90 glow-violet">Join</Button>
               </>
             )}
+            {/* Mobile menu */}
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="md:hidden h-9 w-9">
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-72 bg-card border-border/50">
+                <div className="flex flex-col gap-1 mt-8">
+                  {[
+                    ["Features", "/features"],
+                    ["How it works", "/how-it-works"],
+                    ["Showcase", "/showcase"],
+                    ["Blog", "/blog"],
+                    ["Guides", "/guides"],
+                    ["FAQ", "/faq"],
+                    ["Support", "/support"],
+                    ["Privacy", "/privacy"],
+                    ["Terms", "/terms"],
+                  ].map(([label, href]) => (
+                    <Link key={href} to={href} className="px-3 py-3 rounded-lg text-sm hover:bg-primary/10 hover:text-primary-glow transition-colors">
+                      {label}
+                    </Link>
+                  ))}
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </nav>
@@ -74,7 +102,7 @@ export function MarketingLayout({ eyebrow, title, subtitle, children }: Marketin
               initial={{ opacity: 0, y: 30, rotateX: -15 }}
               animate={{ opacity: 1, y: 0, rotateX: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-5xl md:text-7xl font-bold mb-6 text-gradient leading-tight"
+              className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 text-gradient leading-[1.05]"
               style={{ transformStyle: "preserve-3d" }}
             >
               {title}
