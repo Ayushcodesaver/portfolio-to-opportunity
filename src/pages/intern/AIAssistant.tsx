@@ -9,10 +9,10 @@ import { toast } from "sonner";
 type Msg = { role: "user" | "assistant"; content: string };
 
 const QUICK_PROMPTS = [
-  "Improve my project description",
-  "Review my code for bugs",
-  "Suggest a tech stack for an e-commerce app",
-  "Write a great commit message for me",
+  "How do I submit a task?",
+  "When do I get my certificate?",
+  "What's the difference between Basic, Pro, and Premium?",
+  "How do I join a community?",
 ];
 
 export default function AIAssistant() {
