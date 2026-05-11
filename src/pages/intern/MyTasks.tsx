@@ -14,6 +14,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useEnrollment } from "@/hooks/useEnrollment";
 import { CheckCircle2, XCircle, Clock, Upload, Target } from "lucide-react";
 import { toast } from "sonner";
+import { StatusPill } from "@/components/dashboard/StatusPill";
 
 export default function MyTasks() {
   const { user } = useAuth();
@@ -126,11 +127,13 @@ function TaskCard({ task, currentDay }: { task: any; currentDay: number }) {
     qc.invalidateQueries({ queryKey: ["today-tasks"] });
   };
 
-  const StatusIcon = status === "approved" ? CheckCircle2 : status === "rejected" ? XCircle : Clock;
-  const statusColor = status === "approved" ? "text-success" : status === "rejected" ? "text-destructive" : status === "submitted" ? "text-info" : "text-muted-foreground";
+  const pillKind = (status === "approved" ? "approved"
+    : status === "rejected" ? "rejected"
+    : status === "submitted" ? "submitted"
+    : "todo") as const;
 
   return (
-    <div className="glass rounded-xl p-5">
+    <div className="panel-3d tilt-3d-soft p-5">
       <div className="flex items-start justify-between gap-4 mb-3">
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap mb-1">
@@ -141,10 +144,7 @@ function TaskCard({ task, currentDay }: { task: any; currentDay: number }) {
           <h3 className="font-semibold">{task.title}</h3>
           <p className="text-sm text-muted-foreground whitespace-pre-wrap mt-1">{task.description}</p>
         </div>
-        <div className={`flex items-center gap-1.5 text-xs ${statusColor} shrink-0`}>
-          <StatusIcon className="h-4 w-4" />
-          {status ?? "todo"}
-        </div>
+        <StatusPill kind={pillKind} />
       </div>
 
       {task.deadline_at && !status && <CountdownTimer to={task.deadline_at} className="mb-3" />}
