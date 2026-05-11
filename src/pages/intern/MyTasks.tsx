@@ -127,10 +127,11 @@ function TaskCard({ task, currentDay }: { task: any; currentDay: number }) {
     qc.invalidateQueries({ queryKey: ["today-tasks"] });
   };
 
-  const pillKind = (status === "approved" ? "approved"
+  const pillKind: "approved" | "rejected" | "submitted" | "todo" =
+    status === "approved" ? "approved"
     : status === "rejected" ? "rejected"
     : status === "submitted" ? "submitted"
-    : "todo") as const;
+    : "todo";
 
   return (
     <div className="panel-3d tilt-3d-soft p-5">
