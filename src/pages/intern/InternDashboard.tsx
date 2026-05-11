@@ -112,18 +112,18 @@ export default function InternDashboard() {
         }
       />
 
-      {/* Timeline progress */}
-      <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="glass rounded-xl p-6">
+      {/* Timeline progress with gradient + glow milestones */}
+      <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="panel-3d-violet p-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <Calendar className="h-4 w-4 text-primary" />
+            <Calendar className="h-4 w-4 text-primary-glow" />
             <span className="text-sm font-semibold">Internship Timeline</span>
           </div>
           <span className="text-xs text-muted-foreground">{Math.round(pct)}% complete · {program.total_days - currentDay} days left</span>
         </div>
-        <div className="relative h-3 bg-muted rounded-full overflow-hidden">
+        <div className="relative h-3 bg-black/40 rounded-full overflow-hidden">
           <motion.div
-            className="absolute inset-y-0 left-0 bg-gradient-primary"
+            className="absolute inset-y-0 left-0 bg-gradient-to-r from-[hsl(var(--gauge-1))] via-[hsl(var(--gauge-3))] to-[hsl(var(--gauge-4))]"
             initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: 0.8 }}
           />
           {milestones.map((m) => (
@@ -134,7 +134,7 @@ export default function InternDashboard() {
         </div>
         <div className="flex justify-between mt-2 text-[10px] text-muted-foreground">
           {milestones.map((m) => (
-            <span key={m} className={pct >= m ? "text-primary font-semibold" : ""}>{m}%</span>
+            <span key={m} className={pct >= m ? "text-primary-glow font-semibold" : ""}>{m}%</span>
           ))}
         </div>
       </motion.div>

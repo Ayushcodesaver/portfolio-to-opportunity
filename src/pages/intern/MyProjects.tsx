@@ -8,17 +8,17 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { PageHeader, PageLoader, EmptyState } from "@/components/common/PageHeader";
 import { toast } from "sonner";
 import { FolderKanban } from "lucide-react";
-
-const STATUS_STYLES: Record<string, string> = {
-  approved: "bg-success/20 text-success",
-  pending: "bg-warning/20 text-warning",
-  rejected: "bg-destructive/20 text-destructive",
-  draft: "bg-muted text-muted-foreground",
-};
+import { StatusPill } from "@/components/dashboard/StatusPill";
+import { useRealtimeInvalidate } from "@/hooks/useRealtimeInvalidate";
 
 export default function MyProjects() {
   const { user } = useAuth();
   const qc = useQueryClient();
+
+  useRealtimeInvalidate("my-projects-rt", [
+    { table: "projects", filter: user ? `user_id=eq.${user.id}` : undefined, keys: [["my-projects"]] },
+    { table: "project_likes", keys: [["my-projects"]] },
+  ], !!user);
 
   const { data: projects, isLoading } = useQuery({
     queryKey: ["my-projects", user?.id],
@@ -80,9 +80,9 @@ export default function MyProjects() {
                     <div key={p.id} className="glass rounded-xl overflow-hidden group hover:border-primary/50 transition-colors">
                       <div className="aspect-video bg-gradient-to-br from-primary/20 to-background relative">
                         {p.media_url && <img src={p.media_url} alt={p.title} className="w-full h-full object-cover" />}
-                        <span className={`absolute top-2 right-2 text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full ${STATUS_STYLES[p.status]}`}>
-                          {p.status}
-                        </span>
+                        <div className="absolute top-2 right-2">
+                          <StatusPill kind={p.status as any} />
+                        </div>
                       </div>
                       <div className="p-4">
                         <h3 className="font-semibold mb-1 truncate">{p.title}</h3>

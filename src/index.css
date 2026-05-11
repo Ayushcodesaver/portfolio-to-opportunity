@@ -37,6 +37,20 @@
     --warning: 38 92% 50%;
     --info: 217 91% 60%;
 
+    /* Status pill palette (Task-board inspired) */
+    --status-progress: 258 90% 66%;   /* violet — IN PROGRESS */
+    --status-ready:    188 94% 55%;   /* cyan — READY TO DESIGN */
+    --status-review:   320 90% 62%;   /* magenta — FINAL REVIEW */
+    --status-done:     152 76% 50%;   /* emerald — COMPLETED */
+    --status-backlog:  220 9% 55%;    /* slate — BACKLOG */
+
+    /* Gauge spectrum */
+    --gauge-1: 152 76% 55%;
+    --gauge-2: 188 94% 60%;
+    --gauge-3: 258 90% 66%;
+    --gauge-4: 38 95% 60%;
+    --gauge-5: 0 84% 62%;
+
     --border: 0 0% 16%;
     --input: 0 0% 10%;
     --ring: 258 90% 66%;
@@ -169,6 +183,34 @@
   /* Safe-area insets for notched devices */
   .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
   .safe-top { padding-top: env(safe-area-inset-top); }
+
+  /* Status pill base */
+  .status-pill {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider;
+    backdrop-filter: blur(6px);
+  }
+  .status-pill::before {
+    content: ""; width: 6px; height: 6px; border-radius: 9999px; background: currentColor;
+    box-shadow: 0 0 8px currentColor;
+  }
+
+  /* Soft inner-bevel card like the reference shots */
+  .panel-3d {
+    background: linear-gradient(180deg, hsl(0 0% 9% / 0.85) 0%, hsl(0 0% 5% / 0.85) 100%);
+    border: 1px solid hsl(0 0% 100% / 0.06);
+    box-shadow:
+      inset 0 1px 0 hsl(0 0% 100% / 0.06),
+      inset 0 -1px 0 hsl(0 0% 0% / 0.4),
+      0 18px 40px -20px hsl(0 0% 0% / 0.7);
+    border-radius: 1.25rem;
+  }
+  .panel-3d-violet {
+    background: linear-gradient(180deg, hsl(258 60% 22% / 0.55), hsl(258 60% 12% / 0.55));
+    border: 1px solid hsl(258 90% 66% / 0.35);
+    box-shadow:
+      inset 0 1px 0 hsl(258 100% 80% / 0.25),
+      0 20px 40px -15px hsl(258 90% 50% / 0.45);
+  }
 
   /* Reduce motion for accessibility */
   @media (prefers-reduced-motion: reduce) {
