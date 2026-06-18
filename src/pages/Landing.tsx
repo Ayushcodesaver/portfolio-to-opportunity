@@ -55,8 +55,8 @@ const navLinks = [
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.2, 0.8, 0.2, 1] } },
-};
+  show:   { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.2, 0.8, 0.2, 1] as [number, number, number, number] } },
+} as const;
 
 export default function Landing() {
   const navigate = useNavigate();
