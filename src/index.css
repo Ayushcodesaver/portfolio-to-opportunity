@@ -6,29 +6,29 @@
 
 @layer base {
   :root {
-    /* Xebure Violet + Black */
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    /* Xebure — Gold (#fbd07c → #f1eec8) on Deep Teal-Navy (#0e1c26) */
+    --background: 204 47% 10%;
+    --foreground: 48 33% 96%;
 
-    --card: 0 0% 4%;
-    --card-foreground: 0 0% 100%;
+    --card: 204 40% 13%;
+    --card-foreground: 48 33% 96%;
 
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 204 42% 12%;
+    --popover-foreground: 48 33% 96%;
 
-    --primary: 258 90% 66%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 258 95% 76%;
-    --primary-dark: 263 70% 50%;
+    --primary: 39 94% 74%;
+    --primary-foreground: 204 60% 8%;
+    --primary-glow: 54 70% 86%;
+    --primary-dark: 32 80% 55%;
 
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 204 30% 18%;
+    --secondary-foreground: 48 33% 96%;
 
-    --muted: 0 0% 10%;
-    --muted-foreground: 220 9% 65%;
+    --muted: 204 28% 16%;
+    --muted-foreground: 204 12% 70%;
 
-    --accent: 258 90% 66%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 39 94% 74%;
+    --accent-foreground: 204 60% 8%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
@@ -37,44 +37,42 @@
     --warning: 38 92% 50%;
     --info: 217 91% 60%;
 
-    /* Status pill palette (Task-board inspired) */
-    --status-progress: 258 90% 66%;   /* violet — IN PROGRESS */
-    --status-ready:    188 94% 55%;   /* cyan — READY TO DESIGN */
-    --status-review:   320 90% 62%;   /* magenta — FINAL REVIEW */
-    --status-done:     152 76% 50%;   /* emerald — COMPLETED */
-    --status-backlog:  220 9% 55%;    /* slate — BACKLOG */
+    --status-progress: 39 94% 70%;
+    --status-ready:    188 94% 60%;
+    --status-review:   320 90% 65%;
+    --status-done:     152 76% 50%;
+    --status-backlog:  204 12% 60%;
 
-    /* Gauge spectrum */
     --gauge-1: 152 76% 55%;
     --gauge-2: 188 94% 60%;
-    --gauge-3: 258 90% 66%;
-    --gauge-4: 38 95% 60%;
+    --gauge-3: 39 94% 74%;
+    --gauge-4: 32 90% 60%;
     --gauge-5: 0 84% 62%;
 
-    --border: 0 0% 16%;
-    --input: 0 0% 10%;
-    --ring: 258 90% 66%;
+    --border: 204 30% 22%;
+    --input: 204 30% 16%;
+    --ring: 39 94% 74%;
 
-    --radius: 0.75rem;
+    --radius: 0.875rem;
 
-    --gradient-primary: linear-gradient(135deg, hsl(258 90% 66%) 0%, hsl(263 70% 50%) 100%);
-    --gradient-glow: linear-gradient(135deg, hsl(258 95% 76%) 0%, hsl(258 90% 66%) 100%);
-    --gradient-dark: linear-gradient(135deg, hsl(0 0% 10%) 0%, hsl(0 0% 0%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 7%) 0%, hsl(0 0% 4%) 100%);
-    --gradient-text: linear-gradient(135deg, hsl(258 95% 76%) 0%, hsl(258 90% 66%) 50%, hsl(263 70% 50%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(39 94% 74%) 0%, hsl(54 70% 86%) 100%);
+    --gradient-glow:    linear-gradient(135deg, hsl(54 70% 86%) 0%, hsl(39 94% 74%) 100%);
+    --gradient-dark:    linear-gradient(135deg, hsl(204 45% 14%) 0%, hsl(204 50% 7%) 100%);
+    --gradient-card:    linear-gradient(180deg, hsl(204 40% 14% / 0.9) 0%, hsl(204 45% 10% / 0.9) 100%);
+    --gradient-text:    linear-gradient(135deg, hsl(54 80% 92%) 0%, hsl(39 94% 74%) 60%, hsl(32 80% 60%) 100%);
 
-    --shadow-glow: 0 0 20px hsl(258 90% 66% / 0.3);
-    --shadow-glow-lg: 0 0 40px hsl(258 90% 66% / 0.4);
-    --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.5);
+    --shadow-glow:    0 0 24px hsl(39 94% 74% / 0.35);
+    --shadow-glow-lg: 0 0 56px hsl(39 94% 74% / 0.45);
+    --shadow-card:    0 10px 30px -10px hsl(204 60% 4% / 0.7);
 
-    --sidebar-background: 0 0% 4%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 258 90% 66%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 10%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 0 0% 16%;
-    --sidebar-ring: 258 90% 66%;
+    --sidebar-background: 204 45% 9%;
+    --sidebar-foreground: 48 30% 92%;
+    --sidebar-primary: 39 94% 74%;
+    --sidebar-primary-foreground: 204 60% 8%;
+    --sidebar-accent: 204 30% 16%;
+    --sidebar-accent-foreground: 48 33% 96%;
+    --sidebar-border: 204 30% 22%;
+    --sidebar-ring: 39 94% 74%;
   }
 
   .dark {
