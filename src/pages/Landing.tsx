@@ -49,8 +49,8 @@ const testimonials = [
 const navLinks = [
   { label: "Features", href: "#features" },
   { label: "How it works", href: "#how" },
-  { label: "Showcase", href: "#showcase" },
-  { label: "Pricing", href: "/features" },
+  { label: "Top Interns", href: "/top-interns" },
+  { label: "Pricing", href: "/pricing" },
 ];
 
 const fadeUp = {

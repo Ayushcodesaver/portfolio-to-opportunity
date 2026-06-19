@@ -12,6 +12,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { GlowButton } from "@/components/fx/GlowButton";
 import { ParticleBackground } from "@/components/fx/ParticleBackground";
+import { GoogleButton } from "@/components/auth/GoogleButton";
 
 const SUGGESTED_SKILLS = ["React","TypeScript","Node.js","Python","Next.js","Tailwind","PostgreSQL","Docker","AWS","GraphQL"];
 
@@ -129,6 +130,17 @@ export default function Register() {
 
           <h1 className="text-2xl font-bold mb-1">{stepTitles[step-1].t}</h1>
           <p className="text-sm text-muted-foreground mb-6">{stepTitles[step-1].s}</p>
+
+          {step === 1 && (
+            <div className="mb-5">
+              <GoogleButton label="Sign up with Google" />
+              <div className="relative mt-5 flex items-center gap-3">
+                <div className="flex-1 h-px bg-border" />
+                <span className="text-[10px] uppercase tracking-wider text-muted-foreground">or with email</span>
+                <div className="flex-1 h-px bg-border" />
+              </div>
+            </div>
+          )}
 
           <AnimatePresence mode="wait">
             <motion.div

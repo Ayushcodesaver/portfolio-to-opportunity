@@ -10,6 +10,8 @@ import { AppShell } from "@/components/common/AppShell";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Pricing from "./pages/Pricing";
+import TopInterns from "./pages/TopInterns";
 import NotFound from "./pages/NotFound";
 
 import Features from "./pages/marketing/Features";
@@ -71,6 +73,8 @@ const App = () => (
             <Route path="/" element={<Landing />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/top-interns" element={<TopInterns />} />
 
             {/* Marketing pages */}
             <Route path="/features" element={<Features />} />

@@ -10,6 +10,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { GlowButton } from "@/components/fx/GlowButton";
 import { ParticleBackground } from "@/components/fx/ParticleBackground";
+import { GoogleButton } from "@/components/auth/GoogleButton";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -76,6 +77,13 @@ export default function Login() {
                 {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Sign in"}
               </GlowButton>
             </form>
+
+            <div className="relative my-5 flex items-center gap-3">
+              <div className="flex-1 h-px bg-border" />
+              <span className="text-[10px] uppercase tracking-wider text-muted-foreground">or</span>
+              <div className="flex-1 h-px bg-border" />
+            </div>
+            <GoogleButton />
 
             <p className="text-center text-sm text-muted-foreground mt-6">
               Don't have an account?{" "}

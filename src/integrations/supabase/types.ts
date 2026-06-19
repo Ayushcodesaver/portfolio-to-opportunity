@@ -794,6 +794,86 @@ export type Database = {
         }
         Relationships: []
       }
+      payments: {
+        Row: {
+          amount_inr: number
+          cashfree_order_id: string | null
+          cashfree_payment_id: string | null
+          created_at: string
+          id: string
+          plan_id: string
+          raw: Json | null
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount_inr: number
+          cashfree_order_id?: string | null
+          cashfree_payment_id?: string | null
+          created_at?: string
+          id?: string
+          plan_id: string
+          raw?: Json | null
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount_inr?: number
+          cashfree_order_id?: string | null
+          cashfree_payment_id?: string | null
+          created_at?: string
+          id?: string
+          plan_id?: string
+          raw?: Json | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "payments_plan_id_fkey"
+            columns: ["plan_id"]
+            isOneToOne: false
+            referencedRelation: "plans"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      plans: {
+        Row: {
+          created_at: string
+          duration_months: number
+          features: Json
+          id: string
+          is_popular: boolean
+          name: string
+          price_inr: number
+          sort_order: number
+        }
+        Insert: {
+          created_at?: string
+          duration_months: number
+          features?: Json
+          id: string
+          is_popular?: boolean
+          name: string
+          price_inr: number
+          sort_order?: number
+        }
+        Update: {
+          created_at?: string
+          duration_months?: number
+          features?: Json
+          id?: string
+          is_popular?: boolean
+          name?: string
+          price_inr?: number
+          sort_order?: number
+        }
+        Relationships: []
+      }
       points_history: {
         Row: {
           created_at: string | null
@@ -1037,6 +1117,57 @@ export type Database = {
           views_count?: number | null
         }
         Relationships: []
+      }
+      subscriptions: {
+        Row: {
+          created_at: string
+          expires_at: string
+          id: string
+          payment_id: string | null
+          plan_id: string
+          started_at: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          expires_at: string
+          id?: string
+          payment_id?: string | null
+          plan_id: string
+          started_at?: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          expires_at?: string
+          id?: string
+          payment_id?: string | null
+          plan_id?: string
+          started_at?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "subscriptions_payment_id_fkey"
+            columns: ["payment_id"]
+            isOneToOne: false
+            referencedRelation: "payments"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "subscriptions_plan_id_fkey"
+            columns: ["plan_id"]
+            isOneToOne: false
+            referencedRelation: "plans"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       task_submissions: {
         Row: {
