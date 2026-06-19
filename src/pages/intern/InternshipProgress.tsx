@@ -4,6 +4,8 @@ import { useAuth } from "@/context/AuthContext";
 import { Calendar, Code, Heart, Award, CheckCircle2, Circle } from "lucide-react";
 import { PageHeader, PageLoader } from "@/components/common/PageHeader";
 import { differenceInDays } from "date-fns";
+import { useRealtimeInvalidate } from "@/hooks/useRealtimeInvalidate";
+
 
 export default function InternshipProgress() {
   const { user } = useAuth();
@@ -20,6 +22,18 @@ export default function InternshipProgress() {
     },
     enabled: !!user,
   });
+
+  useRealtimeInvalidate(
+    `progress-${user?.id ?? "anon"}`,
+    user
+      ? [
+          { table: "projects", filter: `user_id=eq.${user.id}`, keys: [["progress", user.id]] },
+          { table: "profiles", filter: `id=eq.${user.id}`, keys: [["progress", user.id]] },
+          { table: "project_likes", keys: [["progress", user.id]] },
+        ]
+      : [],
+    !!user,
+  );
 
   if (isLoading || !data) return <PageLoader />;
 
