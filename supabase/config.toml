@@ -1,1 +1,13 @@
 project_id = "dnzcwnjagmuwomjnejob"
+
+[functions.ai-chat]
+verify_jwt = false
+
+[functions.improve-description]
+verify_jwt = false
+
+[functions.cashfree-create-order]
+verify_jwt = true
+
+[functions.cashfree-webhook]
+verify_jwt = false
