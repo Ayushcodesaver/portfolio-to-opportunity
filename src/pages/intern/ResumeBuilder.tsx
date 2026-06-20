@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Sparkles, Loader2, Download, Wand2, Plus, Trash2, FileDown, Mail, Phone, MapPin, Link as LinkIcon } from "lucide-react";
 import { PageHeader } from "@/components/common/PageHeader";
