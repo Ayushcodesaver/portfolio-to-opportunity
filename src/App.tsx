@@ -34,6 +34,7 @@ import Feed from "./pages/intern/Feed";
 import MyProjects from "./pages/intern/MyProjects";
 import CreateProject from "./pages/intern/CreateProject";
 import AIAssistant from "./pages/intern/AIAssistant";
+import ResumeBuilder from "./pages/intern/ResumeBuilder";
 import InternshipProgress from "./pages/intern/InternshipProgress";
 import Notifications from "./pages/intern/Notifications";
 import Leaderboard from "./pages/intern/Leaderboard";
@@ -98,6 +99,7 @@ const App = () => (
               <Route path="/my-projects" element={<MyProjects />} />
               <Route path="/create-project" element={<CreateProject />} />
               <Route path="/ai-assistant" element={<AIAssistant />} />
+              <Route path="/resume-builder" element={<ResumeBuilder />} />
               <Route path="/internship-progress" element={<InternshipProgress />} />
               <Route path="/notifications" element={<Notifications />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
