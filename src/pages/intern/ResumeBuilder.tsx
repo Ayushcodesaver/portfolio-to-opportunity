@@ -56,7 +56,7 @@ function Inner() {
   const [education, setEducation] = useState<Education[]>([]);
   const [resume, setResume] = useState<Resume | null>(null);
   const [loading, setLoading] = useState(false);
-  const printRef = useRef<HTMLDivElement>(null);
+  
 
   useEffect(() => {
     (async () => {
