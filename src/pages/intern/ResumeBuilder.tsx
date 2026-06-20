@@ -207,7 +207,7 @@ function Inner() {
         {/* PREVIEW */}
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
           {resume ? (
-            <ResumePreview resume={resume} ref={printRef} />
+            <ResumePreview resume={resume} />
           ) : (
             <div className="glass rounded-2xl border border-border/40 p-12 text-center min-h-[600px] flex flex-col items-center justify-center">
               <div className="p-4 rounded-full bg-gradient-primary mb-5 shadow-[0_10px_30px_-10px_hsl(var(--primary)/0.6)]">
