@@ -3,6 +3,7 @@ import { Send, Sparkles, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { PageHeader } from "@/components/common/PageHeader";
+import { PlanGate } from "@/components/common/PlanGate";
 import ReactMarkdown from "react-markdown";
 import { toast } from "sonner";
 
@@ -83,6 +84,13 @@ export default function AIAssistant() {
   return (
     <div className="container max-w-5xl py-8 h-screen flex flex-col">
       <PageHeader title="AI Assistant" description="Your coding sidekick — get help with code, descriptions, and more." />
+      <PlanGate
+        feature="ai_assistant"
+        title="AI Assistant is a Pro feature"
+        description="Upgrade to Pro or Premium to chat with the XEBURE AI assistant — code help, task guidance, and more."
+        soft={false}
+      >
+
 
       <div className="flex-1 glass rounded-xl p-6 flex flex-col overflow-hidden">
         <div className="flex-1 overflow-y-auto space-y-4 pr-2">
@@ -136,6 +144,7 @@ export default function AIAssistant() {
           </Button>
         </div>
       </div>
+      </PlanGate>
     </div>
   );
 }
