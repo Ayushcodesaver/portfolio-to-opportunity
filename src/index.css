@@ -103,17 +103,17 @@
 
 @layer components {
   .glass {
-    background: hsl(213 65% 11% / 0.6);
+    background: hsl(244 30% 19% / 0.6);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border: 1px solid hsl(199 75% 52% / 0.18);
+    border: 1px solid hsl(258 90% 66% / 0.18);
   }
 
   .glass-strong {
-    background: hsl(218 74% 6% / 0.78);
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
-    border: 1px solid hsl(194 100% 50% / 0.28);
+    background: hsl(245 30% 14% / 0.78);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(258 90% 66% / 0.28);
   }
 
   .text-gradient {
@@ -126,19 +126,20 @@
 
   .bg-gradient-primary { background: var(--gradient-primary); }
   .bg-gradient-card { background: var(--gradient-card); }
+  .bg-gradient-timeline { background: var(--gradient-timeline); }
 
-  /* Legacy class names — mapped to new blue glow */
+  /* Legacy glow aliases — all map to purple now */
   .glow-violet { box-shadow: var(--shadow-glow); }
   .glow-violet-lg { box-shadow: var(--shadow-glow-lg); }
-  .glow-gold { box-shadow: var(--shadow-glow); }
-  .glow-gold-lg { box-shadow: var(--shadow-glow-lg); }
+  .glow-gold { box-shadow: 0 0 24px hsl(24 95% 53% / 0.4); }
+  .glow-gold-lg { box-shadow: 0 0 56px hsl(24 95% 53% / 0.5); }
   .glow-blue { box-shadow: var(--shadow-glow); }
   .glow-blue-lg { box-shadow: var(--shadow-glow-lg); }
 
   .grid-pattern {
     background-image:
-      linear-gradient(hsl(199 75% 52% / 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(199 75% 52% / 0.05) 1px, transparent 1px);
+      linear-gradient(hsl(258 90% 66% / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(258 90% 66% / 0.06) 1px, transparent 1px);
     background-size: 44px 44px;
   }
 }
