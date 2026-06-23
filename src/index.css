@@ -87,7 +87,12 @@
   html { color-scheme: dark; }
 
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background:
+      radial-gradient(1200px 600px at 10% -10%, hsl(258 90% 30% / 0.25), transparent 60%),
+      radial-gradient(900px 500px at 110% 10%, hsl(24 95% 40% / 0.18), transparent 60%),
+      linear-gradient(135deg, #1A1830 0%, #24213D 40%, #2C2848 100%);
+    background-attachment: fixed;
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
