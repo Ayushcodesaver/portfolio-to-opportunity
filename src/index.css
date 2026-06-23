@@ -96,17 +96,17 @@
 
 @layer components {
   .glass {
-    background: hsl(204 40% 13% / 0.6);
+    background: hsl(213 65% 11% / 0.6);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border: 1px solid hsl(39 94% 74% / 0.18);
+    border: 1px solid hsl(199 75% 52% / 0.18);
   }
 
   .glass-strong {
-    background: hsl(204 45% 10% / 0.78);
+    background: hsl(218 74% 6% / 0.78);
     backdrop-filter: blur(22px);
     -webkit-backdrop-filter: blur(22px);
-    border: 1px solid hsl(39 94% 74% / 0.28);
+    border: 1px solid hsl(194 100% 50% / 0.28);
   }
 
   .text-gradient {
@@ -120,16 +120,18 @@
   .bg-gradient-primary { background: var(--gradient-primary); }
   .bg-gradient-card { background: var(--gradient-card); }
 
-  /* Legacy class names kept; now gold-themed */
+  /* Legacy class names — mapped to new blue glow */
   .glow-violet { box-shadow: var(--shadow-glow); }
   .glow-violet-lg { box-shadow: var(--shadow-glow-lg); }
   .glow-gold { box-shadow: var(--shadow-glow); }
   .glow-gold-lg { box-shadow: var(--shadow-glow-lg); }
+  .glow-blue { box-shadow: var(--shadow-glow); }
+  .glow-blue-lg { box-shadow: var(--shadow-glow-lg); }
 
   .grid-pattern {
     background-image:
-      linear-gradient(hsl(39 94% 74% / 0.045) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(39 94% 74% / 0.045) 1px, transparent 1px);
+      linear-gradient(hsl(199 75% 52% / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(199 75% 52% / 0.05) 1px, transparent 1px);
     background-size: 44px 44px;
   }
 }
@@ -148,8 +150,8 @@
   }
   .animate-pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
   @keyframes pulseGlow {
-    0%, 100% { box-shadow: 0 0 20px hsl(39 94% 74% / 0.3); }
-    50%      { box-shadow: 0 0 44px hsl(39 94% 74% / 0.6); }
+    0%, 100% { box-shadow: 0 0 20px hsl(194 100% 50% / 0.3); }
+    50%      { box-shadow: 0 0 44px hsl(194 100% 50% / 0.65); }
   }
   .animate-spin-slow { animation: spin 22s linear infinite; }
   .animate-spin-reverse { animation: spin 30s linear infinite reverse; }
@@ -161,7 +163,7 @@
   }
   .tilt-3d:hover {
     transform: perspective(1000px) rotateX(4deg) rotateY(-4deg) translateY(-4px) translateZ(8px);
-    box-shadow: 0 20px 40px -15px hsl(39 94% 74% / 0.35), 0 0 30px -8px hsl(39 94% 74% / 0.25);
+    box-shadow: 0 20px 40px -15px hsl(194 100% 50% / 0.4), 0 0 30px -8px hsl(199 75% 52% / 0.3);
   }
   .tilt-3d-soft {
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
@@ -169,7 +171,7 @@
   }
   .tilt-3d-soft:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 30px -10px hsl(39 94% 74% / 0.3);
+    box-shadow: 0 12px 30px -10px hsl(194 100% 50% / 0.35);
   }
 
   .glass, .glass-strong {
@@ -190,21 +192,22 @@
   }
 
   .panel-3d {
-    background: linear-gradient(180deg, hsl(204 40% 15% / 0.9) 0%, hsl(204 45% 9% / 0.9) 100%);
-    border: 1px solid hsl(39 94% 74% / 0.1);
+    background: linear-gradient(180deg, hsl(213 65% 13% / 0.92) 0%, hsl(218 74% 6% / 0.92) 100%);
+    border: 1px solid hsl(214 57% 22% / 0.6);
     box-shadow:
-      inset 0 1px 0 hsl(39 94% 74% / 0.08),
-      inset 0 -1px 0 hsl(204 60% 4% / 0.5),
-      0 18px 40px -20px hsl(204 60% 4% / 0.8);
+      inset 0 1px 0 hsl(194 100% 50% / 0.08),
+      inset 0 -1px 0 hsl(218 80% 2% / 0.6),
+      0 18px 40px -20px hsl(218 80% 2% / 0.9);
     border-radius: 1.25rem;
   }
   .panel-3d-violet {
-    background: linear-gradient(180deg, hsl(39 70% 22% / 0.45), hsl(204 50% 10% / 0.7));
-    border: 1px solid hsl(39 94% 74% / 0.35);
+    background: linear-gradient(180deg, hsl(199 75% 22% / 0.45), hsl(218 74% 6% / 0.75));
+    border: 1px solid hsl(194 100% 50% / 0.35);
     box-shadow:
-      inset 0 1px 0 hsl(54 80% 86% / 0.25),
-      0 20px 40px -15px hsl(39 94% 50% / 0.35);
+      inset 0 1px 0 hsl(194 100% 70% / 0.25),
+      0 20px 40px -15px hsl(194 100% 50% / 0.35);
   }
+
 
   @media (prefers-reduced-motion: reduce) {
     .tilt-3d:hover, .tilt-3d-soft:hover { transform: none; }
