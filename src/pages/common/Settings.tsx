@@ -69,11 +69,7 @@ export default function Settings() {
         </TabsContent>
 
         <TabsContent value="notifications" className="mt-6">
-          <div className="glass rounded-xl p-6 space-y-3">
-            {["Push notifications","Email digests","Weekly report"].map(l => (
-              <div key={l} className="flex items-center justify-between"><Label>{l}</Label><Switch defaultChecked /></div>
-            ))}
-          </div>
+          <NotificationPrefs profile={profile} setProfile={setProfile} user={user} />
         </TabsContent>
 
         <TabsContent value="privacy" className="mt-6">
