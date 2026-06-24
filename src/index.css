@@ -88,10 +88,15 @@
 
   body {
     @apply text-foreground;
-    background:
-      radial-gradient(1200px 600px at 10% -10%, hsl(258 60% 30% / 0.18), transparent 60%),
-      radial-gradient(900px 500px at 110% 10%, hsl(213 70% 25% / 0.18), transparent 60%),
+    background-color: #0F172A;
+    background-image:
+      radial-gradient(1200px 600px at 10% -10%, hsl(258 60% 30% / 0.22), transparent 60%),
+      radial-gradient(900px 500px at 110% 10%, hsl(213 70% 25% / 0.22), transparent 60%),
+      url('/src/assets/app-bg.jpg'),
       linear-gradient(135deg, #0F172A 0%, #161E31 60%, #1A2340 100%);
+    background-size: auto, auto, cover, auto;
+    background-position: center, center, center, center;
+    background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;

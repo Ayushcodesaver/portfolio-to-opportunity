@@ -103,7 +103,7 @@ export default function Feed() {
     <div className="container max-w-7xl py-8">
       <div className="grid lg:grid-cols-[1fr_2fr_1fr] gap-6">
         {/* LEFT */}
-        <aside className="hidden lg:block space-y-4 sticky top-8 self-start">
+        <aside className="hidden lg:block space-y-4">
           <div className="glass rounded-xl p-5">
             <div className="h-14 w-14 rounded-full bg-gradient-primary mb-3 flex items-center justify-center text-lg font-bold">
               {user?.email?.[0]?.toUpperCase()}
@@ -214,7 +214,7 @@ export default function Feed() {
         </div>
 
         {/* RIGHT */}
-        <aside className="hidden lg:block space-y-4 sticky top-8 self-start">
+        <aside className="hidden lg:block space-y-4">
           <div className="glass rounded-xl p-5">
             <h3 className="flex items-center gap-2 font-semibold mb-3"><TrendingUp className="h-4 w-4 text-primary" /> Trending</h3>
             <p className="text-xs text-muted-foreground">Popular this week</p>
