@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/context/AuthContext";
 import { Calendar, Code, Heart, Award, CheckCircle2, Circle } from "lucide-react";
 import { PageHeader, PageLoader } from "@/components/common/PageHeader";
+import { CertificateCard } from "@/components/common/CertificateCard";
 import { differenceInDays } from "date-fns";
 import { useRealtimeInvalidate } from "@/hooks/useRealtimeInvalidate";
 
@@ -84,6 +85,14 @@ export default function InternshipProgress() {
             <p className="text-xs text-muted-foreground mt-2">{s.sub}</p>
           </div>
         ))}
+      </div>
+
+      <div className="mb-6">
+        <CertificateCard
+          programTitle="Xebure Internship Program"
+          holderName={data.profile?.full_name ?? user?.email?.split("@")[0] ?? "Intern"}
+          unlocked={pct >= 100 || approvedCount >= 8}
+        />
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6">

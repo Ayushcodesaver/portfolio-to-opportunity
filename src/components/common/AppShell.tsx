@@ -7,6 +7,7 @@ import {
   Target, Megaphone, LayoutDashboard, Trophy, Menu
 } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
+import { NotificationBell } from "@/components/common/NotificationBell";
 import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -144,6 +145,11 @@ export function AppShell({ variant }: { variant: "intern" | "hr" | "admin" }) {
 
       {/* Main */}
       <main className="flex-1 min-w-0 flex flex-col">
+        {/* Desktop top bar */}
+        <header className="hidden md:flex sticky top-0 z-30 items-center justify-end gap-2 px-6 h-14 border-b border-border/50 bg-background/60 backdrop-blur-md">
+          <NotificationBell />
+        </header>
+
         {/* Mobile top bar */}
         <header className="md:hidden sticky top-0 z-40 flex items-center justify-between gap-3 px-4 h-14 border-b border-border/50 glass-strong">
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
@@ -157,7 +163,7 @@ export function AppShell({ variant }: { variant: "intern" | "hr" | "admin" }) {
             </SheetContent>
           </Sheet>
           <Logo />
-          <div className="w-9" />
+          <NotificationBell />
         </header>
 
         <div className="flex-1 min-w-0">

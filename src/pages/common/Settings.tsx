@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useEffect as useEffectAlias } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,6 +11,11 @@ import { useAuth } from "@/context/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
+
+const DEFAULT_PREFS = {
+  email: { tasks: true, milestones: true, certificates: true, payments: true, reminders: true },
+  push: { tasks: true, milestones: true, certificates: true, messages: true },
+};
 
 export default function Settings() {
   const { user, signOut } = useAuth();
@@ -69,11 +75,7 @@ export default function Settings() {
         </TabsContent>
 
         <TabsContent value="notifications" className="mt-6">
-          <div className="glass rounded-xl p-6 space-y-3">
-            {["Push notifications","Email digests","Weekly report"].map(l => (
-              <div key={l} className="flex items-center justify-between"><Label>{l}</Label><Switch defaultChecked /></div>
-            ))}
-          </div>
+          <NotificationPrefs profile={profile} setProfile={setProfile} userId={user?.id} />
         </TabsContent>
 
         <TabsContent value="privacy" className="mt-6">
@@ -84,6 +86,98 @@ export default function Settings() {
           </div>
         </TabsContent>
       </Tabs>
+    </div>
+  );
+}
+
+const EMAIL_LABELS: Record<string, string> = {
+  tasks: "Task approved / rejected",
+  milestones: "Milestone reached (25/50/75/100%)",
+  certificates: "Certificate ready",
+  payments: "Payment receipts",
+  reminders: "Task deadline reminders",
+};
+const PUSH_LABELS: Record<string, string> = {
+  tasks: "Task updates",
+  milestones: "Milestones",
+  certificates: "Certificate ready",
+  messages: "Chat / mentions",
+};
+
+function NotificationPrefs({ profile, setProfile, userId }: { profile: any; setProfile: (p: any) => void; userId?: string }) {
+  const [saving, setSaving] = useState(false);
+  const prefs = profile.notification_prefs ?? DEFAULT_PREFS;
+  const [pushSupported, setPushSupported] = useState(false);
+  const [pushEnabled, setPushEnabled] = useState(false);
+
+  useEffectAlias(() => {
+    setPushSupported(typeof window !== "undefined" && "Notification" in window && "serviceWorker" in navigator);
+    if (typeof Notification !== "undefined") {
+      setPushEnabled(Notification.permission === "granted");
+    }
+  }, []);
+
+  const set = (group: "email" | "push", key: string, val: boolean) => {
+    const next = { ...prefs, [group]: { ...prefs[group], [key]: val } };
+    setProfile({ ...profile, notification_prefs: next });
+  };
+
+  const save = async () => {
+    if (!userId) return;
+    setSaving(true);
+    const { error } = await supabase.from("profiles").update({ notification_prefs: prefs }).eq("id", userId);
+    setSaving(false);
+    if (error) return toast.error(error.message);
+    toast.success("Preferences saved");
+  };
+
+  const requestPush = async () => {
+    if (!pushSupported) return toast.error("Browser does not support notifications");
+    const res = await Notification.requestPermission();
+    setPushEnabled(res === "granted");
+    if (res === "granted") toast.success("Browser notifications enabled");
+    else toast.error("Permission denied");
+  };
+
+  return (
+    <div className="space-y-4">
+      <div className="glass rounded-xl p-6 space-y-3">
+        <div className="flex items-center justify-between">
+          <div>
+            <Label className="text-sm font-semibold">Browser notifications</Label>
+            <p className="text-xs text-muted-foreground mt-1">
+              {pushSupported ? (pushEnabled ? "Enabled in this browser." : "Allow Xebure to show notifications.") : "Not supported in this browser."}
+            </p>
+          </div>
+          <Button size="sm" variant={pushEnabled ? "outline" : "default"} onClick={requestPush} disabled={!pushSupported || pushEnabled}>
+            {pushEnabled ? "Allowed" : "Enable"}
+          </Button>
+        </div>
+      </div>
+
+      <div className="glass rounded-xl p-6 space-y-3">
+        <p className="text-sm font-semibold mb-1">Email notifications</p>
+        {Object.entries(EMAIL_LABELS).map(([k, label]) => (
+          <div key={k} className="flex items-center justify-between">
+            <Label className="font-normal">{label}</Label>
+            <Switch checked={!!prefs.email?.[k]} onCheckedChange={(v) => set("email", k, v)} />
+          </div>
+        ))}
+      </div>
+
+      <div className="glass rounded-xl p-6 space-y-3">
+        <p className="text-sm font-semibold mb-1">In-app & push</p>
+        {Object.entries(PUSH_LABELS).map(([k, label]) => (
+          <div key={k} className="flex items-center justify-between">
+            <Label className="font-normal">{label}</Label>
+            <Switch checked={!!prefs.push?.[k]} onCheckedChange={(v) => set("push", k, v)} />
+          </div>
+        ))}
+      </div>
+
+      <Button onClick={save} disabled={saving} className="bg-gradient-primary">
+        {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : "Save preferences"}
+      </Button>
     </div>
   );
 }

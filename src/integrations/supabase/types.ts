@@ -346,6 +346,59 @@ export type Database = {
           },
         ]
       }
+      certificates: {
+        Row: {
+          certificate_code: string
+          created_at: string
+          holder_name: string
+          id: string
+          intern_id: string
+          issued_at: string
+          metadata: Json
+          pdf_url: string | null
+          plan_tier: string
+          program_id: string | null
+          program_title: string
+          verified: boolean
+        }
+        Insert: {
+          certificate_code: string
+          created_at?: string
+          holder_name: string
+          id?: string
+          intern_id: string
+          issued_at?: string
+          metadata?: Json
+          pdf_url?: string | null
+          plan_tier?: string
+          program_id?: string | null
+          program_title: string
+          verified?: boolean
+        }
+        Update: {
+          certificate_code?: string
+          created_at?: string
+          holder_name?: string
+          id?: string
+          intern_id?: string
+          issued_at?: string
+          metadata?: Json
+          pdf_url?: string | null
+          plan_tier?: string
+          program_id?: string | null
+          program_title?: string
+          verified?: boolean
+        }
+        Relationships: [
+          {
+            foreignKeyName: "certificates_program_id_fkey"
+            columns: ["program_id"]
+            isOneToOne: false
+            referencedRelation: "internship_programs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       client_requirement_versions: {
         Row: {
           change_note: string | null
@@ -918,6 +971,7 @@ export type Database = {
           is_banned: boolean | null
           linkedin_url: string | null
           location: string | null
+          notification_prefs: Json
           portfolio_goal: Database["public"]["Enums"]["portfolio_goal"] | null
           skills: string[] | null
           twitter_url: string | null
@@ -939,6 +993,7 @@ export type Database = {
           is_banned?: boolean | null
           linkedin_url?: string | null
           location?: string | null
+          notification_prefs?: Json
           portfolio_goal?: Database["public"]["Enums"]["portfolio_goal"] | null
           skills?: string[] | null
           twitter_url?: string | null
@@ -960,6 +1015,7 @@ export type Database = {
           is_banned?: boolean | null
           linkedin_url?: string | null
           location?: string | null
+          notification_prefs?: Json
           portfolio_goal?: Database["public"]["Enums"]["portfolio_goal"] | null
           skills?: string[] | null
           twitter_url?: string | null
@@ -1115,6 +1171,36 @@ export type Database = {
           updated_at?: string | null
           user_id?: string
           views_count?: number | null
+        }
+        Relationships: []
+      }
+      push_subscriptions: {
+        Row: {
+          auth: string
+          created_at: string
+          endpoint: string
+          id: string
+          p256dh: string
+          user_agent: string | null
+          user_id: string
+        }
+        Insert: {
+          auth: string
+          created_at?: string
+          endpoint: string
+          id?: string
+          p256dh: string
+          user_agent?: string | null
+          user_id: string
+        }
+        Update: {
+          auth?: string
+          created_at?: string
+          endpoint?: string
+          id?: string
+          p256dh?: string
+          user_agent?: string | null
+          user_id?: string
         }
         Relationships: []
       }
