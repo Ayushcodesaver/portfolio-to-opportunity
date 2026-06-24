@@ -15,7 +15,7 @@ type Notif = {
   user_id: string;
   title: string;
   body: string | null;
-  read_at: string | null;
+  is_read: boolean;
   link: string | null;
   created_at: string;
 };
@@ -52,10 +52,10 @@ export function NotificationBell() {
     return () => { supabase.removeChannel(channel); };
   }, [user, qc]);
 
-  const unread = notifs.filter((n) => !n.read_at).length;
+  const unread = notifs.filter((n) => !n.is_read).length;
 
   const markOne = async (id: string) => {
-    await supabase.from("notifications").update({ read_at: new Date().toISOString() }).eq("id", id);
+    await supabase.from("notifications").update({ is_read: true }).eq("id", id);
     qc.invalidateQueries({ queryKey: ["notif-bell", user?.id] });
   };
 
@@ -63,9 +63,9 @@ export function NotificationBell() {
     if (!user) return;
     await supabase
       .from("notifications")
-      .update({ read_at: new Date().toISOString() })
+      .update({ is_read: true })
       .eq("user_id", user.id)
-      .is("read_at", null);
+      .eq("is_read", false);
     qc.invalidateQueries({ queryKey: ["notif-bell", user.id] });
   };
 
