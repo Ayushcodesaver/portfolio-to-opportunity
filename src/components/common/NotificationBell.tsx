@@ -100,9 +100,9 @@ export function NotificationBell() {
           ) : (
             notifs.map((n) => {
               const inner = (
-                <div className={`p-3 hover:bg-muted/40 border-b border-border/30 last:border-b-0 transition-colors ${!n.read_at ? "bg-primary/5" : ""}`}>
+                <div className={`p-3 hover:bg-muted/40 border-b border-border/30 last:border-b-0 transition-colors ${!n.is_read ? "bg-primary/5" : ""}`}>
                   <div className="flex items-start gap-2">
-                    {!n.read_at && <span className="mt-1.5 h-2 w-2 rounded-full bg-primary shrink-0 shadow-[0_0_6px_hsl(258_100%_86%)]" />}
+                    {!n.is_read && <span className="mt-1.5 h-2 w-2 rounded-full bg-primary shrink-0 shadow-[0_0_6px_hsl(258_100%_86%)]" />}
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium truncate">{n.title}</p>
                       {n.body && <p className="text-xs text-muted-foreground line-clamp-2 mt-0.5">{n.body}</p>}
@@ -110,7 +110,7 @@ export function NotificationBell() {
                         {formatDistanceToNow(new Date(n.created_at), { addSuffix: true })}
                       </p>
                     </div>
-                    {!n.read_at && (
+                    {!n.is_read && (
                       <Button variant="ghost" size="icon" className="h-6 w-6 shrink-0"
                         onClick={(e) => { e.preventDefault(); e.stopPropagation(); markOne(n.id); }}>
                         <Check className="h-3.5 w-3.5" />
