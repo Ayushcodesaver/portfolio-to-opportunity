@@ -90,7 +90,7 @@ export function HRAnalyticsBlock() {
     });
 
     const bytes = await pdf.save();
-    const blob = new Blob([bytes], { type: "application/pdf" });
+    const blob = new Blob([bytes as BlobPart], { type: "application/pdf" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url; a.download = `xebure-analytics-${format(new Date(), "yyyy-MM-dd")}.pdf`; a.click();
