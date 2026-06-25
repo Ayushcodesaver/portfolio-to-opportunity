@@ -26,15 +26,19 @@ export default function Feed() {
     queryFn: async () => {
       const { data: rows } = await supabase
         .from("projects")
-        .select("*, profiles:user_id(username, full_name, avatar_url)")
+        .select("*")
         .eq("status", "approved")
         .order("created_at", { ascending: false })
         .limit(50);
 
-      if (!rows) return [];
+      if (!rows || rows.length === 0) return [];
 
       const ids = rows.map(r => r.id);
-      const [likes, saves, myLikes, mySaves, comments] = await Promise.all([
+      const userIds = Array.from(new Set(rows.map((r: any) => r.user_id).filter(Boolean)));
+      const [profilesRes, likes, saves, myLikes, mySaves, comments] = await Promise.all([
+        userIds.length
+          ? supabase.from("profiles").select("id, username, full_name, avatar_url").in("id", userIds)
+          : Promise.resolve({ data: [] as any[] }),
         supabase.from("project_likes").select("project_id").in("project_id", ids),
         supabase.from("project_saves").select("project_id").in("project_id", ids),
         user ? supabase.from("project_likes").select("project_id").in("project_id", ids).eq("user_id", user.id) : Promise.resolve({ data: [] as any[] }),
@@ -42,17 +46,19 @@ export default function Feed() {
         supabase.from("comments").select("project_id").in("project_id", ids),
       ]);
 
+      const profileMap = new Map<string, any>(((profilesRes as any).data ?? []).map((p: any) => [p.id, p]));
       const count = (arr: any[] | null, id: string) => (arr ?? []).filter(x => x.project_id === id).length;
       const has = (arr: any[] | null, id: string) => (arr ?? []).some(x => x.project_id === id);
 
       return rows.map((r: any) => ({
         ...r,
-        profile: r.profiles,
+        profile: profileMap.get(r.user_id),
         likes_count: count(likes.data, r.id),
         comments_count: count(comments.data, r.id),
         liked_by_me: has(myLikes.data, r.id),
         saved_by_me: has(mySaves.data, r.id),
       })) as ProjectRow[];
+
     },
   });
 
