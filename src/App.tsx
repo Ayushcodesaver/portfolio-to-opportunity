@@ -106,6 +106,7 @@ const App = () => (
               <Route path="/internship-progress" element={<InternshipProgress />} />
               <Route path="/notifications" element={<Notifications />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
+              <Route path="/community" element={<Community />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/profile/:username" element={<Profile />} />
             </Route>
