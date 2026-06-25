@@ -8,6 +8,7 @@ import { GaugeChart } from "@/components/dashboard/GaugeChart";
 import { StatusPill } from "@/components/dashboard/StatusPill";
 import { useRealtimeInvalidate } from "@/hooks/useRealtimeInvalidate";
 import { formatDistanceToNow } from "date-fns";
+import { HRAnalyticsBlock } from "@/components/hr/HRAnalyticsBlock";
 
 export default function HRDashboard() {
   useRealtimeInvalidate("hr-dashboard-rt", [
