@@ -6,6 +6,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider } from "@/context/AuthContext";
 import { ProtectedRoute } from "@/components/common/ProtectedRoute";
 import { AppShell } from "@/components/common/AppShell";
+import { CookieConsent } from "@/components/common/CookieConsent";
+import { useIdleSignOut } from "@/hooks/useIdleSignOut";
 
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
