@@ -67,6 +67,11 @@ import Analytics from "./pages/admin/Analytics";
 
 const queryClient = new QueryClient();
 
+const AppInner = () => {
+  useIdleSignOut();
+  return null;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -74,6 +79,8 @@ const App = () => (
       <Sonner theme="dark" />
       <BrowserRouter>
         <AuthProvider>
+          <AppInner />
+          <CookieConsent />
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/login" element={<Login />} />
