@@ -41,6 +41,7 @@ import Notifications from "./pages/intern/Notifications";
 import Leaderboard from "./pages/intern/Leaderboard";
 import Profile from "./pages/common/Profile";
 import Settings from "./pages/common/Settings";
+import Community from "./pages/common/Community";
 
 import HRDashboard from "./pages/hr/HRDashboard";
 import HRPrograms from "./pages/hr/HRPrograms";
