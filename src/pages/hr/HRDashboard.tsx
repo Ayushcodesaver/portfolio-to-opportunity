@@ -107,6 +107,8 @@ export default function HRDashboard() {
           )}
         </GlassPanel>
       </div>
+
+      <HRAnalyticsBlock />
     </div>
   );
 }
