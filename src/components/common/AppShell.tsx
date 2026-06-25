@@ -4,7 +4,7 @@ import {
   Home, FolderKanban, PlusSquare, Sparkles, BarChart3, Bell,
   Settings, LogOut, Users as UsersIcon, ClipboardCheck, Calendar,
   Inbox, Ticket, Shield, ShieldCheck, FileText, Activity, Bot, Cpu,
-  Target, Megaphone, LayoutDashboard, Trophy, Menu
+  Target, Megaphone, LayoutDashboard, Trophy, Menu, MessageSquare
 } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
 import { NotificationBell } from "@/components/common/NotificationBell";
@@ -28,6 +28,7 @@ const internNav: NavItem[] = [
   { to: "/internship-progress", label: "Progress", icon: BarChart3 },
   { to: "/notifications", label: "Notifications", icon: Bell },
   { to: "/leaderboard", label: "Leaderboard", icon: Trophy },
+  { to: "/community", label: "Community", icon: MessageSquare },
   { to: "/settings", label: "Settings", icon: Settings },
 ];
 

@@ -6,6 +6,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider } from "@/context/AuthContext";
 import { ProtectedRoute } from "@/components/common/ProtectedRoute";
 import { AppShell } from "@/components/common/AppShell";
+import { CookieConsent } from "@/components/common/CookieConsent";
+import { useIdleSignOut } from "@/hooks/useIdleSignOut";
 
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
@@ -41,6 +43,7 @@ import Notifications from "./pages/intern/Notifications";
 import Leaderboard from "./pages/intern/Leaderboard";
 import Profile from "./pages/common/Profile";
 import Settings from "./pages/common/Settings";
+import Community from "./pages/common/Community";
 
 import HRDashboard from "./pages/hr/HRDashboard";
 import HRPrograms from "./pages/hr/HRPrograms";
@@ -64,6 +67,11 @@ import Analytics from "./pages/admin/Analytics";
 
 const queryClient = new QueryClient();
 
+const AppInner = () => {
+  useIdleSignOut();
+  return null;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -71,6 +79,8 @@ const App = () => (
       <Sonner theme="dark" />
       <BrowserRouter>
         <AuthProvider>
+          <AppInner />
+          <CookieConsent />
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/login" element={<Login />} />
@@ -105,6 +115,7 @@ const App = () => (
               <Route path="/internship-progress" element={<InternshipProgress />} />
               <Route path="/notifications" element={<Notifications />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
+              <Route path="/community" element={<Community />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/profile/:username" element={<Profile />} />
             </Route>
