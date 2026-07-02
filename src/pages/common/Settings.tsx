@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { PageHeader } from "@/components/common/PageHeader";
+import { AvatarUpload } from "@/components/common/AvatarUpload";
 import { useAuth } from "@/context/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -52,6 +53,13 @@ export default function Settings() {
 
         <TabsContent value="profile" className="mt-6">
           <div className="glass rounded-xl p-6 space-y-4">
+            {user && (
+              <AvatarUpload
+                userId={user.id}
+                currentUrl={profile.avatar_url}
+                onChange={(url) => setProfile({ ...profile, avatar_url: url })}
+              />
+            )}
             <div className="space-y-2"><Label>Full name</Label>
               <Input value={profile.full_name ?? ""} onChange={(e) => setProfile({ ...profile, full_name: e.target.value })} className="bg-input/50" /></div>
             <div className="space-y-2"><Label>Bio</Label>
