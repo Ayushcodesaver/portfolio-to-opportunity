@@ -16,6 +16,8 @@ import Pricing from "./pages/Pricing";
 import TopInterns from "./pages/TopInterns";
 import NotFound from "./pages/NotFound";
 import Verify from "./pages/Verify";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 import Features from "./pages/marketing/Features";
 import HowItWorks from "./pages/marketing/HowItWorks";
@@ -88,6 +90,8 @@ const App = () => (
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/top-interns" element={<TopInterns />} />
             <Route path="/verify/:code" element={<Verify />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
 
             {/* Marketing pages */}
             <Route path="/features" element={<Features />} />
