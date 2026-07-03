@@ -169,6 +169,7 @@ export function AppShell({ variant }: { variant: "intern" | "hr" | "admin" }) {
         </header>
 
         <div className="flex-1 min-w-0">
+          <OnboardingBanner />
           <Outlet />
         </div>
       </main>
