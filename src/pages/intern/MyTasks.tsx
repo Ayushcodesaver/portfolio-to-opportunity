@@ -15,6 +15,7 @@ import { useEnrollment } from "@/hooks/useEnrollment";
 import { CheckCircle2, XCircle, Clock, Upload, Target } from "lucide-react";
 import { toast } from "sonner";
 import { StatusPill } from "@/components/dashboard/StatusPill";
+import { validateUpload, UPLOAD_ACCEPT, MAX_UPLOAD_MB } from "@/lib/uploads";
 
 export default function MyTasks() {
   const { user } = useAuth();
