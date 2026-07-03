@@ -68,6 +68,11 @@ function Inner() {
   }, [user]);
 
   const generate = async () => {
+    const role = targetRole.trim();
+    if (role.length < 2 || role.length > 120) { toast.error("Target role must be 2-120 characters"); return; }
+    if (phone && !/^[+\d\s\-()]{5,20}$/.test(phone)) { toast.error("Invalid phone number"); return; }
+    if (extraSummary.length > 1000) { toast.error("Summary too long (max 1000 chars)"); return; }
+    if (experience.some(e => e.description && e.description.length > 800)) { toast.error("Experience description too long"); return; }
     setLoading(true);
     try {
       const { data: { session } } = await supabase.auth.getSession();
