@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
 import { NotificationBell } from "@/components/common/NotificationBell";
+import { OnboardingBanner } from "@/components/common/OnboardingBanner";
 import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
