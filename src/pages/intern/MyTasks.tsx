@@ -180,8 +180,15 @@ function TaskCard({ task, currentDay }: { task: any; currentDay: number }) {
                 <Label>File (optional)</Label>
                 <label className="flex items-center gap-2 p-3 border border-dashed border-border rounded-lg cursor-pointer hover:border-primary/50">
                   <Upload className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-sm text-muted-foreground">{file?.name ?? "Click to upload"}</span>
-                  <input type="file" className="hidden" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
+                  <span className="text-sm text-muted-foreground truncate">{file?.name ?? `Click to upload (max ${MAX_UPLOAD_MB} MB)`}</span>
+                  <input type="file" className="hidden" accept={UPLOAD_ACCEPT} onChange={(e) => {
+                    const f = e.target.files?.[0] ?? null;
+                    if (f) {
+                      const err = validateUpload(f);
+                      if (err) { toast.error(err); e.target.value = ""; return; }
+                    }
+                    setFile(f);
+                  }} />
                 </label>
               </div>
               <Button onClick={submit} disabled={busy} className="w-full bg-gradient-primary">
