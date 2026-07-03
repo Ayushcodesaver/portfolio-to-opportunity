@@ -38,6 +38,8 @@ export default function CreateProject() {
 
   const onMedia = (f: File | null) => {
     if (!f) return;
+    const ALLOWED = ["image/jpeg", "image/png", "image/webp", "image/gif", "video/mp4", "video/webm"];
+    if (f.type && !ALLOWED.includes(f.type)) { toast.error("Only images (jpg/png/webp/gif) or mp4/webm video allowed"); return; }
     if (f.size > 10 * 1024 * 1024) { toast.error("Max 10 MB"); return; }
     setMedia(f);
     setMediaPreview(URL.createObjectURL(f));
