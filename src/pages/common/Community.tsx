@@ -62,8 +62,10 @@ export default function Community() {
 
   const send = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!text.trim() || !user || !activeId) return;
+    if (!user || !activeId) return;
     const content = text.trim();
+    if (!content) return;
+    if (content.length > 2000) { toast.error("Message too long (max 2000 chars)"); return; }
     setText("");
     const { error } = await supabase.from("channel_messages").insert({ channel_id: activeId, user_id: user.id, content });
     if (error) toast.error(error.message);
