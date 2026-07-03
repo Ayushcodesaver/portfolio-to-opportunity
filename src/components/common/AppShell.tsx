@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
 import { NotificationBell } from "@/components/common/NotificationBell";
+import { OnboardingBanner } from "@/components/common/OnboardingBanner";
 import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -168,6 +169,7 @@ export function AppShell({ variant }: { variant: "intern" | "hr" | "admin" }) {
         </header>
 
         <div className="flex-1 min-w-0">
+          <OnboardingBanner />
           <Outlet />
         </div>
       </main>
