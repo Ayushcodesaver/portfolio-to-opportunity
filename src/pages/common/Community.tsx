@@ -128,7 +128,7 @@ export default function Community() {
             )}
           </div>
           <form onSubmit={send} className="border-t border-border/40 p-3 flex gap-2">
-            <Input value={text} onChange={e => setText(e.target.value)} placeholder="Message…" disabled={!activeId} />
+            <Input value={text} onChange={e => setText(e.target.value)} maxLength={2000} placeholder="Message…" disabled={!activeId} />
             <Button type="submit" disabled={!text.trim() || !activeId}><Send className="h-4 w-4" /></Button>
           </form>
         </section>
