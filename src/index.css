@@ -6,76 +6,76 @@
 
 @layer base {
   :root {
-    /* Xebure — Premium Charcoal + Purple (glass SaaS dashboard) */
+    /* Xebure — Premium Charcoal + Electric Cyan */
     --background: 240 10% 4%;           /* #09090B */
     --foreground: 0 0% 100%;
 
     --card: 228 13% 13%;                /* #1A1C23 */
     --card-foreground: 0 0% 100%;
 
-    --popover: 228 14% 11%;             /* #16171D */
+    --popover: 228 14% 11%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 258 90% 66%;             /* #8B5CF6 */
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 271 91% 65%;        /* #A855F7 */
-    --primary-dark: 258 70% 52%;        /* #6D28D9 */
+    --primary: 189 94% 43%;             /* #06B6D4 cyan */
+    --primary-foreground: 240 10% 4%;
+    --primary-glow: 187 92% 60%;        /* #22D3EE */
+    --primary-dark: 192 91% 36%;        /* #0891B2 */
 
-    --secondary: 228 12% 16%;           /* #20222B */
+    --secondary: 228 12% 16%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 228 12% 16%;
-    --muted-foreground: 240 5% 65%;     /* #A5A5B5 */
+    --muted-foreground: 240 5% 65%;
 
-    --accent: 258 90% 66%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 189 94% 43%;
+    --accent-foreground: 240 10% 4%;
 
     --destructive: 11 100% 64%;
     --destructive-foreground: 0 0% 100%;
 
     --success: 160 84% 45%;
     --warning: 38 92% 55%;
-    --info: 213 94% 68%;
+    --info: 189 94% 55%;
 
-    --status-progress: 258 90% 66%;
-    --status-ready:    195 90% 55%;
-    --status-review:   330 85% 62%;
+    --status-progress: 189 94% 50%;
+    --status-ready:    213 94% 68%;
+    --status-review:   38 92% 55%;
     --status-done:     160 84% 45%;
     --status-backlog:  240 5% 55%;
 
     --gauge-1: 160 84% 45%;
-    --gauge-2: 258 90% 66%;
+    --gauge-2: 189 94% 50%;
     --gauge-3: 38 92% 55%;
-    --gauge-4: 330 85% 62%;
+    --gauge-4: 11 100% 64%;
     --gauge-5: 213 94% 68%;
 
     --border: 240 6% 18%;
     --input: 228 12% 16%;
-    --ring: 258 90% 66%;
+    --ring: 189 94% 50%;
 
-    --radius: 1.125rem;                 /* 18px cards */
+    --radius: 1.125rem;
 
-    --gradient-primary: linear-gradient(135deg, hsl(258 70% 52%) 0%, hsl(271 91% 65%) 100%);
-    --gradient-glow:    linear-gradient(135deg, hsl(258 90% 66%) 0%, hsl(271 91% 70%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(192 91% 36%) 0%, hsl(187 92% 60%) 100%);
+    --gradient-glow:    linear-gradient(135deg, hsl(189 94% 50%) 0%, hsl(187 92% 65%) 100%);
     --gradient-dark:    linear-gradient(180deg, #1E2028 0%, #181A21 100%);
     --gradient-card:    linear-gradient(180deg, hsl(228 14% 14% / 0.9) 0%, hsl(228 15% 11% / 0.9) 100%);
-    --gradient-text:    linear-gradient(135deg, #ffffff 0%, #E9DDFF 55%, #A855F7 100%);
-    --gradient-timeline: linear-gradient(90deg, hsl(258 70% 52%), hsl(271 91% 65%));
+    --gradient-text:    linear-gradient(135deg, #ffffff 0%, #CFF6FB 55%, #22D3EE 100%);
+    --gradient-timeline: linear-gradient(90deg, hsl(192 91% 36%), hsl(187 92% 60%));
     --gradient-bg:      linear-gradient(160deg, #09090B 0%, #0D0E11 30%, #121318 70%, #17181E 100%);
 
-    --shadow-glow:    0 0 25px hsl(258 90% 66% / 0.28);
-    --shadow-glow-lg: 0 0 56px hsl(258 90% 66% / 0.4);
+    --shadow-glow:    0 0 25px hsl(189 94% 50% / 0.28);
+    --shadow-glow-lg: 0 0 56px hsl(189 94% 50% / 0.4);
     --shadow-card:    0 10px 30px rgba(0,0,0,0.35);
     --shadow-container: 0 30px 60px rgba(0,0,0,0.45);
 
     --sidebar-background: 228 15% 10%;
     --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 258 90% 66%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 189 94% 50%;
+    --sidebar-primary-foreground: 240 10% 4%;
     --sidebar-accent: 228 12% 16%;
     --sidebar-accent-foreground: 0 0% 100%;
     --sidebar-border: 240 6% 16%;
-    --sidebar-ring: 258 90% 66%;
+    --sidebar-ring: 189 94% 50%;
   }
 
   .dark {
@@ -92,7 +92,7 @@
     background-color: #09090B;
     background-image:
       radial-gradient(circle at top right, rgba(255,255,255,0.03), transparent 45%),
-      radial-gradient(1000px 500px at 15% -10%, hsl(258 70% 40% / 0.12), transparent 60%),
+      radial-gradient(1000px 500px at 15% -10%, hsl(189 94% 40% / 0.10), transparent 60%),
       linear-gradient(160deg, #09090B 0%, #0D0E11 30%, #121318 70%, #17181E 100%);
     background-attachment: fixed;
     font-family: 'Inter', system-ui, sans-serif;
