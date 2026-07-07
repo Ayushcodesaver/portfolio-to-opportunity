@@ -105,17 +105,19 @@
 
 @layer components {
   .glass {
-    background: hsl(222 35% 17% / 0.6);
+    background: linear-gradient(180deg, hsl(228 14% 14% / 0.7) 0%, hsl(228 15% 10% / 0.7) 100%);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border: 1px solid hsl(222 28% 30% / 0.5);
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: var(--shadow-card);
   }
 
   .glass-strong {
-    background: hsl(222 47% 11% / 0.82);
+    background: linear-gradient(180deg, hsl(228 15% 11% / 0.88) 0%, hsl(240 12% 7% / 0.9) 100%);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid hsl(222 28% 30% / 0.6);
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: var(--shadow-container);
   }
 
   .text-gradient {
