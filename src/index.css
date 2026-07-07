@@ -204,20 +204,20 @@
   }
 
   .panel-3d {
-    background: linear-gradient(135deg, #1C2438 0%, #202A42 100%);
-    border: 1px solid hsl(222 28% 24% / 0.9);
+    background: linear-gradient(180deg, #1E2028 0%, #181A21 100%);
+    border: 1px solid rgba(255,255,255,0.05);
     box-shadow:
-      inset 0 1px 0 hsl(0 0% 100% / 0.04),
-      inset 0 -1px 0 hsl(222 60% 3% / 0.6),
-      0 18px 40px -20px hsl(222 60% 3% / 0.9);
-    border-radius: 1.25rem;
+      inset 0 1px 0 rgba(255,255,255,0.04),
+      0 10px 30px rgba(0,0,0,0.35);
+    border-radius: 1.125rem;
   }
   .panel-3d-violet {
-    background: linear-gradient(180deg, hsl(258 60% 40% / 0.25), hsl(222 47% 11% / 0.85));
-    border: 1px solid hsl(258 100% 86% / 0.28);
+    background: linear-gradient(180deg, hsl(258 70% 45% / 0.28), hsl(240 10% 6% / 0.9));
+    border: 1px solid hsl(258 90% 66% / 0.3);
     box-shadow:
-      inset 0 1px 0 hsl(258 100% 92% / 0.2),
-      0 20px 40px -15px hsl(258 60% 20% / 0.4);
+      inset 0 1px 0 hsl(258 100% 92% / 0.15),
+      0 0 25px hsl(258 90% 66% / 0.2),
+      0 10px 30px rgba(0,0,0,0.4);
   }
 
   /* Themed accent cards */
