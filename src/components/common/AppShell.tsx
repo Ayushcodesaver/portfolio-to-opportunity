@@ -66,10 +66,10 @@ function NavList({ navs, variant, isHR, isAdmin, onNavigate }: { navs: NavItem[]
           onClick={onNavigate}
           className={({ isActive }) =>
             cn(
-              "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all",
+              "flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-all",
               isActive
-                ? "bg-primary/15 text-primary-glow border-l-2 border-primary shadow-[0_0_20px_-5px_hsl(258_90%_66%/0.5)]"
-                : "text-muted-foreground hover:bg-muted hover:text-foreground hover:translate-x-0.5"
+                ? "bg-gradient-to-r from-primary/25 to-primary-glow/15 text-white shadow-[0_0_20px_hsl(258_90%_66%/0.35)] border border-primary/30"
+                : "text-muted-foreground hover:bg-white/[0.04] hover:text-foreground"
             )
           }
         >
@@ -139,28 +139,28 @@ export function AppShell({ variant }: { variant: "intern" | "hr" | "admin" }) {
   );
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <div className="min-h-screen flex">
       {/* Desktop sidebar */}
-      <aside className="w-64 shrink-0 border-r border-border/50 bg-card/30 hidden md:flex flex-col">
+      <aside className="w-64 shrink-0 hidden md:flex flex-col m-3 rounded-3xl glass-strong overflow-hidden">
         {SidebarBody}
       </aside>
 
       {/* Main */}
-      <main className="flex-1 min-w-0 flex flex-col">
+      <main className="flex-1 min-w-0 flex flex-col md:my-3 md:mr-3 md:rounded-3xl md:glass-strong md:overflow-hidden">
         {/* Desktop top bar */}
-        <header className="hidden md:flex sticky top-0 z-30 items-center justify-end gap-2 px-6 h-14 border-b border-border/50 bg-background/60 backdrop-blur-md">
+        <header className="hidden md:flex sticky top-0 z-30 items-center justify-end gap-2 px-6 h-14 border-b border-white/5 bg-background/40 backdrop-blur-md">
           <NotificationBell />
         </header>
 
         {/* Mobile top bar */}
-        <header className="md:hidden sticky top-0 z-40 flex items-center justify-between gap-3 px-4 h-14 border-b border-border/50 glass-strong">
+        <header className="md:hidden sticky top-0 z-40 flex items-center justify-between gap-3 px-4 h-14 border-b border-white/5 glass-strong">
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="h-9 w-9">
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="p-0 w-72 bg-card border-border/50 flex flex-col">
+            <SheetContent side="left" className="p-0 w-72 glass-strong border-white/5 flex flex-col">
               {SidebarBody}
             </SheetContent>
           </Sheet>
@@ -168,7 +168,7 @@ export function AppShell({ variant }: { variant: "intern" | "hr" | "admin" }) {
           <NotificationBell />
         </header>
 
-        <div className="flex-1 min-w-0">
+        <div className="flex-1 min-w-0 overflow-y-auto">
           <OnboardingBanner />
           <Outlet />
         </div>
