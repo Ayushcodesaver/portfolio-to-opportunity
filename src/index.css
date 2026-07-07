@@ -175,7 +175,7 @@
   }
   .tilt-3d:hover {
     transform: perspective(1000px) rotateX(4deg) rotateY(-4deg) translateY(-4px) translateZ(8px);
-    box-shadow: 0 20px 40px -15px hsl(222 60% 3% / 0.7), 0 0 30px -8px hsl(258 100% 86% / 0.2);
+    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.7), 0 0 30px -8px hsl(189 94% 50% / 0.25);
   }
   .tilt-3d-soft {
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
