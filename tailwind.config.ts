@@ -8,7 +8,7 @@ export default {
     container: { center: true, padding: "2rem", screens: { "2xl": "1400px" } },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Netflix Sans', 'Helvetica Neue', 'Segoe UI', 'Roboto', 'Ubuntu', 'system-ui', 'sans-serif'],
         mono: ['Fira Code', 'monospace'],
       },
       colors: {
