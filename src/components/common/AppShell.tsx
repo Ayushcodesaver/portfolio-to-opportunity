@@ -4,7 +4,7 @@ import {
   Home, FolderKanban, PlusSquare, Sparkles, BarChart3, Bell,
   Settings, LogOut, Users as UsersIcon, ClipboardCheck, Calendar,
   Inbox, Ticket, Shield, ShieldCheck, FileText, Activity, Bot, Cpu,
-  Target, Megaphone, LayoutDashboard, Trophy, Menu, MessageSquare
+  Target, Megaphone, LayoutDashboard, Trophy, Menu, MessageSquare, Image as ImageIcon
 } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
 import { NotificationBell } from "@/components/common/NotificationBell";
@@ -54,6 +54,7 @@ const adminNav: NavItem[] = [
   { to: "/staff/logs", label: "System Logs", icon: FileText },
   { to: "/staff/ai-control", label: "AI Control", icon: Cpu },
   { to: "/staff/analytics", label: "Analytics", icon: Activity },
+  { to: "/staff/ui-assets", label: "UI Assets", icon: ImageIcon },
 ];
 
 function NavList({ navs, variant, isHR, isAdmin, onNavigate }: { navs: NavItem[]; variant: string; isHR: boolean; isAdmin: boolean; onNavigate?: () => void }) {
