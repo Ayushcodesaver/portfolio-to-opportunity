@@ -8,7 +8,6 @@ import { useAuth } from "@/context/AuthContext";
 import { Logo } from "@/components/common/Logo";
 import { GlowButton } from "@/components/fx/GlowButton";
 import { TiltCard } from "@/components/fx/TiltCard";
-import { ParticleBackground } from "@/components/fx/ParticleBackground";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { usePlan, PLAN_RANK, type PlanTier } from "@/hooks/usePlan";
@@ -128,7 +127,6 @@ export default function Pricing() {
 
       <div className="absolute top-1/4 left-1/4 w-[36rem] h-[36rem] bg-primary/20 rounded-full blur-3xl animate-orb" />
       <div className="absolute bottom-1/4 right-1/4 w-[28rem] h-[28rem] bg-primary-glow/15 rounded-full blur-3xl animate-orb" style={{ animationDelay: "3s" }} />
-      <ParticleBackground count={30} />
 
       <section className="relative pt-32 pb-12">
         <div className="container">

@@ -14,8 +14,6 @@ import { supabase } from "@/integrations/supabase/client";
 import { GlowButton } from "@/components/fx/GlowButton";
 import { TiltCard } from "@/components/fx/TiltCard";
 import { AnimatedCounter } from "@/components/fx/AnimatedCounter";
-import { ParticleBackground } from "@/components/fx/ParticleBackground";
-import { FloatingShapes } from "@/components/fx/FloatingShapes";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const features = [
@@ -140,8 +138,6 @@ export default function Landing() {
           <div className="absolute top-32 left-1/4 w-[36rem] h-[36rem] bg-primary/25 rounded-full blur-3xl animate-orb" />
           <div className="absolute top-48 right-1/4 w-[28rem] h-[28rem] bg-primary-glow/15 rounded-full blur-3xl animate-orb" style={{ animationDelay: "2s" }} />
         </div>
-        <ParticleBackground count={30} />
-        <FloatingShapes />
 
         <div className="container relative">
           <motion.div
