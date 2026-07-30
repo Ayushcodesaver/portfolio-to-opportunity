@@ -9,7 +9,6 @@ import { Logo } from "@/components/common/Logo";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { GlowButton } from "@/components/fx/GlowButton";
-import { ParticleBackground } from "@/components/fx/ParticleBackground";
 import { GoogleButton } from "@/components/auth/GoogleButton";
 
 export default function Login() {
@@ -34,7 +33,6 @@ export default function Login() {
     <div className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden bg-background">
       <div className="absolute top-1/4 left-1/4 w-[28rem] h-[28rem] bg-primary/25 rounded-full blur-3xl animate-orb" />
       <div className="absolute bottom-1/4 right-1/4 w-[24rem] h-[24rem] bg-primary-glow/15 rounded-full blur-3xl animate-orb" style={{ animationDelay: "3s" }} />
-      <ParticleBackground count={24} />
 
       <motion.div
         initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}

@@ -6,7 +6,6 @@ import { supabase } from "@/integrations/supabase/client";
 import { Logo } from "@/components/common/Logo";
 import { GlowButton } from "@/components/fx/GlowButton";
 import { TiltCard } from "@/components/fx/TiltCard";
-import { ParticleBackground } from "@/components/fx/ParticleBackground";
 import { Button } from "@/components/ui/button";
 import { useRealtimeInvalidate } from "@/hooks/useRealtimeInvalidate";
 
@@ -48,7 +47,6 @@ export default function TopInterns() {
       </nav>
 
       <div className="absolute top-32 left-1/4 w-[32rem] h-[32rem] bg-primary/20 rounded-full blur-3xl animate-orb" />
-      <ParticleBackground count={28} />
 
       <section className="relative pt-32 pb-12">
         <div className="container">
