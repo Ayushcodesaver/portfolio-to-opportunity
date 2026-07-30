@@ -54,6 +54,7 @@ const adminNav: NavItem[] = [
   { to: "/staff/logs", label: "System Logs", icon: FileText },
   { to: "/staff/ai-control", label: "AI Control", icon: Cpu },
   { to: "/staff/analytics", label: "Analytics", icon: Activity },
+  { to: "/staff/ui-assets", label: "UI Assets", icon: ImageIcon },
 ];
 
 function NavList({ navs, variant, isHR, isAdmin, onNavigate }: { navs: NavItem[]; variant: string; isHR: boolean; isAdmin: boolean; onNavigate?: () => void }) {

@@ -66,6 +66,7 @@ import ContentApproval from "./pages/admin/ContentApproval";
 import SystemLogs from "./pages/admin/SystemLogs";
 import AIControl from "./pages/admin/AIControl";
 import Analytics from "./pages/admin/Analytics";
+import UIAssets from "./pages/admin/UIAssets";
 
 const queryClient = new QueryClient();
 
@@ -151,6 +152,7 @@ const App = () => (
               <Route path="/staff/logs" element={<SystemLogs />} />
               <Route path="/staff/ai-control" element={<AIControl />} />
               <Route path="/staff/analytics" element={<Analytics />} />
+              <Route path="/staff/ui-assets" element={<UIAssets />} />
             </Route>
 
             <Route path="*" element={<NotFound />} />
