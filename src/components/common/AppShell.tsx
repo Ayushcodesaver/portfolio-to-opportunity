@@ -4,7 +4,7 @@ import {
   Home, FolderKanban, PlusSquare, Sparkles, BarChart3, Bell,
   Settings, LogOut, Users as UsersIcon, ClipboardCheck, Calendar,
   Inbox, Ticket, Shield, ShieldCheck, FileText, Activity, Bot, Cpu,
-  Target, Megaphone, LayoutDashboard, Trophy, Menu, MessageSquare
+  Target, Megaphone, LayoutDashboard, Trophy, Menu, MessageSquare, Image as ImageIcon
 } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
 import { NotificationBell } from "@/components/common/NotificationBell";
