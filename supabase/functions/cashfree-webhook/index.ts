@@ -1,4 +1,4 @@
-// Cashfree webhook — marks payment paid + activates subscription
+// Cashfree webhook — verifies signature, marks payment paid + activates subscription
 import { createClient } from "npm:@supabase/supabase-js@2";
 
 const corsHeaders = {
@@ -6,11 +6,43 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "*",
 };
 
+// Cashfree PG v3: signature = base64(HMAC_SHA256(timestamp + rawBody, secretKey))
+async function verifySignature(rawBody: string, timestamp: string, signature: string, secret: string) {
+  const key = await crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(secret),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+  const mac = await crypto.subtle.sign("HMAC", key, new TextEncoder().encode(timestamp + rawBody));
+  const expected = btoa(String.fromCharCode(...new Uint8Array(mac)));
+  if (expected.length !== signature.length) return false;
+  // constant-time compare
+  let diff = 0;
+  for (let i = 0; i < expected.length; i++) diff |= expected.charCodeAt(i) ^ signature.charCodeAt(i);
+  return diff === 0;
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
   try {
-    const body = await req.json();
-    // Cashfree v3 webhook payload
+    const rawBody = await req.text();
+    const signature = req.headers.get("x-webhook-signature") ?? "";
+    const timestamp = req.headers.get("x-webhook-timestamp") ?? "";
+    const secret = Deno.env.get("CASHFREE_SECRET_KEY") ?? "";
+
+    if (!secret) return new Response("misconfigured", { status: 500, headers: corsHeaders });
+    if (!signature || !timestamp || !(await verifySignature(rawBody, timestamp, signature, secret))) {
+      return new Response("invalid signature", { status: 401, headers: corsHeaders });
+    }
+    // reject replays older than 15 minutes
+    const tsMs = Number(timestamp) * (String(timestamp).length <= 10 ? 1000 : 1);
+    if (!Number.isFinite(tsMs) || Math.abs(Date.now() - tsMs) > 15 * 60 * 1000) {
+      return new Response("stale webhook", { status: 401, headers: corsHeaders });
+    }
+
+    const body = JSON.parse(rawBody);
     const orderId = body?.data?.order?.order_id ?? body?.order?.order_id;
     const paymentStatus = body?.data?.payment?.payment_status ?? body?.type;
     const paymentId = body?.data?.payment?.cf_payment_id ?? null;
@@ -24,6 +56,7 @@ Deno.serve(async (req) => {
 
     const { data: payment } = await admin.from("payments").select("*").eq("cashfree_order_id", orderId).maybeSingle();
     if (!payment) return new Response("ok", { headers: corsHeaders });
+    if (payment.status === "paid") return new Response("ok", { headers: corsHeaders });
 
     const success = paymentStatus === "SUCCESS" || paymentStatus === "PAYMENT_SUCCESS_WEBHOOK";
 

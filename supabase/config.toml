@@ -4,7 +4,11 @@ project_id = "dnzcwnjagmuwomjnejob"
 verify_jwt = false
 
 [functions.improve-description]
-verify_jwt = false
+verify_jwt = true
+
+[functions.generate-resume]
+verify_jwt = true
+
 
 [functions.cashfree-create-order]
 verify_jwt = true
