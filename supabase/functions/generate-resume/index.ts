@@ -29,8 +29,23 @@ Return ONLY this JSON shape, no prose, no markdown fences:
   "achievements": string[],
   "certifications": [{"name": string, "issuer": string, "date": string}]
 }`;
+// per-user token bucket: 5 generations / 10 min
+type Bucket = { tokens: number; updated: number };
+const RATE = { capacity: 5, refillPerSec: 5 / 600 };
+const buckets = new Map<string, Bucket>();
+function take(key: string): { ok: boolean; retryAfter: number } {
+  const now = Date.now();
+  const b = buckets.get(key) ?? { tokens: RATE.capacity, updated: now };
+  b.tokens = Math.min(RATE.capacity, b.tokens + ((now - b.updated) / 1000) * RATE.refillPerSec);
+  b.updated = now;
+  if (b.tokens < 1) { buckets.set(key, b); return { ok: false, retryAfter: Math.ceil((1 - b.tokens) / RATE.refillPerSec) }; }
+  b.tokens -= 1;
+  buckets.set(key, b);
+  return { ok: true, retryAfter: 0 };
+}
 
 Deno.serve(async (req) => {
+
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
   try {
     const auth = req.headers.get("Authorization");
@@ -42,6 +57,11 @@ Deno.serve(async (req) => {
     );
     const { data: { user } } = await supabase.auth.getUser(auth.replace(/^Bearer\s+/i, ""));
     if (!user) return json({ error: "Unauthorized" }, 401);
+
+    const gate = take(user.id);
+    if (!gate.ok) return json({ error: `Too many resume generations — retry in ${gate.retryAfter}s.` }, 429);
+
+
 
     // Plan gate: Pro+ only
     const { data: sub } = await supabase
