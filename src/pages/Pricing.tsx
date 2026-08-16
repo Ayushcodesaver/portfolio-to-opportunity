@@ -125,8 +125,8 @@ export default function Pricing() {
         </div>
       </nav>
 
-      <div className="absolute top-1/4 left-1/4 w-[36rem] h-[36rem] bg-primary/20 rounded-full blur-3xl animate-orb" />
-      <div className="absolute bottom-1/4 right-1/4 w-[28rem] h-[28rem] bg-primary-glow/15 rounded-full blur-3xl animate-orb" style={{ animationDelay: "3s" }} />
+      <div className="absolute top-1/4 left-1/4 w-[36rem] h-[36rem] bg-primary/20 rounded-full blur-3xl opacity-70 [transform:translateZ(0)]" />
+      <div className="absolute bottom-1/4 right-1/4 w-[28rem] h-[28rem] bg-primary-glow/15 rounded-full blur-3xl opacity-70 [transform:translateZ(0)]" style={{ animationDelay: "3s" }} />
 
       <section className="relative pt-32 pb-12">
         <div className="container">

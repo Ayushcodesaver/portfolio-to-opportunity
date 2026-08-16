@@ -46,7 +46,7 @@ export default function TopInterns() {
         </div>
       </nav>
 
-      <div className="absolute top-32 left-1/4 w-[32rem] h-[32rem] bg-primary/20 rounded-full blur-3xl animate-orb" />
+      <div className="absolute top-32 left-1/4 w-[32rem] h-[32rem] bg-primary/20 rounded-full blur-3xl opacity-70 [transform:translateZ(0)]" />
 
       <section className="relative pt-32 pb-12">
         <div className="container">

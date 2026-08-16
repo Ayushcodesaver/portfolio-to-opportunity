@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -8,67 +9,84 @@ import { ProtectedRoute } from "@/components/common/ProtectedRoute";
 import { AppShell } from "@/components/common/AppShell";
 import { CookieConsent } from "@/components/common/CookieConsent";
 import { useIdleSignOut } from "@/hooks/useIdleSignOut";
+import { Loader2 } from "lucide-react";
 
 import Landing from "./pages/Landing";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Pricing from "./pages/Pricing";
-import TopInterns from "./pages/TopInterns";
-import NotFound from "./pages/NotFound";
-import Verify from "./pages/Verify";
-import ForgotPassword from "./pages/ForgotPassword";
-import ResetPassword from "./pages/ResetPassword";
 
-import Features from "./pages/marketing/Features";
-import HowItWorks from "./pages/marketing/HowItWorks";
-import Showcase from "./pages/marketing/Showcase";
-import Blog from "./pages/marketing/Blog";
-import BlogPost from "./pages/marketing/BlogPost";
-import HRBlog from "./pages/hr/HRBlog";
-import Guides from "./pages/marketing/Guides";
-import FAQ from "./pages/marketing/FAQ";
-import Support from "./pages/marketing/Support";
-import Privacy from "./pages/marketing/Privacy";
-import Terms from "./pages/marketing/Terms";
+const Login = lazy(() => import("./pages/Login"));
+const Register = lazy(() => import("./pages/Register"));
+const Pricing = lazy(() => import("./pages/Pricing"));
+const TopInterns = lazy(() => import("./pages/TopInterns"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Verify = lazy(() => import("./pages/Verify"));
+const ForgotPassword = lazy(() => import("./pages/ForgotPassword"));
+const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 
-import InternDashboard from "./pages/intern/InternDashboard";
-import MyTasks from "./pages/intern/MyTasks";
-import GlobalAnnouncements from "./pages/intern/GlobalAnnouncements";
-import ClientRequirementsPage from "./pages/intern/ClientRequirementsPage";
-import Feed from "./pages/intern/Feed";
-import MyProjects from "./pages/intern/MyProjects";
-import CreateProject from "./pages/intern/CreateProject";
-import AIAssistant from "./pages/intern/AIAssistant";
-import ResumeBuilder from "./pages/intern/ResumeBuilder";
-import InternshipProgress from "./pages/intern/InternshipProgress";
-import Notifications from "./pages/intern/Notifications";
-import Leaderboard from "./pages/intern/Leaderboard";
-import Profile from "./pages/common/Profile";
-import Settings from "./pages/common/Settings";
-import Community from "./pages/common/Community";
+const Features = lazy(() => import("./pages/marketing/Features"));
+const HowItWorks = lazy(() => import("./pages/marketing/HowItWorks"));
+const Showcase = lazy(() => import("./pages/marketing/Showcase"));
+const Blog = lazy(() => import("./pages/marketing/Blog"));
+const BlogPost = lazy(() => import("./pages/marketing/BlogPost"));
+const HRBlog = lazy(() => import("./pages/hr/HRBlog"));
+const Guides = lazy(() => import("./pages/marketing/Guides"));
+const FAQ = lazy(() => import("./pages/marketing/FAQ"));
+const Support = lazy(() => import("./pages/marketing/Support"));
+const Privacy = lazy(() => import("./pages/marketing/Privacy"));
+const Terms = lazy(() => import("./pages/marketing/Terms"));
 
-import HRDashboard from "./pages/hr/HRDashboard";
-import HRPrograms from "./pages/hr/HRPrograms";
-import HRProgramTasks from "./pages/hr/HRProgramTasks";
-import HRProgramEnroll from "./pages/hr/HRProgramEnroll";
-import HRSubmissions from "./pages/hr/HRSubmissions";
-import HRBroadcast from "./pages/hr/HRBroadcast";
-import HRClientRequirements from "./pages/hr/HRClientRequirements";
-import HRInterns from "./pages/hr/HRInterns";
-import HREvaluations from "./pages/hr/HREvaluations";
-import HRAttendance from "./pages/hr/HRAttendance";
-import HRInbox from "./pages/hr/HRInbox";
-import HRTickets from "./pages/hr/HRTickets";
+const InternDashboard = lazy(() => import("./pages/intern/InternDashboard"));
+const MyTasks = lazy(() => import("./pages/intern/MyTasks"));
+const GlobalAnnouncements = lazy(() => import("./pages/intern/GlobalAnnouncements"));
+const ClientRequirementsPage = lazy(() => import("./pages/intern/ClientRequirementsPage"));
+const Feed = lazy(() => import("./pages/intern/Feed"));
+const MyProjects = lazy(() => import("./pages/intern/MyProjects"));
+const CreateProject = lazy(() => import("./pages/intern/CreateProject"));
+const AIAssistant = lazy(() => import("./pages/intern/AIAssistant"));
+const ResumeBuilder = lazy(() => import("./pages/intern/ResumeBuilder"));
+const InternshipProgress = lazy(() => import("./pages/intern/InternshipProgress"));
+const Notifications = lazy(() => import("./pages/intern/Notifications"));
+const Leaderboard = lazy(() => import("./pages/intern/Leaderboard"));
+const Profile = lazy(() => import("./pages/common/Profile"));
+const Settings = lazy(() => import("./pages/common/Settings"));
+const Community = lazy(() => import("./pages/common/Community"));
 
-import AdminConsole from "./pages/admin/AdminConsole";
-import UserManagement from "./pages/admin/UserManagement";
-import ContentApproval from "./pages/admin/ContentApproval";
-import SystemLogs from "./pages/admin/SystemLogs";
-import AIControl from "./pages/admin/AIControl";
-import Analytics from "./pages/admin/Analytics";
-import UIAssets from "./pages/admin/UIAssets";
+const HRDashboard = lazy(() => import("./pages/hr/HRDashboard"));
+const HRPrograms = lazy(() => import("./pages/hr/HRPrograms"));
+const HRProgramTasks = lazy(() => import("./pages/hr/HRProgramTasks"));
+const HRProgramEnroll = lazy(() => import("./pages/hr/HRProgramEnroll"));
+const HRSubmissions = lazy(() => import("./pages/hr/HRSubmissions"));
+const HRBroadcast = lazy(() => import("./pages/hr/HRBroadcast"));
+const HRClientRequirements = lazy(() => import("./pages/hr/HRClientRequirements"));
+const HRInterns = lazy(() => import("./pages/hr/HRInterns"));
+const HREvaluations = lazy(() => import("./pages/hr/HREvaluations"));
+const HRAttendance = lazy(() => import("./pages/hr/HRAttendance"));
+const HRInbox = lazy(() => import("./pages/hr/HRInbox"));
+const HRTickets = lazy(() => import("./pages/hr/HRTickets"));
 
-const queryClient = new QueryClient();
+const AdminConsole = lazy(() => import("./pages/admin/AdminConsole"));
+const UserManagement = lazy(() => import("./pages/admin/UserManagement"));
+const ContentApproval = lazy(() => import("./pages/admin/ContentApproval"));
+const SystemLogs = lazy(() => import("./pages/admin/SystemLogs"));
+const AIControl = lazy(() => import("./pages/admin/AIControl"));
+const Analytics = lazy(() => import("./pages/admin/Analytics"));
+const UIAssets = lazy(() => import("./pages/admin/UIAssets"));
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 60_000,
+      gcTime: 5 * 60_000,
+      refetchOnWindowFocus: false,
+      retry: 1,
+    },
+  },
+});
+
+const RouteFallback = () => (
+  <div className="flex min-h-[60vh] w-full items-center justify-center">
+    <Loader2 className="h-6 w-6 animate-spin text-primary" />
+  </div>
+);
 
 const AppInner = () => {
   useIdleSignOut();
@@ -84,6 +102,7 @@ const App = () => (
         <AuthProvider>
           <AppInner />
           <CookieConsent />
+          <Suspense fallback={<RouteFallback />}>
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/login" element={<Login />} />
@@ -157,6 +176,7 @@ const App = () => (
 
             <Route path="*" element={<NotFound />} />
           </Routes>
+          </Suspense>
         </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
