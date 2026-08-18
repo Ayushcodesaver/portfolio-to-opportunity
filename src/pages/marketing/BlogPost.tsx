@@ -154,7 +154,7 @@ export default function BlogPost() {
     <div className="min-h-screen bg-background text-foreground">
       <nav className="fixed top-0 inset-x-0 z-50 glass-strong">
         <div className="container flex h-16 items-center justify-between">
-          <Logo />
+          <Logo size="sm" />
           <Link to="/blog" className="text-sm text-muted-foreground hover:text-foreground inline-flex items-center gap-2">
             <ArrowLeft className="h-4 w-4" /> All posts
           </Link>

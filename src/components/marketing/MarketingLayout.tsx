@@ -30,7 +30,7 @@ export function MarketingLayout({ eyebrow, title, subtitle, children }: Marketin
       {/* NAV */}
       <nav className={`fixed top-0 inset-x-0 z-50 transition-all ${scrolled ? "glass-strong" : "bg-transparent"}`}>
         <div className="container flex h-16 items-center justify-between">
-          <Logo />
+          <Logo size="sm" />
           <div className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
             <Link to="/features" className="hover:text-foreground transition-colors">Features</Link>
             <Link to="/how-it-works" className="hover:text-foreground transition-colors">How it works</Link>
@@ -132,7 +132,7 @@ export function MarketingLayout({ eyebrow, title, subtitle, children }: Marketin
       <footer className="border-t border-border/50 py-12">
         <div className="container grid md:grid-cols-4 gap-8">
           <div>
-            <Logo />
+            <Logo size="sm" />
             <p className="text-sm text-muted-foreground mt-3">Build. Learn. Get Noticed.</p>
           </div>
           {[

@@ -98,7 +98,7 @@ export default function Register() {
         initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
         className="w-full max-w-lg relative"
       >
-        <div className="flex justify-center mb-8"><Logo /></div>
+        <div className="flex justify-center mb-8"><Logo size="lg" /></div>
 
         <div className="glass-strong rounded-2xl p-8">
           {/* Progress */}

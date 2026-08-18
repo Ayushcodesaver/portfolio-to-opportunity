@@ -113,7 +113,7 @@ export function AppShell({ variant }: { variant: "intern" | "hr" | "admin" }) {
   const SidebarBody = (
     <>
       <div className="p-5 border-b border-border/50">
-        <Logo />
+        <Logo size="sm" />
         <div className="mt-2 flex gap-1">
           <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary/20 text-primary-glow">
             {variant}
@@ -165,7 +165,7 @@ export function AppShell({ variant }: { variant: "intern" | "hr" | "admin" }) {
               {SidebarBody}
             </SheetContent>
           </Sheet>
-          <Logo />
+          <Logo size="sm" />
           <NotificationBell />
         </header>
 

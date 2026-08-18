@@ -38,7 +38,7 @@ export default function Login() {
         initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
         className="w-full max-w-md relative"
       >
-        <div className="flex justify-center mb-8"><Logo /></div>
+        <div className="flex justify-center mb-8"><Logo size="lg" /></div>
 
         <div className="glass-strong rounded-2xl p-8 relative overflow-hidden">
           <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary/20 rounded-full blur-2xl" />

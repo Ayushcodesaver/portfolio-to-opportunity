@@ -39,7 +39,7 @@ export default function ResetPassword() {
   return (
     <div className="min-h-screen flex items-center justify-center px-4 bg-background">
       <div className="w-full max-w-md">
-        <div className="flex justify-center mb-8"><Logo /></div>
+        <div className="flex justify-center mb-8"><Logo size="lg" /></div>
         <div className="glass-strong rounded-2xl p-8">
           <h1 className="text-2xl font-bold mb-1">Set a new password</h1>
           <p className="text-sm text-muted-foreground mb-6">

@@ -84,7 +84,7 @@ export default function Landing() {
       {/* NAV */}
       <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? "glass-strong border-b border-primary/20" : "bg-transparent"}`}>
         <div className="container flex h-16 items-center justify-between">
-          <Logo />
+          <Logo size="sm" />
           <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
             {navLinks.map((l) => (
               <a key={l.label} href={l.href} className="hover:text-primary transition-colors relative after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-primary after:transition-all hover:after:w-full">
@@ -367,7 +367,7 @@ export default function Landing() {
       <footer className="border-t border-primary/10 py-12">
         <div className="container grid md:grid-cols-4 gap-8">
           <div>
-            <Logo />
+            <Logo size="sm" />
             <p className="text-sm text-muted-foreground mt-3">Build. Learn. Get Noticed.</p>
           </div>
           {[
