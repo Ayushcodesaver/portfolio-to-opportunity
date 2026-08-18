@@ -9,8 +9,13 @@ export function GoogleButton({ label = "Continue with Google" }: { label?: strin
 
   const onClick = async () => {
     setLoading(true);
+    // Optional override for local dev / custom Google OAuth client (see .env.example)
+    const redirectUri =
+      import.meta.env.VITE_GOOGLE_REDIRECT_URI || `${window.location.origin}/feed`;
+    const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
     const result = await lovable.auth.signInWithOAuth("google", {
-      redirect_uri: `${window.location.origin}/feed`,
+      redirect_uri: redirectUri,
+      ...(clientId ? { extraParams: { client_id: clientId } } : {}),
     });
     if (result.error) {
       toast.error(result.error.message ?? "Google sign-in failed");
