@@ -26,7 +26,7 @@ export default function Verify() {
     <div className="min-h-screen flex flex-col">
       <header className="border-b border-border/50">
         <div className="container max-w-5xl py-4 flex items-center justify-between">
-          <Logo />
+          <Logo size="lg" />
           <Link to="/">
             <Button variant="ghost" size="sm"><ArrowLeft className="h-4 w-4 mr-1" /> Back to home</Button>
           </Link>

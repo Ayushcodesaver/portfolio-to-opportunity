@@ -39,7 +39,7 @@ export default function TopInterns() {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
       <nav className="fixed top-0 inset-x-0 z-50 glass-strong border-b border-primary/20">
         <div className="container flex h-16 items-center justify-between">
-          <Logo />
+          <Logo size="sm" />
           <Button variant="ghost" onClick={() => navigate(-1)} size="sm">
             <ArrowLeft className="h-4 w-4 mr-1" /> Back
           </Button>
