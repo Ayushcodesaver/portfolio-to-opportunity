@@ -3,7 +3,7 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
   Home, FolderKanban, PlusSquare, Sparkles, BarChart3, Bell,
   Settings, LogOut, Users as UsersIcon, ClipboardCheck, Calendar,
-  Inbox, Ticket, Shield, ShieldCheck, FileText, Activity, Bot, Cpu,
+  Inbox, Ticket, Shield, ShieldCheck, FileText, FileCheck, Activity, Bot, Cpu,
   Target, Megaphone, LayoutDashboard, Trophy, Menu, MessageSquare, Image as ImageIcon
 } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
@@ -26,6 +26,7 @@ const internNav: NavItem[] = [
   { to: "/create-project", label: "Create Project", icon: PlusSquare },
   { to: "/ai-assistant", label: "AI Assistant", icon: Sparkles },
   { to: "/resume-builder", label: "Resume Builder", icon: FileText },
+  { to: "/my-resume", label: "My Resume", icon: FileCheck },
   { to: "/internship-progress", label: "Progress", icon: BarChart3 },
   { to: "/notifications", label: "Notifications", icon: Bell },
   { to: "/leaderboard", label: "Leaderboard", icon: Trophy },

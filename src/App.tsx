@@ -43,6 +43,7 @@ const MyProjects = lazy(() => import("./pages/intern/MyProjects"));
 const CreateProject = lazy(() => import("./pages/intern/CreateProject"));
 const AIAssistant = lazy(() => import("./pages/intern/AIAssistant"));
 const ResumeBuilder = lazy(() => import("./pages/intern/ResumeBuilder"));
+const MyResume = lazy(() => import("./pages/intern/MyResume"));
 const InternshipProgress = lazy(() => import("./pages/intern/InternshipProgress"));
 const Notifications = lazy(() => import("./pages/intern/Notifications"));
 const Leaderboard = lazy(() => import("./pages/intern/Leaderboard"));
@@ -136,6 +137,7 @@ const App = () => (
               <Route path="/create-project" element={<CreateProject />} />
               <Route path="/ai-assistant" element={<AIAssistant />} />
               <Route path="/resume-builder" element={<ResumeBuilder />} />
+              <Route path="/my-resume" element={<MyResume />} />
               <Route path="/internship-progress" element={<InternshipProgress />} />
               <Route path="/notifications" element={<Notifications />} />
               <Route path="/leaderboard" element={<Leaderboard />} />

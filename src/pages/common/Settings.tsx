@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { PageHeader } from "@/components/common/PageHeader";
 import { AvatarUpload } from "@/components/common/AvatarUpload";
+import { ResumeUploadManager } from "@/components/common/ResumeUploadManager";
 import { useAuth } from "@/context/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -46,6 +47,7 @@ export default function Settings() {
       <Tabs defaultValue="profile">
         <TabsList className="bg-muted">
           <TabsTrigger value="profile">Profile</TabsTrigger>
+          <TabsTrigger value="resume">Resume</TabsTrigger>
           <TabsTrigger value="account">Account</TabsTrigger>
           <TabsTrigger value="notifications">Notifications</TabsTrigger>
           <TabsTrigger value="privacy">Privacy</TabsTrigger>
@@ -73,6 +75,10 @@ export default function Settings() {
             </div>
             <Button onClick={save} disabled={loading} className="bg-gradient-primary">{loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Save changes"}</Button>
           </div>
+        </TabsContent>
+
+        <TabsContent value="resume" className="mt-6">
+          <ResumeUploadManager />
         </TabsContent>
 
         <TabsContent value="account" className="mt-6">

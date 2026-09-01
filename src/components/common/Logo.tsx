@@ -5,9 +5,9 @@ import logoSrc from "@/assets/xebure-logo.png";
 type LogoSize = "sm" | "md" | "lg";
 
 const SIZES: Record<LogoSize, { img: string; icon: string; text: string; gap: string }> = {
-  sm: { img: "h-7", icon: "h-7 w-7", text: "text-[8px]", gap: "gap-2" },
-  md: { img: "h-10", icon: "h-9 w-9", text: "text-[10px]", gap: "gap-3" },
-  lg: { img: "h-14", icon: "h-12 w-12", text: "text-[11px]", gap: "gap-3" },
+  sm: { img: "h-11", icon: "h-10 w-auto", text: "text-[10px]", gap: "gap-2.5" },
+  md: { img: "h-14", icon: "h-12 w-auto", text: "text-xs", gap: "gap-3" },
+  lg: { img: "h-24", icon: "h-20 w-auto", text: "text-sm", gap: "gap-4" },
 };
 
 export function Logo({
