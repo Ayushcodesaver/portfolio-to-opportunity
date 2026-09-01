@@ -77,6 +77,10 @@ export default function Settings() {
           </div>
         </TabsContent>
 
+        <TabsContent value="resume" className="mt-6">
+          <ResumeUploadManager />
+        </TabsContent>
+
         <TabsContent value="account" className="mt-6">
           <div className="glass rounded-xl p-6 space-y-4">
             <div className="space-y-2"><Label>Email</Label><Input value={user?.email ?? ""} disabled className="bg-input/50" /></div>
