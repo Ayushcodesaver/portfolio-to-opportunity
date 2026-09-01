@@ -1272,6 +1272,45 @@ export type Database = {
         }
         Relationships: []
       }
+      resumes: {
+        Row: {
+          file_name: string
+          file_path: string
+          file_size: number
+          file_url: string
+          id: string
+          is_default: boolean
+          mime_type: string
+          updated_at: string
+          uploaded_at: string
+          user_id: string
+        }
+        Insert: {
+          file_name: string
+          file_path: string
+          file_size: number
+          file_url: string
+          id?: string
+          is_default?: boolean
+          mime_type: string
+          updated_at?: string
+          uploaded_at?: string
+          user_id: string
+        }
+        Update: {
+          file_name?: string
+          file_path?: string
+          file_size?: number
+          file_url?: string
+          id?: string
+          is_default?: boolean
+          mime_type?: string
+          updated_at?: string
+          uploaded_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       subscriptions: {
         Row: {
           created_at: string
