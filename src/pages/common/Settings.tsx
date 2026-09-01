@@ -47,6 +47,7 @@ export default function Settings() {
       <Tabs defaultValue="profile">
         <TabsList className="bg-muted">
           <TabsTrigger value="profile">Profile</TabsTrigger>
+          <TabsTrigger value="resume">Resume</TabsTrigger>
           <TabsTrigger value="account">Account</TabsTrigger>
           <TabsTrigger value="notifications">Notifications</TabsTrigger>
           <TabsTrigger value="privacy">Privacy</TabsTrigger>
