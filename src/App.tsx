@@ -137,6 +137,7 @@ const App = () => (
               <Route path="/create-project" element={<CreateProject />} />
               <Route path="/ai-assistant" element={<AIAssistant />} />
               <Route path="/resume-builder" element={<ResumeBuilder />} />
+              <Route path="/my-resume" element={<MyResume />} />
               <Route path="/internship-progress" element={<InternshipProgress />} />
               <Route path="/notifications" element={<Notifications />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
