@@ -3,7 +3,7 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
   Home, FolderKanban, PlusSquare, Sparkles, BarChart3, Bell,
   Settings, LogOut, Users as UsersIcon, ClipboardCheck, Calendar,
-  Inbox, Ticket, Shield, ShieldCheck, FileText, Activity, Bot, Cpu,
+  Inbox, Ticket, Shield, ShieldCheck, FileText, FileCheck, Activity, Bot, Cpu,
   Target, Megaphone, LayoutDashboard, Trophy, Menu, MessageSquare, Image as ImageIcon
 } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
