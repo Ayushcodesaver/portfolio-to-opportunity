@@ -12,7 +12,8 @@ export function useRealtimeInvalidate(channelName: string, subs: Sub[], enabled 
   const qc = useQueryClient();
   useEffect(() => {
     if (!enabled || subs.length === 0) return;
-    let ch: any = supabase.channel(channelName);
+    const uniqueName = `${channelName}-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    let ch: any = supabase.channel(uniqueName);
     subs.forEach((s) => {
       const cfg: any = { event: "*", schema: "public", table: s.table };
       if (s.filter) cfg.filter = s.filter;
