@@ -41,16 +41,17 @@ export function NotificationBell() {
 
   useEffect(() => {
     if (!user) return;
+    const uid = user.id;
     const channel = supabase
-      .channel(`notif-bell-${user.id}`)
+      .channel(`notif-bell-${uid}-${Date.now()}-${Math.random().toString(36).slice(2)}`)
       .on(
         "postgres_changes",
-        { event: "*", schema: "public", table: "notifications", filter: `user_id=eq.${user.id}` },
-        () => qc.invalidateQueries({ queryKey: ["notif-bell", user.id] }),
+        { event: "*", schema: "public", table: "notifications", filter: `user_id=eq.${uid}` },
+        () => qc.invalidateQueries({ queryKey: ["notif-bell", uid] }),
       )
       .subscribe();
     return () => { supabase.removeChannel(channel); };
-  }, [user, qc]);
+  }, [user?.id, qc]);
 
   const unread = notifs.filter((n) => !n.is_read).length;
 
