@@ -145,6 +145,57 @@ export type Database = {
         }
         Relationships: []
       }
+      applications: {
+        Row: {
+          applicant_id: string
+          cover_note: string | null
+          created_at: string
+          hr_note: string | null
+          id: string
+          posting_id: string
+          resume_id: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          applicant_id: string
+          cover_note?: string | null
+          created_at?: string
+          hr_note?: string | null
+          id?: string
+          posting_id: string
+          resume_id?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          applicant_id?: string
+          cover_note?: string | null
+          created_at?: string
+          hr_note?: string | null
+          id?: string
+          posting_id?: string
+          resume_id?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "applications_posting_id_fkey"
+            columns: ["posting_id"]
+            isOneToOne: false
+            referencedRelation: "internship_postings"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "applications_resume_id_fkey"
+            columns: ["resume_id"]
+            isOneToOne: false
+            referencedRelation: "resumes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       attendance: {
         Row: {
           created_at: string | null
@@ -782,6 +833,48 @@ export type Database = {
         }
         Relationships: []
       }
+      internship_postings: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          deadline: string | null
+          description: string
+          id: string
+          is_open: boolean
+          location: string | null
+          role: string
+          stipend: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          deadline?: string | null
+          description: string
+          id?: string
+          is_open?: boolean
+          location?: string | null
+          role: string
+          stipend?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          deadline?: string | null
+          description?: string
+          id?: string
+          is_open?: boolean
+          location?: string | null
+          role?: string
+          stipend?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       internship_programs: {
         Row: {
           created_at: string | null
@@ -1029,7 +1122,9 @@ export type Database = {
         Row: {
           avatar_url: string | null
           bio: string | null
+          contact_email: string | null
           created_at: string | null
+          desired_role: string | null
           full_name: string
           github_url: string | null
           id: string
@@ -1040,6 +1135,7 @@ export type Database = {
           linkedin_url: string | null
           location: string | null
           notification_prefs: Json
+          phone: string | null
           portfolio_goal: Database["public"]["Enums"]["portfolio_goal"] | null
           skills: string[] | null
           twitter_url: string | null
@@ -1049,7 +1145,9 @@ export type Database = {
         Insert: {
           avatar_url?: string | null
           bio?: string | null
+          contact_email?: string | null
           created_at?: string | null
+          desired_role?: string | null
           full_name: string
           github_url?: string | null
           id: string
@@ -1062,6 +1160,7 @@ export type Database = {
           linkedin_url?: string | null
           location?: string | null
           notification_prefs?: Json
+          phone?: string | null
           portfolio_goal?: Database["public"]["Enums"]["portfolio_goal"] | null
           skills?: string[] | null
           twitter_url?: string | null
@@ -1071,7 +1170,9 @@ export type Database = {
         Update: {
           avatar_url?: string | null
           bio?: string | null
+          contact_email?: string | null
           created_at?: string | null
+          desired_role?: string | null
           full_name?: string
           github_url?: string | null
           id?: string
@@ -1084,6 +1185,7 @@ export type Database = {
           linkedin_url?: string | null
           location?: string | null
           notification_prefs?: Json
+          phone?: string | null
           portfolio_goal?: Database["public"]["Enums"]["portfolio_goal"] | null
           skills?: string[] | null
           twitter_url?: string | null

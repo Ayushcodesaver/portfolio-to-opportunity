@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1788448857427,
+      "tag": "0000_profiles_contact_and_internship_applications",
+      "breakpoints": true
+    }
+  ]
+}
