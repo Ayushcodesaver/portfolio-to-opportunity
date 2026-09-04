@@ -21,6 +21,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const Verify = lazy(() => import("./pages/Verify"));
 const ForgotPassword = lazy(() => import("./pages/ForgotPassword"));
 const ResetPassword = lazy(() => import("./pages/ResetPassword"));
+const HRLogin = lazy(() => import("./pages/HRLogin"));
 
 const Features = lazy(() => import("./pages/marketing/Features"));
 const HowItWorks = lazy(() => import("./pages/marketing/HowItWorks"));
@@ -44,6 +45,8 @@ const CreateProject = lazy(() => import("./pages/intern/CreateProject"));
 const AIAssistant = lazy(() => import("./pages/intern/AIAssistant"));
 const ResumeBuilder = lazy(() => import("./pages/intern/ResumeBuilder"));
 const MyResume = lazy(() => import("./pages/intern/MyResume"));
+const StudentProfile = lazy(() => import("./pages/intern/StudentProfile"));
+const Internships = lazy(() => import("./pages/intern/Internships"));
 const InternshipProgress = lazy(() => import("./pages/intern/InternshipProgress"));
 const Notifications = lazy(() => import("./pages/intern/Notifications"));
 const Leaderboard = lazy(() => import("./pages/intern/Leaderboard"));
@@ -59,6 +62,8 @@ const HRSubmissions = lazy(() => import("./pages/hr/HRSubmissions"));
 const HRBroadcast = lazy(() => import("./pages/hr/HRBroadcast"));
 const HRClientRequirements = lazy(() => import("./pages/hr/HRClientRequirements"));
 const HRInterns = lazy(() => import("./pages/hr/HRInterns"));
+const HRResumes = lazy(() => import("./pages/hr/HRResumes"));
+const HRPostings = lazy(() => import("./pages/hr/HRPostings"));
 const HREvaluations = lazy(() => import("./pages/hr/HREvaluations"));
 const HRAttendance = lazy(() => import("./pages/hr/HRAttendance"));
 const HRInbox = lazy(() => import("./pages/hr/HRInbox"));
@@ -113,6 +118,7 @@ const App = () => (
             <Route path="/verify/:code" element={<Verify />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password" element={<ResetPassword />} />
+            <Route path="/hr/login" element={<HRLogin />} />
 
             {/* Marketing pages */}
             <Route path="/features" element={<Features />} />
@@ -138,6 +144,8 @@ const App = () => (
               <Route path="/ai-assistant" element={<AIAssistant />} />
               <Route path="/resume-builder" element={<ResumeBuilder />} />
               <Route path="/my-resume" element={<MyResume />} />
+              <Route path="/my-profile" element={<StudentProfile />} />
+              <Route path="/internships" element={<Internships />} />
               <Route path="/internship-progress" element={<InternshipProgress />} />
               <Route path="/notifications" element={<Notifications />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
@@ -157,6 +165,8 @@ const App = () => (
               <Route path="/hr/broadcast" element={<HRBroadcast />} />
               <Route path="/hr/requirements" element={<HRClientRequirements />} />
               <Route path="/hr/interns" element={<HRInterns />} />
+              <Route path="/hr/resumes" element={<HRResumes />} />
+              <Route path="/hr/postings" element={<HRPostings />} />
               <Route path="/hr/evaluations" element={<HREvaluations />} />
               <Route path="/hr/attendance" element={<HRAttendance />} />
               <Route path="/hr/inbox" element={<HRInbox />} />
