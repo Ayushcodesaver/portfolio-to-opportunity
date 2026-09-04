@@ -4,7 +4,7 @@ import {
   Home, FolderKanban, PlusSquare, Sparkles, BarChart3, Bell,
   Settings, LogOut, Users as UsersIcon, ClipboardCheck, Calendar,
   Inbox, Ticket, Shield, ShieldCheck, FileText, FileCheck, Activity, Bot, Cpu,
-  Target, Megaphone, LayoutDashboard, Trophy, Menu, MessageSquare, Image as ImageIcon
+  Target, Megaphone, LayoutDashboard, Trophy, Menu, MessageSquare, Image as ImageIcon, Briefcase, UserRound
 } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
 import { NotificationBell } from "@/components/common/NotificationBell";
@@ -27,6 +27,8 @@ const internNav: NavItem[] = [
   { to: "/ai-assistant", label: "AI Assistant", icon: Sparkles },
   { to: "/resume-builder", label: "Resume Builder", icon: FileText },
   { to: "/my-resume", label: "My Resume", icon: FileCheck },
+  { to: "/my-profile", label: "My Profile", icon: UserRound },
+  { to: "/internships", label: "Internships", icon: Briefcase },
   { to: "/internship-progress", label: "Progress", icon: BarChart3 },
   { to: "/notifications", label: "Notifications", icon: Bell },
   { to: "/leaderboard", label: "Leaderboard", icon: Trophy },
@@ -41,6 +43,8 @@ const hrNav: NavItem[] = [
   { to: "/hr/broadcast", label: "Broadcast", icon: Megaphone },
   { to: "/hr/requirements", label: "Client Requirements", icon: FileText },
   { to: "/hr/interns", label: "Interns", icon: UsersIcon },
+  { to: "/hr/resumes", label: "Resumes", icon: FileCheck },
+  { to: "/hr/postings", label: "Postings", icon: Briefcase },
   { to: "/hr/evaluations", label: "Evaluations", icon: ClipboardCheck },
   { to: "/hr/attendance", label: "Attendance", icon: Calendar },
   { to: "/hr/inbox", label: "Inbox", icon: Inbox },

@@ -19,6 +19,7 @@ interface ResumeRecord {
   id: string;
   file_name: string;
   file_url: string;
+  file_path: string;
   file_size: number;
   mime_type: string;
   uploaded_at: string;
@@ -45,7 +46,7 @@ export function ResumeUploadManager() {
     if (!user) return;
     const { data, error } = await supabase
       .from("resumes")
-      .select("id, file_name, file_url, file_size, mime_type, uploaded_at")
+      .select("id, file_name, file_url, file_path, file_size, mime_type, uploaded_at")
       .eq("user_id", user.id)
       .eq("is_default", true)
       .maybeSingle();
@@ -77,11 +78,8 @@ export function ResumeUploadManager() {
 
     try {
       // Remove existing resume file if present
-      if (resume?.file_url) {
-        const oldPath = resume.file_url.split("/").slice(-2).join("/");
-        if (oldPath) {
-          await supabase.storage.from("resumes").remove([oldPath]);
-        }
+      if (resume?.file_path) {
+        await supabase.storage.from("resumes").remove([resume.file_path]);
         await supabase.from("resumes").delete().eq("id", resume.id);
       }
 
@@ -121,8 +119,7 @@ export function ResumeUploadManager() {
     if (!user || !resume) return;
     setDeleting(true);
     try {
-      const path = `${user.id}/${resume.file_url.split("/").pop()}`;
-      await supabase.storage.from("resumes").remove([path]);
+      await supabase.storage.from("resumes").remove([resume.file_path]);
       const { error } = await supabase.from("resumes").delete().eq("id", resume.id);
       if (error) throw error;
       toast.success("Resume deleted");
@@ -134,10 +131,14 @@ export function ResumeUploadManager() {
     }
   };
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     if (!resume) return;
+    const { data, error } = await supabase.storage
+      .from("resumes")
+      .createSignedUrl(resume.file_path, 60, { download: resume.file_name });
+    if (error || !data) return toast.error(error?.message || "Could not generate download link");
     const a = document.createElement("a");
-    a.href = resume.file_url;
+    a.href = data.signedUrl;
     a.download = resume.file_name;
     document.body.appendChild(a);
     a.click();
