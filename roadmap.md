@@ -1,6 +1,7 @@
 # XEBURE Roadmap
 
 ## In Progress
+- [ ] Complete premium monochrome Xebure redesign and integrate VengeanceUI components across real workflows.
 
 ## Recently Done
 - [x] HR resume list `/hr/resumes`: search + role/date filters + per-row signed-URL download.
