@@ -7,7 +7,7 @@ export function GlassPanel({
   return (
     <div
       className={cn(
-        accent ? "panel-3d-violet" : "panel-3d",
+        accent ? "panel-premium" : "panel-3d",
         tilt && "tilt-3d-soft",
         "p-5 sm:p-6",
         className,

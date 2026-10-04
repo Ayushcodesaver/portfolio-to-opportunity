@@ -15,15 +15,15 @@ export const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
         className={cn(
           "relative overflow-hidden transition-all duration-300 hover:scale-[1.02]",
           tone === "primary"
-            ? "bg-gradient-primary text-primary-foreground hover:opacity-95 shadow-[0_10px_30px_-10px_hsl(var(--primary)/0.6)] hover:shadow-[0_20px_50px_-12px_hsl(var(--primary)/0.7)]"
-            : "glass-strong text-foreground hover:border-primary/50",
+            ? "bg-primary text-primary-foreground hover:bg-primary/90 shadow-premium"
+            : "border border-border bg-secondary text-secondary-foreground hover:border-foreground/30",
           className,
         )}
       >
         {tone === "primary" && (
           <span
             aria-hidden
-            className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 hover:translate-x-full group-hover:translate-x-full"
+            className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-primary-foreground/20 to-transparent transition-transform duration-700 hover:translate-x-full group-hover:translate-x-full"
           />
         )}
         <span className="relative z-10 inline-flex items-center gap-2">{children}</span>

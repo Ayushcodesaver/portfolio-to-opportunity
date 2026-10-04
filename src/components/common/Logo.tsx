@@ -25,18 +25,18 @@ export function Logo({
   const content = (
     <>
       <div className="relative shrink-0">
-        <div className="absolute -inset-2 bg-primary/20 blur-xl opacity-60 group-hover:opacity-90 transition-opacity" />
+        
         <img
           src={logoSrc}
           alt="Xebure"
           className={cn("relative object-contain max-w-full", showText ? `${s.img} w-auto` : s.icon)}
-          style={{ filter: "brightness(0) invert(1)" }}
+          style={{ filter: "grayscale(1) brightness(0) invert(1)" }}
         />
       </div>
       {showText && (
         <span
           className={cn("hidden sm:block font-semibold uppercase text-muted-foreground whitespace-nowrap", s.text)}
-          style={{ letterSpacing: "0.28em" }}
+          
         >
           Build · Learn · Get Noticed
         </span>

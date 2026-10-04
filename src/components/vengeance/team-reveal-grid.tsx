@@ -36,51 +36,6 @@ export interface TeamRevealGridProps
   rotationInterval?: number;
 }
 
-const DEFAULT_MEMBERS: readonly TeamRevealMember[] = [
-  {
-    id: "maya-chen",
-    name: "Maya Chen",
-    role: "Product Engineer",
-    expertise: "Turns early product ideas into fast, resilient interfaces.",
-    accent: "#fb4f43",
-  },
-  {
-    id: "noah-williams",
-    name: "Noah Williams",
-    role: "Infrastructure",
-    expertise: "Keeps deployments observable, secure, and quietly reliable.",
-    accent: "#ff7a45",
-  },
-  {
-    id: "amina-patel",
-    name: "Amina Patel",
-    role: "Backend Engineer",
-    expertise: "Designs APIs and data systems that scale without drama.",
-    accent: "#f04f78",
-  },
-  {
-    id: "leo-martin",
-    name: "Leo Martin",
-    role: "AI Engineer",
-    expertise: "Ships useful AI workflows from prototype to production.",
-    accent: "#8b5cf6",
-  },
-  {
-    id: "sana-ibrahim",
-    name: "Sana Ibrahim",
-    role: "Design Engineer",
-    expertise: "Builds expressive systems where design and code meet.",
-    accent: "#3b82f6",
-  },
-  {
-    id: "eli-brooks",
-    name: "Eli Brooks",
-    role: "Developer Experience",
-    expertise: "Makes complex tools feel obvious, documented, and fast.",
-    accent: "#14b8a6",
-  },
-];
-
 function initials(name: string) {
   return name
     .split(/\s+/)
@@ -92,7 +47,7 @@ function initials(name: string) {
 
 function Portrait({ member, active }: { member: TeamRevealMember; active: boolean }) {
   const style = {
-    "--team-accent": member.accent ?? "#fb4f43",
+    "--team-accent": member.accent ?? "hsl(var(--foreground))",
   } as React.CSSProperties;
 
   return (
@@ -125,7 +80,7 @@ function Portrait({ member, active }: { member: TeamRevealMember; active: boolea
           draggable={false}
           className={cn(
             "absolute inset-0 h-full w-full object-cover grayscale transition-[filter,transform,opacity] duration-500 ease-out motion-reduce:transition-none",
-            active ? "scale-[1.02] grayscale-0" : "scale-100 grayscale",
+            active ? "scale-[1.02] grayscale" : "scale-100 grayscale",
           )}
           style={{ objectPosition: member.imagePosition ?? "center top" }}
         />
@@ -166,7 +121,7 @@ export function TeamRevealGrid({
   eyebrow = "The people behind the product",
   title = "Meet the team",
   description = "A small, multidisciplinary team building thoughtful tools for ambitious people.",
-  members = DEFAULT_MEMBERS,
+  members = [],
   activeMemberId,
   defaultActiveMemberId,
   onActiveMemberChange,
@@ -236,7 +191,7 @@ export function TeamRevealGrid({
               <span className="relative z-10">{title}</span>
               <svg
                 aria-hidden="true"
-                className="absolute -bottom-3 left-0 h-3 w-full text-[#fb4f43] sm:-bottom-4 sm:h-4"
+                className="absolute -bottom-3 left-0 h-3 w-full text-[hsl(var(--foreground))] sm:-bottom-4 sm:h-4"
                 viewBox="0 0 100 20"
                 preserveAspectRatio="none"
                 fill="none"
@@ -287,7 +242,7 @@ export function TeamRevealGrid({
                   className="group block w-full rounded-[1.35rem] text-left outline-none"
                 >
                   <div
-                    style={{ "--team-accent": member.accent ?? "#fb4f43" } as React.CSSProperties}
+                    style={{ "--team-accent": member.accent ?? "hsl(var(--foreground))" } as React.CSSProperties}
                     className={cn(
                       "relative overflow-hidden rounded-[1.35rem] border bg-white p-1.5 shadow-[0_10px_35px_-24px_rgba(0,0,0,0.42)] transition-[border-color,box-shadow,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none dark:bg-neutral-900",
                       active
@@ -327,7 +282,7 @@ export function TeamRevealGrid({
                         "mt-0.5 truncate text-xs text-neutral-500 transition-colors duration-300 dark:text-neutral-400",
                         active && "text-[var(--team-accent)] dark:text-[var(--team-accent)]",
                       )}
-                      style={{ "--team-accent": member.accent ?? "#fb4f43" } as React.CSSProperties}
+                      style={{ "--team-accent": member.accent ?? "hsl(var(--foreground))" } as React.CSSProperties}
                     >
                       {member.role}
                     </p>

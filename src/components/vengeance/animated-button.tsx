@@ -36,8 +36,8 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
       }}
       // Set a CSS variable `--shine` that we override for dark mode via Tailwind.
       className={cn(
-        "group inline-flex items-center justify-center px-6 py-2 rounded-md relative overflow-hidden bg-background border border-border",
-        "text-foreground font-medium transition-colors duration-[var(--vng-transition-speed,150ms)] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+        "group inline-flex items-center justify-center px-6 py-2 rounded-md relative overflow-hidden bg-primary text-primary-foreground border border-primary",
+        "font-medium transition-colors duration-[var(--vng-transition-speed,150ms)] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
         "[--shine:rgba(0,0,0,.66)] dark:[--shine:rgba(255,255,255,.66)]",
         className,
       )}
@@ -54,7 +54,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
         initial={{ ["--mask-x" as any]: "100%" } as any}
         animate={{ ["--mask-x" as any]: "-100%" } as any}
         transition={{
-          repeat: Infinity,
+          repeat: 0,
           duration: 1,
           ease: "linear",
           repeatDelay: 1,
@@ -80,7 +80,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
         animate={{ backgroundPosition: ["100% 0", "0% 0"], opacity: [0, 1, 0] }}
         transition={{
           duration: 1,
-          repeat: Infinity,
+          repeat: 0,
           ease: "linear",
           repeatDelay: 1,
         }}

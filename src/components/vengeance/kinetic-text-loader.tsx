@@ -17,11 +17,9 @@ export function KineticTextLoader({
   return (
     <div 
       className={cn("relative flex items-center justify-center font-light", className)} 
-      style={{ fontFamily: "'Roboto', sans-serif" }}
       {...props}
     >
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
         
         @keyframes ktl-dotMove {
           0%, 100% { transform: rotate(180deg) translate(-80px, -10px) rotate(-180deg); }
@@ -47,11 +45,11 @@ export function KineticTextLoader({
       <div className="relative scale-75 md:scale-90 lg:scale-100">
         {/* The moving dot */}
         <div 
-          className="absolute z-10 top-[40px] left-[85px] w-[6px] h-[6px] bg-neutral-800 dark:bg-neutral-200 rounded-full"
+          className="absolute z-10 top-[40px] left-[85px] w-[6px] h-[6px] bg-foreground rounded-full"
           style={{ animation: "ktl-dotMove 1800ms cubic-bezier(0.25,0.25,0.75,0.75) infinite" }}
         />
         
-        <p className="relative m-0 whitespace-nowrap text-[3.75rem] text-neutral-800 dark:text-neutral-200" aria-label={text}>
+        <p className="relative m-0 whitespace-nowrap text-[3.75rem] text-foreground" aria-label={text}>
           {letters.map((char, index) => {
             if (index === 0 && char.toUpperCase() === 'L') {
               return (

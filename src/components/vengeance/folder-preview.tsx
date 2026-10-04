@@ -88,79 +88,11 @@ export interface FolderPreviewProps {
 // Color Schemes for Each Variant
 // ============================================
 
-const variantColors: Record<
-    FolderVariant,
-    {
-        back: string;
-        cover: string;
-        deco: string;
-        caption: string;
-        bg: string;
-    }
-> = {
-    devi: {
-        back: "text-gray-500",
-        cover: "text-gray-400",
-        deco: "text-gray-400 brightness-125",
-        caption: "text-gray-800 dark:text-gray-200",
-        bg: "bg-gray-100 dark:bg-gray-900",
-    },
-    rudras: {
-        back: "text-gray-700 dark:text-gray-600",
-        cover: "text-gray-600 dark:text-gray-500",
-        deco: "text-gray-400",
-        caption: "text-blue-600 dark:text-blue-400",
-        bg: "bg-slate-200 dark:bg-slate-800",
-    },
-    ardra: {
-        back: "text-blue-800 dark:text-blue-700",
-        cover: "text-blue-600 dark:text-blue-500",
-        deco: "text-blue-700 dark:text-blue-600",
-        caption: "text-blue-500 dark:text-blue-400",
-        bg: "bg-gray-800 dark:bg-gray-950",
-    },
-    shakti: {
-        back: "text-indigo-800",
-        cover: "text-indigo-700",
-        deco: "text-indigo-800",
-        caption: "text-green-400",
-        bg: "bg-blue-600 dark:bg-blue-800",
-    },
-    kubera: {
-        back: "text-gray-900",
-        cover: "text-gray-700",
-        deco: "text-gray-600",
-        caption: "text-gray-900 dark:text-gray-100",
-        bg: "bg-emerald-400 dark:bg-emerald-600",
-    },
-    hari: {
-        back: "text-blue-800",
-        cover: "text-blue-700",
-        deco: "text-blue-800",
-        caption: "text-yellow-400",
-        bg: "bg-sky-500 dark:bg-sky-700",
-    },
-    ravi: {
-        back: "text-gray-900",
-        cover: "text-gray-700",
-        deco: "text-black dark:text-white",
-        caption: "text-gray-900 dark:text-gray-100",
-        bg: "bg-gray-200 dark:bg-gray-800",
-    },
-    durga: {
-        back: "text-green-600",
-        cover: "text-green-500",
-        deco: "text-green-600",
-        caption: "text-green-400 font-mono",
-        bg: "bg-gray-900 dark:bg-black",
-    },
-    nandi: {
-        back: "text-amber-500",
-        cover: "text-amber-400",
-        deco: "text-amber-500",
-        caption: "text-gray-900 dark:text-gray-100",
-        bg: "bg-green-100 dark:bg-green-950",
-    },
+const neutralFolder = { back: "text-muted-foreground", cover: "text-foreground", deco: "text-muted-foreground", caption: "text-foreground", bg: "bg-card" };
+const variantColors: Record<FolderVariant, typeof neutralFolder> = {
+  devi: neutralFolder, rudras: neutralFolder, ardra: neutralFolder,
+  shakti: neutralFolder, kubera: neutralFolder, hari: neutralFolder,
+  ravi: neutralFolder, durga: neutralFolder, nandi: neutralFolder,
 };
 
 // ============================================

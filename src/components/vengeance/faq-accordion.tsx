@@ -13,17 +13,9 @@ export interface FaqAccordionProps extends React.HTMLAttributes<HTMLDivElement> 
   title?: string;
 }
 
-const DEFAULT_ITEMS: FaqItem[] = [
-  { question: "What is Vengeance UI?", answer: "Vengeance UI is a high-performance, dark-mode first component library designed for the next generation of web applications." },
-  { question: "Can I use it with Tailwind CSS?", answer: "Yes! All components are built on top of Tailwind CSS and highly customizable using utility classes." },
-  { question: "Are the components accessible?", answer: "Accessibility is a core focus. We ensure proper ARIA attributes, keyboard navigation, and semantic HTML structure." },
-  { question: "Do I need to install a heavy npm package?", answer: "No. Vengeance UI provides a CLI that lets you copy and paste only the components you need directly into your project." },
-  { question: "Is it compatible with React and Next.js?", answer: "Absolutely. The library is built with React in mind and perfectly supports Next.js Server Components and client-side rendering." },
-];
-
 export function FaqAccordion({
-  items = DEFAULT_ITEMS,
-  title = "Vengeance UI FAQs",
+  items = [],
+  title = "",
   className,
   ...props
 }: FaqAccordionProps) {
@@ -54,7 +46,7 @@ export function FaqAccordion({
                 isActive ? "border-b border-neutral-200 dark:border-neutral-700" : ""
               )}
             >
-              <button
+              <button type="button"
                 className={cn(
                   "flex flex-row items-center justify-start w-full min-h-[60px] py-4 relative m-0 px-4 pl-14 cursor-pointer",
                   "border-l-[6px] md:border-l-[10px] transition-colors duration-200 text-left outline-none text-base md:text-lg",
@@ -64,6 +56,7 @@ export function FaqAccordion({
                 )}
                 onClick={() => toggleItem(index)}
                 aria-expanded={isActive}
+                aria-controls={`faq-answer-${index}`}
               >
                 {/* Plus/Minus Icon */}
                 <span 
@@ -86,7 +79,7 @@ export function FaqAccordion({
                 />
               </button>
 
-              <div 
+              <div id={`faq-answer-${index}`} role="region" aria-hidden={!isActive}
                 className={cn(
                   "grid transition-all duration-300 ease-in-out w-full",
                   "border-l-[6px] md:border-l-[10px]",
