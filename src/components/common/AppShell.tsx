@@ -74,7 +74,7 @@ function NavList({ navs, variant, isHR, isAdmin, onNavigate }: { navs: NavItem[]
             cn(
               "flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-all",
               isActive
-                ? "bg-gradient-to-r from-primary/30 to-primary-glow/15 text-foreground shadow-[0_0_20px_hsl(var(--primary)/0.35)] border border-primary/40"
+                ? "bg-gradient-to-r from-primary/30 to-primary-glow/15 text-foreground shadow-premium border border-primary/40"
                 : "text-muted-foreground hover:bg-white/[0.04] hover:text-foreground"
             )
           }

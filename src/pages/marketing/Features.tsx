@@ -26,7 +26,7 @@ export default function Features() {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {features.map((f, i) => (
           <Card3D key={f.title} delay={i * 0.04}>
-            <div className="h-12 w-12 rounded-xl bg-gradient-primary flex items-center justify-center mb-4 glow-violet">
+            <div className="h-12 w-12 rounded-xl bg-gradient-primary flex items-center justify-center mb-4 shadow-soft">
               <f.icon className="h-6 w-6 text-white" />
             </div>
             <h3 className="text-xl font-semibold mb-2">{f.title}</h3>

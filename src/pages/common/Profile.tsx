@@ -42,7 +42,7 @@ export default function Profile() {
       <div className="container max-w-5xl -mt-20 relative">
         <div className="flex items-end justify-between flex-wrap gap-4 mb-8">
           <div className="flex items-end gap-4">
-            <div className="h-32 w-32 rounded-full border-4 border-primary bg-gradient-primary flex items-center justify-center text-4xl font-bold glow-violet">
+            <div className="h-32 w-32 rounded-full border-4 border-primary bg-gradient-primary flex items-center justify-center text-4xl font-bold shadow-soft">
               {profile.full_name?.[0]?.toUpperCase()}
             </div>
             <div className="pb-2">

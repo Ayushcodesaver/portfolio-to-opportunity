@@ -21,7 +21,7 @@ export default function HowItWorks() {
           <Card3D key={s.n} delay={i * 0.06} className="md:flex md:items-center md:gap-8">
             <div className="flex items-center gap-4 md:w-1/3">
               <span className="text-5xl font-bold text-gradient">{s.n}</span>
-              <div className="h-14 w-14 rounded-xl bg-gradient-primary flex items-center justify-center glow-violet">
+              <div className="h-14 w-14 rounded-xl bg-gradient-primary flex items-center justify-center shadow-soft">
                 <s.icon className="h-7 w-7 text-white" />
               </div>
             </div>

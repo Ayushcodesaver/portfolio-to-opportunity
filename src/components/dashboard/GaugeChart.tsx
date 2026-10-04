@@ -1,8 +1,7 @@
 import { useId } from "react";
 
 /**
- * Half-arc gauge with a violet→magenta→cyan→amber→red spectrum,
- * matching the "Sprint Velocity" style from the reference design.
+ * Monochrome half-arc gauge for live progress.
  */
 export function GaugeChart({
   value,
@@ -42,7 +41,7 @@ export function GaugeChart({
         {/* Track */}
         <path
           d={`M ${thickness / 2} ${cy} A ${radius} ${radius} 0 0 1 ${size - thickness / 2} ${cy}`}
-          stroke="hsl(0 0% 100% / 0.06)"
+          stroke="hsl(var(--border))"
           strokeWidth={thickness}
           fill="none"
           strokeLinecap="round"

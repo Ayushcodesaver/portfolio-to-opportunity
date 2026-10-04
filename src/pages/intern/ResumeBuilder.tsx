@@ -215,7 +215,7 @@ function Inner() {
             <ResumePreview resume={resume} />
           ) : (
             <div className="glass rounded-2xl border border-border/40 p-12 text-center min-h-[600px] flex flex-col items-center justify-center">
-              <div className="p-4 rounded-full bg-gradient-primary mb-5 shadow-[0_10px_30px_-10px_hsl(var(--primary)/0.6)]">
+              <div className="p-4 rounded-full bg-gradient-primary mb-5 shadow-premium">
                 <Sparkles className="h-7 w-7 text-primary-foreground" />
               </div>
               <h3 className="text-xl font-bold mb-2">Your AI-built resume will appear here</h3>

@@ -135,8 +135,8 @@ export default function Landing() {
       {/* HERO */}
       <section className="relative pt-36 md:pt-40 pb-24 md:pb-32">
         <div className="absolute inset-0">
-          <div className="absolute top-32 left-1/4 w-[36rem] h-[36rem] bg-primary/25 rounded-full blur-3xl animate-orb" />
-          <div className="absolute top-48 right-1/4 w-[28rem] h-[28rem] bg-primary-glow/15 rounded-full blur-3xl animate-orb" style={{ animationDelay: "2s" }} />
+          <div className="absolute top-32 left-1/4 w-[36rem] h-[36rem] bg-primary/25 rounded-full blur-3xl " />
+          <div className="absolute top-48 right-1/4 w-[28rem] h-[28rem] bg-primary-glow/15 rounded-full blur-3xl " style={{ animationDelay: "2s" }} />
         </div>
 
         <div className="container relative">
@@ -209,7 +209,7 @@ export default function Landing() {
               >
                 <TiltCard className="h-full">
                   <div className="panel-3d h-full p-6 hover:border-primary/40 transition-colors">
-                    <div className="inline-flex p-3 rounded-xl bg-gradient-primary mb-4 shadow-[0_10px_25px_-10px_hsl(var(--primary)/0.7)]">
+                    <div className="inline-flex p-3 rounded-xl bg-gradient-primary mb-4 shadow-premium">
                       <f.icon className="h-6 w-6 text-primary-foreground" />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">{f.title}</h3>
@@ -240,7 +240,7 @@ export default function Landing() {
                 transition={{ delay: i * 0.08 }}
                 className="relative flex flex-col items-center text-center"
               >
-                <div className="relative h-16 w-16 rounded-full bg-gradient-primary flex items-center justify-center text-primary-foreground font-bold text-lg shadow-[0_0_30px_-5px_hsl(var(--primary)/0.6)] mb-4">
+                <div className="relative h-16 w-16 rounded-full bg-gradient-primary flex items-center justify-center text-primary-foreground font-bold text-lg shadow-premium mb-4">
                   <span className="absolute inset-0 rounded-full border border-primary/50 animate-pulse-glow" />
                   {s.n}
                 </div>
@@ -341,8 +341,8 @@ export default function Landing() {
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
             className="glass-strong rounded-3xl p-10 md:p-16 text-center max-w-4xl mx-auto relative overflow-hidden border-primary/30"
           >
-            <div className="absolute -top-24 -right-24 w-72 h-72 bg-primary/30 rounded-full blur-3xl animate-orb" />
-            <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-primary-glow/20 rounded-full blur-3xl animate-orb" style={{ animationDelay: "3s" }} />
+            <div className="absolute -top-24 -right-24 w-72 h-72 bg-primary/30 rounded-full blur-3xl " />
+            <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-primary-glow/20 rounded-full blur-3xl " style={{ animationDelay: "3s" }} />
             <div className="relative">
               <h2 className="text-3xl md:text-5xl font-bold mb-4">
                 Ready to Start Your <span className="text-gradient">Journey?</span>
