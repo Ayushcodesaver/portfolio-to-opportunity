@@ -151,7 +151,7 @@ export default function Pricing() {
               initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
               className="mt-8 max-w-xl mx-auto glass-strong rounded-2xl px-5 py-4 border border-primary/30 flex items-center gap-4"
             >
-              <div className="p-2 rounded-lg bg-gradient-primary shadow-[0_8px_20px_-8px_hsl(var(--primary)/0.7)]">
+              <div className="p-2 rounded-lg bg-gradient-primary shadow-premium">
                 <Shield className="h-5 w-5 text-primary-foreground" />
               </div>
               <div className="flex-1 min-w-0">
@@ -190,9 +190,9 @@ export default function Pricing() {
                   <TiltCard className="h-full" max={popular ? 7 : 4}>
                     <div className={`relative h-full rounded-2xl p-7 flex flex-col transition-all ${
                       isActive
-                        ? "panel-3d border-2 border-primary shadow-[0_0_70px_-10px_hsl(var(--primary)/0.6)]"
+                        ? "panel-3d border-2 border-primary shadow-premium"
                         : popular
-                        ? "panel-3d border-2 border-primary/60 shadow-[0_0_60px_-10px_hsl(var(--primary)/0.4)]"
+                        ? "panel-3d border-2 border-primary/60 shadow-premium"
                         : "glass border border-border/40"
                     }`}>
                       {isActive ? (
@@ -200,12 +200,12 @@ export default function Pricing() {
                           Your plan
                         </div>
                       ) : popular && (
-                        <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-gradient-primary text-primary-foreground text-[10px] uppercase tracking-wider font-bold shadow-[0_8px_20px_-5px_hsl(var(--primary)/0.6)]">
+                        <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-gradient-primary text-primary-foreground text-[10px] uppercase tracking-wider font-bold shadow-premium">
                           Most Popular
                         </div>
                       )}
 
-                      <div className="inline-flex p-3 rounded-xl bg-gradient-primary mb-5 self-start shadow-[0_10px_25px_-10px_hsl(var(--primary)/0.7)]">
+                      <div className="inline-flex p-3 rounded-xl bg-gradient-primary mb-5 self-start shadow-premium">
                         <Icon className="h-6 w-6 text-primary-foreground" />
                       </div>
 

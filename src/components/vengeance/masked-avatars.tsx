@@ -22,16 +22,8 @@ export interface MaskedAvatarsProps {
     className?: string
 }
 
-const defaultAvatars: Avatar[] = [
-    { avatar: "https://i.pravatar.cc/150?u=a", name: "Garou" },
-    { avatar: "https://i.pravatar.cc/150?u=b", name: "Johan" },
-    { avatar: "https://i.pravatar.cc/150?u=c", name: "Light Yagami" },
-    { avatar: "https://i.pravatar.cc/150?u=d", name: "Vegeta" },
-    { avatar: "https://i.pravatar.cc/150?u=e", name: "Light Yagami" },
-]
-
 export function MaskedAvatars({
-    avatars = defaultAvatars,
+    avatars = [],
     size = 70,
     border = 8,
     column = 40,

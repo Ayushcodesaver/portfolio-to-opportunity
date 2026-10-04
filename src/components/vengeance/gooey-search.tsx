@@ -141,6 +141,8 @@ function InfoSvgIcon({ index }: { index: number }) {
 export interface GooeySearchProps {
   /** Strings to search locally. Ignored when `onSearch` is provided. */
   items?: string[];
+  value?: string;
+  onValueChange?: (value: string) => void;
   /** Async/sync custom search function for external data sources. */
   onSearch?: (query: string) => Promise<string[]> | string[];
   /** Input placeholder text. */
@@ -161,6 +163,8 @@ export interface GooeySearchProps {
 
 export function GooeySearch({
   items = [],
+  value,
+  onValueChange,
   onSearch,
   placeholder = "Type to search...",
   buttonLabel = "Search",
@@ -179,7 +183,7 @@ export function GooeySearch({
   const [isLoading, setIsLoading] = useState(false);
 
   const isUnsupported = useMemo(() => detectUnsupportedBrowser(), []);
-  const debouncedQuery = useDebounce(searchText, debounceMs);
+  const debouncedQuery = useDebounce(value ?? searchText, debounceMs);
 
   // Step only ever advances 1 -> 2, so the effect's sole job is to focus the
   // freshly-mounted input. Nothing to reset here.
@@ -232,7 +236,7 @@ export function GooeySearch({
           transform-origin: center center;
         }
         @keyframes gooeySearchSpin { to { transform: rotate(180deg); } }
-        .gooey-search-input::placeholder { color: var(--background); opacity: 0.55; }
+        .gooey-search-input::placeholder { color: hsl(var(--muted-foreground)); opacity: 0.55; }
       `}</style>
 
       {/* SVG gooey filter — zero size, no layout impact */}
@@ -264,7 +268,7 @@ export function GooeySearch({
         <AnimatePresence mode="popLayout">
           <motion.div
             key="results-wrapper"
-            role="listbox"
+            role="region"
             aria-label="Search results"
             style={{ position: "relative", zIndex: -1 }}
             exit={{ scale: 0, opacity: 0 }}
@@ -274,7 +278,7 @@ export function GooeySearch({
               {results.map((item, index) => (
                 <motion.div
                   key={item}
-                  role="option"
+                  role="button"
                   tabIndex={0}
                   onClick={() => onSelect?.(item)}
                   onKeyDown={(e) => e.key === "Enter" && onSelect?.(item)}
@@ -285,11 +289,11 @@ export function GooeySearch({
                   exit="exit"
                   transition={getResultTransition(index)}
                   style={{
-                    backgroundColor: "var(--foreground)",
+                    backgroundColor: "hsl(var(--foreground))",
                     borderRadius: 40,
                     padding: resultPadding,
                     width: "100%",
-                    color: "var(--background)",
+                    color: "hsl(var(--background))",
                     position: "absolute",
                     left: isUnsupported ? 0 : -30,
                     fontSize: 14,
@@ -320,13 +324,15 @@ export function GooeySearch({
           animate={step === 1 ? "step1" : "step2"}
           transition={{ duration: 0.75, type: "spring", bounce: 0.15 }}
           onClick={() => step === 1 && setStep(2)}
+          onKeyDown={(e) => { if (step === 1 && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); setStep(2); } }}
+          tabIndex={step === 1 ? 0 : -1}
           whileHover={{ scale: step === 2 ? 1 : 1.05 }}
           whileTap={{ scale: 0.95 }}
           role={step === 1 ? "button" : undefined}
           aria-label={step === 1 ? "Open search" : undefined}
           style={{
-            backgroundColor: "var(--foreground)",
-            color: "var(--background)",
+            backgroundColor: "hsl(var(--foreground))",
+            color: "hsl(var(--background))",
             cursor: "pointer",
             letterSpacing: -0.5,
             outline: "none",
@@ -342,7 +348,7 @@ export function GooeySearch({
                 textAlign: "center",
                 position: "relative",
                 left: 4,
-                color: "var(--background)",
+                color: "hsl(var(--background))",
                 opacity: 0.72,
                 fontSize: 14,
                 display: "block",
@@ -357,13 +363,14 @@ export function GooeySearch({
               className="gooey-search-input"
               placeholder={placeholder}
               aria-label="Search input"
-              onChange={(e) => setSearchText(e.target.value)}
+              value={value ?? searchText}
+              onChange={(e) => (onValueChange ? onValueChange(e.target.value) : setSearchText(e.target.value))}
               style={{
                 width: "100%",
                 backgroundColor: "transparent",
                 outline: "none",
                 border: "none",
-                color: "var(--background)",
+                color: "hsl(var(--background))",
                 fontSize: 14,
               }}
             />
@@ -382,7 +389,7 @@ export function GooeySearch({
               transition={{ delay: 0.1, duration: 0.85, type: "spring", bounce: 0.15 }}
               style={{
                 position: "absolute",
-                backgroundColor: "var(--foreground)",
+                backgroundColor: "hsl(var(--foreground))",
                 width: isUnsupported ? 36 : 46,
                 height: isUnsupported ? 36 : 46,
                 right: -5,
@@ -391,7 +398,7 @@ export function GooeySearch({
                 justifyContent: "center",
                 alignItems: "center",
                 borderRadius: 9999,
-                color: "var(--background)",
+                color: "hsl(var(--background))",
               }}
             >
               {isLoading ? <LoadingSvgIcon /> : <SearchSvgIcon isUnsupported={isUnsupported} />}

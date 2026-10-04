@@ -118,12 +118,12 @@ function ArrowCursor({
         className={cn(
           "ml-2.5 -mt-1 px-2.5 py-1 text-[12px] font-semibold tracking-[-0.04em] sm:ml-3 sm:px-3 sm:text-[14px] lg:ml-4 lg:px-4 lg:py-1.5 lg:text-[17px]",
           inverted
-            ? "rounded-full bg-[#f2f2f2] text-black shadow-[0_5px_18px_rgba(0,0,0,0.28)]"
+            ? "rounded-full bg-[#f2f2f2] text-black shadow-premium"
             : cn(
                 "rounded-[22px] border border-white/60 bg-[#edff00] text-black",
                 active
-                  ? "shadow-[0_5px_18px_rgba(0,0,0,0.24),0_0_14px_rgba(237,255,0,0.18)]"
-                  : "shadow-[0_5px_18px_rgba(0,0,0,0.22)]",
+                  ? "shadow-premium"
+                  : "shadow-premium",
               ),
         )}
       >
@@ -154,8 +154,8 @@ function Panel({ className, children, ...props }: React.ComponentProps<"section"
       {...props}
       className={cn(
         "relative isolate overflow-hidden rounded-[15px] border border-[#c8c8c4] bg-[#f7f7f5]",
-        "shadow-[inset_0_1px_rgba(255,255,255,0.9),0_12px_32px_rgba(24,24,27,0.08)]",
-        "dark:border-[#292929] dark:bg-[#080808] dark:shadow-[inset_0_1px_rgba(255,255,255,0.02),0_12px_32px_rgba(0,0,0,0.22)]",
+        "shadow-premium",
+        "dark:border-[#292929] dark:bg-[#080808] dark:shadow-premium",
         className,
       )}
     >
@@ -267,9 +267,9 @@ function DesignsPanel({
             aria-label={`Select ${brand.name}`}
             aria-pressed={selected === index}
             className={cn(
-              "relative flex aspect-square min-w-0 flex-1 items-center justify-center overflow-hidden rounded-[9px] border bg-[linear-gradient(145deg,#f2f2f0_0%,#e7e7e4_46%,#dcdcd8_100%)] shadow-[inset_0_1px_rgba(255,255,255,.9),0_12px_24px_rgba(24,24,27,.12)] sm:rounded-[10px] dark:bg-[linear-gradient(145deg,#222_0%,#1a1a1a_48%,#141414_100%)] dark:shadow-[inset_0_1px_rgba(255,255,255,.025),0_10px_22px_rgba(0,0,0,.32)]",
+              "relative flex aspect-square min-w-0 flex-1 items-center justify-center overflow-hidden rounded-[9px] border bg-[linear-gradient(145deg,#f2f2f0_0%,#e7e7e4_46%,#dcdcd8_100%)] shadow-premium sm:rounded-[10px] dark:bg-[linear-gradient(145deg,#222_0%,#1a1a1a_48%,#141414_100%)] dark:shadow-premium",
               selected === index
-                ? "border-[#b5c200]/45 text-[#a9b500] shadow-[inset_0_1px_rgba(255,255,255,.8),0_12px_28px_rgba(24,24,27,.14),0_0_22px_rgba(190,204,0,.12)] dark:border-[#edff00]/15 dark:text-[#edff00] dark:shadow-[inset_0_1px_rgba(255,255,255,.025),0_10px_24px_rgba(0,0,0,.34),0_0_18px_rgba(237,255,0,.045)]"
+                ? "border-[#b5c200]/45 text-[#a9b500] shadow-premium dark:border-[#edff00]/15 dark:text-[#edff00] dark:shadow-premium"
                 : "border-black/[0.11] text-zinc-800 dark:border-white/[0.055] dark:text-[#e8e8e8]",
             )}
             animate={reduceMotion ? undefined : {
@@ -353,7 +353,7 @@ function InvoicePanel({ monthlyPrice, previousPrice, currency, locale, autoPlay,
         <AnimatePresence initial={false} mode="wait">
           <motion.div
             key={invoiceIndex}
-            className="absolute left-[21%] top-5 h-[225px] w-[58%] overflow-hidden rounded-[10px] border border-black/[0.16] bg-[linear-gradient(145deg,#f5f5f2_0%,#eaeae6_46%,#dededa_100%)] p-3.5 shadow-[inset_0_1px_rgba(255,255,255,.9),0_18px_42px_rgba(24,24,27,.14),0_3px_8px_rgba(24,24,27,.08)] sm:left-auto sm:right-4 sm:h-[250px] sm:w-[89%] dark:border-[#343434]/80 dark:bg-[linear-gradient(145deg,#1c1c1c_0%,#161616_48%,#101010_100%)] dark:shadow-[inset_0_1px_rgba(255,255,255,.02),0_16px_36px_rgba(0,0,0,.38),0_3px_8px_rgba(0,0,0,.25)] @min-[520px]:right-7 @min-[520px]:p-5"
+            className="absolute left-[21%] top-5 h-[225px] w-[58%] overflow-hidden rounded-[10px] border border-black/[0.16] bg-[linear-gradient(145deg,#f5f5f2_0%,#eaeae6_46%,#dededa_100%)] p-3.5 shadow-premium sm:left-auto sm:right-4 sm:h-[250px] sm:w-[89%] dark:border-[#343434]/80 dark:bg-[linear-gradient(145deg,#1c1c1c_0%,#161616_48%,#101010_100%)] dark:shadow-premium @min-[520px]:right-7 @min-[520px]:p-5"
             initial={reduceMotion ? false : { y: 270, opacity: 0, rotate: -1.25 }}
             animate={{ y: 0, opacity: 1, rotate: 0 }}
             exit={reduceMotion ? { opacity: 0 } : { y: 285, opacity: 0, rotate: 1.1 }}
@@ -507,8 +507,8 @@ function PausePanel({
           className={cn(
             "relative z-10 flex h-[78px] min-w-[174px] items-center justify-center overflow-hidden rounded-[20px] border bg-gradient-to-br from-white to-[#deded9] px-8 text-[28px] font-semibold tracking-[-0.055em] transition-[border-color,color,box-shadow] duration-500 dark:from-[#181818] dark:to-[#0d0d0d]",
             arrowLit
-              ? "border-[#edff00] text-[#050505] shadow-[0_10px_24px_rgba(24,24,27,.12)] dark:border-[#edff00] dark:text-[#050505] dark:shadow-[0_10px_24px_rgba(0,0,0,.28)]"
-              : "border-black/[0.18] text-zinc-950 shadow-[inset_0_1px_rgba(255,255,255,.9),0_12px_38px_rgba(24,24,27,.14)] dark:border-white/[0.14] dark:text-[#f1f1f1] dark:shadow-[inset_0_1px_rgba(255,255,255,.035),0_10px_30px_rgba(0,0,0,.32)]",
+              ? "border-[#edff00] text-[#050505] shadow-premium dark:border-[#edff00] dark:text-[#050505] dark:shadow-premium"
+              : "border-black/[0.18] text-zinc-950 shadow-premium dark:border-white/[0.14] dark:text-[#f1f1f1] dark:shadow-premium",
           )}
           aria-pressed={paused}
         >

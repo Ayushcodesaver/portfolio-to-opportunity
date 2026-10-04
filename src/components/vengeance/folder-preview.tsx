@@ -558,7 +558,7 @@ const HariFolder: React.FC<{
         <div className="relative">
             {/* Feedback Circle */}
             <motion.div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-sky-500"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-secondary"
                 initial={{ opacity: 0, scale: 1 }}
                 animate={
                     isHovered ? { opacity: [1, 0], scale: [1, 15] } : { opacity: 0, scale: 1 }
@@ -928,27 +928,8 @@ export const FolderPreview = React.forwardRef<HTMLDivElement, FolderPreviewProps
         const colors = variantColors[variant];
         const sizes = sizeConfig[size];
 
-        const defaultImages = [
-            "/folder-preview/user1.svg",
-            "/folder-preview/user2.svg",
-            "/folder-preview/user3.svg",
-            "/folder-preview/user4.svg",
-            "/folder-preview/user5.svg",
-        ];
-
-        const defaultFiles = [
-            { name: "docs", type: "default" as const },
-            { name: "template", type: "default" as const },
-            { name: "readme.md", type: "txt" as const },
-            { name: "app.js", type: "txt" as const },
-            { name: "test.sh", type: "txt" as const },
-            { name: "package.json", type: "txt" as const },
-            { name: "logo.svg", type: "default" as const },
-            { name: "...", type: "default" as const },
-        ];
-
-        const imageList = images.length > 0 ? images : defaultImages;
-        const fileList = files.length > 0 ? files : defaultFiles;
+        const imageList = images;
+        const fileList = files;
 
         const renderFolder = () => {
             const props = { isHovered, colors, sizes, label };

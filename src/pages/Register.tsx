@@ -91,8 +91,8 @@ export default function Register() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-12 relative overflow-hidden bg-background">
-      <div className="absolute top-1/4 left-1/4 w-[28rem] h-[28rem] bg-primary/25 rounded-full blur-3xl animate-orb" />
-      <div className="absolute bottom-1/4 right-1/4 w-[24rem] h-[24rem] bg-primary-glow/15 rounded-full blur-3xl animate-orb" style={{ animationDelay: "3s" }} />
+      <div className="absolute top-1/4 left-1/4 w-[28rem] h-[28rem] bg-primary/25 rounded-full blur-3xl " />
+      <div className="absolute bottom-1/4 right-1/4 w-[24rem] h-[24rem] bg-primary-glow/15 rounded-full blur-3xl " style={{ animationDelay: "3s" }} />
 
       <motion.div
         initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
@@ -108,7 +108,7 @@ export default function Register() {
                 <motion.div
                   animate={{ scale: step === n ? 1.05 : 1 }}
                   className={`h-10 w-10 rounded-full flex items-center justify-center text-sm font-semibold transition-colors ${
-                    step >= n ? "bg-gradient-primary text-primary-foreground shadow-[0_0_20px_-3px_hsl(var(--primary)/0.7)]" : "bg-muted text-muted-foreground"
+                    step >= n ? "bg-gradient-primary text-primary-foreground shadow-premium" : "bg-muted text-muted-foreground"
                   }`}
                 >
                   {step > n ? <Check className="h-4 w-4" /> : n}

@@ -113,7 +113,7 @@ export default function InternDashboard() {
       />
 
       {/* Timeline progress with gradient + glow milestones */}
-      <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="panel-3d-violet p-6">
+      <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="panel-premium p-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <Calendar className="h-4 w-4 text-primary-glow" />
@@ -128,7 +128,7 @@ export default function InternDashboard() {
           />
           {milestones.map((m) => (
             <div key={m} className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2" style={{ left: `${m}%` }}>
-              <div className={`h-4 w-4 rounded-full border-2 ${pct >= m ? "bg-primary border-primary glow-violet" : "bg-background border-border"}`} />
+              <div className={`h-4 w-4 rounded-full border-2 ${pct >= m ? "bg-primary border-primary shadow-soft" : "bg-background border-border"}`} />
             </div>
           ))}
         </div>

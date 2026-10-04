@@ -244,7 +244,7 @@ export function TeamRevealGrid({
                   <div
                     style={{ "--team-accent": member.accent ?? "hsl(var(--foreground))" } as React.CSSProperties}
                     className={cn(
-                      "relative overflow-hidden rounded-[1.35rem] border bg-white p-1.5 shadow-[0_10px_35px_-24px_rgba(0,0,0,0.42)] transition-[border-color,box-shadow,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none dark:bg-neutral-900",
+                      "relative overflow-hidden rounded-[1.35rem] border bg-white p-1.5 shadow-premium transition-[border-color,box-shadow,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none dark:bg-neutral-900",
                       active
                         ? "-translate-y-1 border-[color-mix(in_srgb,var(--team-accent)_55%,transparent)] shadow-[0_22px_48px_-28px_color-mix(in_srgb,var(--team-accent)_55%,transparent)]"
                         : "border-black/10 dark:border-white/10",

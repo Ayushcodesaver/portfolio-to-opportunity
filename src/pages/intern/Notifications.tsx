@@ -60,7 +60,7 @@ export default function Notifications() {
                 {n.body && <p className="text-xs text-muted-foreground">{n.body}</p>}
                 <p className="text-xs text-muted-foreground mt-1">{formatDistanceToNow(new Date(n.created_at), { addSuffix: true })}</p>
               </div>
-              {!n.is_read && <span className="h-2 w-2 rounded-full bg-primary self-center shadow-[0_0_8px_hsl(var(--primary))]" />}
+              {!n.is_read && <span className="h-2 w-2 rounded-full bg-primary self-center shadow-premium" />}
             </div>
           ))}
         </div>

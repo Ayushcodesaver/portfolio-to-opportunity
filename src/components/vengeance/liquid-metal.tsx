@@ -121,7 +121,7 @@ export const LiquidMetalButton = forwardRef<
                 {...props}
             >
                 <div
-                    className="relative rounded-full overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.25)]"
+                    className="relative rounded-full overflow-hidden shadow-premium"
                     style={{ padding: borderWidth }}
                 >
                     {/* Liquid Metal Border Layer */}
@@ -150,7 +150,7 @@ export const LiquidMetalButton = forwardRef<
                                 className={cn(
                                     "rounded-full flex items-center justify-center",
                                     "bg-neutral-100 dark:bg-neutral-800",
-                                    "shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)]",
+                                    "shadow-premium",
                                     iconSizes[size]
                                 )}
                             >

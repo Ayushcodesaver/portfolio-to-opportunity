@@ -31,7 +31,7 @@ export default function Support() {
         <div className="grid sm:grid-cols-2 gap-5">
           {channels.map((c, i) => (
             <Card3D key={c.title} delay={i * 0.05}>
-              <div className="h-11 w-11 rounded-xl bg-gradient-primary flex items-center justify-center mb-3 glow-violet">
+              <div className="h-11 w-11 rounded-xl bg-gradient-primary flex items-center justify-center mb-3 shadow-soft">
                 <c.icon className="h-5 w-5 text-white" />
               </div>
               <h3 className="font-semibold mb-1">{c.title}</h3>
@@ -55,7 +55,7 @@ export default function Support() {
               <Input type="email" placeholder="Email" required className="bg-background/50" />
               <Input placeholder="Subject" required className="bg-background/50" />
               <Textarea placeholder="How can we help?" rows={5} required className="bg-background/50" />
-              <Button type="submit" className="w-full bg-gradient-primary glow-violet">Send message</Button>
+              <Button type="submit" className="w-full bg-gradient-primary shadow-soft">Send message</Button>
             </form>
           )}
         </Card3D>

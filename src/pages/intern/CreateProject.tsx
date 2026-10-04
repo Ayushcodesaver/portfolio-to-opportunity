@@ -186,7 +186,7 @@ export default function CreateProject() {
           </div>
 
           <div className="glass rounded-xl p-6 space-y-2">
-            <Button onClick={() => submit("pending")} disabled={submitting} className="w-full bg-gradient-primary glow-violet">
+            <Button onClick={() => submit("pending")} disabled={submitting} className="w-full bg-gradient-primary shadow-soft">
               {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : "Submit for review"}
             </Button>
             <Button onClick={() => submit("draft")} disabled={submitting} variant="outline" className="w-full border-border">

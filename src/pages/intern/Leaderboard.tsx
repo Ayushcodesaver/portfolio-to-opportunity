@@ -87,10 +87,10 @@ export default function Leaderboard() {
                     className="flex flex-col items-center"
                   >
                     <div className={`${heights[rank]} w-full panel-3d p-3 flex flex-col items-center justify-end relative ${
-                      rank === 1 ? "border-yellow-400/50 shadow-[0_0_40px_-10px_rgba(251,208,124,0.5)]" : ""
+                      rank === 1 ? "border-border shadow-premium" : ""
                     }`}>
                       <Icon className={`h-5 w-5 absolute top-2 ${
-                        rank === 1 ? "text-yellow-400" : rank === 2 ? "text-gray-300" : "text-orange-400"
+                        rank === 1 ? "text-muted-foreground" : rank === 2 ? "text-gray-300" : "text-muted-foreground"
                       }`} />
                       {r.profile?.avatar_url ? (
                         <img src={r.profile.avatar_url} alt="" className={`h-12 w-12 md:h-14 md:w-14 rounded-full object-cover ring-2 ${ringColor[rank]} mb-2`} />
@@ -159,10 +159,10 @@ export default function Leaderboard() {
         <div className="space-y-4">
           <div className="glass rounded-xl p-5">
             <div className="flex items-center gap-2 mb-3">
-              <Flame className="h-5 w-5 text-orange-400" />
+              <Flame className="h-5 w-5 text-muted-foreground" />
               <h3 className="font-semibold">Your streak</h3>
             </div>
-            <div className="text-4xl font-bold text-orange-400">{streak?.current_streak ?? 0} <span className="text-sm text-muted-foreground font-normal">days</span></div>
+            <div className="text-4xl font-bold text-muted-foreground">{streak?.current_streak ?? 0} <span className="text-sm text-muted-foreground font-normal">days</span></div>
             <p className="text-xs text-muted-foreground mt-1">Longest: {streak?.longest_streak ?? 0} days</p>
           </div>
 

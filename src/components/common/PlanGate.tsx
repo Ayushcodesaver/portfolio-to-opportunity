@@ -41,8 +41,8 @@ export function PlanGate({ feature, min, title, description, children, fallback,
         initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
         className={`${soft ? "absolute inset-0" : ""} flex items-center justify-center p-6`}
       >
-        <div className="glass-strong rounded-2xl p-6 max-w-md text-center border border-primary/30 shadow-[0_0_60px_-15px_hsl(var(--primary)/0.5)]">
-          <div className="inline-flex p-3 rounded-xl bg-gradient-primary mb-4 shadow-[0_8px_25px_-8px_hsl(var(--primary)/0.7)]">
+        <div className="glass-strong rounded-2xl p-6 max-w-md text-center border border-primary/30 shadow-premium">
+          <div className="inline-flex p-3 rounded-xl bg-gradient-primary mb-4 shadow-premium">
             <Lock className="h-5 w-5 text-primary-foreground" />
           </div>
           <h3 className="text-lg font-bold mb-1">{title ?? `${LABEL[need]} feature`}</h3>

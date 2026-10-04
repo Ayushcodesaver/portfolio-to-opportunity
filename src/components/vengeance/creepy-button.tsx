@@ -139,8 +139,8 @@ export const CreepyButton = ({
             {/* Button Cover */}
             <motion.span
                 className={cn(
-                    "absolute inset-0 block rounded-xl bg-blue-500 text-white font-bold tracking-wider",
-                    "shadow-[inset_0_0_0_0.125em_rgba(0,0,0,1)]",
+                    "absolute inset-0 block rounded-xl bg-secondary text-white font-bold tracking-wider",
+                    "shadow-premium",
                     "flex items-center justify-center px-4 py-2",
                     "origin-[1.25em_50%]",
                     coverClassName

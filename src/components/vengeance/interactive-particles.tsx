@@ -244,7 +244,7 @@ export function InteractiveParticles({
   allowUpload = true,
   uploadLabel = "Upload image",
   onUpload,
-  maxDimension = 320,
+  maxDimension = 128,
   className,
   background = "#000000",
   color = "#ffffff",

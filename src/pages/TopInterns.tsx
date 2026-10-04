@@ -87,10 +87,10 @@ export default function TopInterns() {
                   >
                     <TiltCard className="w-full" max={4}>
                       <div className={`panel-3d ${heights[rank]} w-full p-4 md:p-5 flex flex-col items-center justify-end relative ${
-                        rank === 1 ? "border-yellow-400/50 shadow-[0_0_60px_-10px_rgba(251,208,124,0.5)]" : ""
+                        rank === 1 ? "border-border shadow-premium" : ""
                       }`}>
                         <Icon className={`h-7 w-7 md:h-9 md:w-9 absolute top-3 ${
-                          rank === 1 ? "text-yellow-400" : rank === 2 ? "text-gray-300" : "text-orange-400"
+                          rank === 1 ? "text-muted-foreground" : rank === 2 ? "text-gray-300" : "text-muted-foreground"
                         }`} />
                         {r.profile?.avatar_url ? (
                           <img src={r.profile.avatar_url} alt="" className={`h-16 w-16 md:h-20 md:w-20 rounded-full object-cover ring-4 ${ringColor[rank]} mb-3`} />
@@ -106,9 +106,9 @@ export default function TopInterns() {
                       </div>
                     </TiltCard>
                     <div className={`mt-3 px-4 py-1 rounded-full text-xs font-bold ${
-                      rank === 1 ? "bg-yellow-400/20 text-yellow-400" :
+                      rank === 1 ? "bg-secondary text-muted-foreground" :
                       rank === 2 ? "bg-gray-300/20 text-gray-300" :
-                      "bg-orange-400/20 text-orange-400"
+                      "bg-secondary text-muted-foreground"
                     }`}>#{rank}</div>
                   </motion.div>
                 );

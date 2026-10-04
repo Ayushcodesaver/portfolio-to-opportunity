@@ -44,7 +44,7 @@ export function MarketingLayout({ eyebrow, title, subtitle, children }: Marketin
             ) : (
               <>
                 <Button variant="ghost" onClick={() => navigate("/login")} className="hidden sm:inline-flex">Sign in</Button>
-                <Button onClick={() => navigate("/register")} className="bg-gradient-primary hover:opacity-90 glow-violet">Join</Button>
+                <Button onClick={() => navigate("/register")} className="bg-gradient-primary hover:opacity-90 shadow-soft">Join</Button>
               </>
             )}
             {/* Mobile menu */}
@@ -80,8 +80,8 @@ export function MarketingLayout({ eyebrow, title, subtitle, children }: Marketin
 
       {/* HERO */}
       <section className="relative pt-36 pb-16 overflow-hidden">
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-3xl animate-orb" />
-        <div className="absolute top-40 right-1/4 w-96 h-96 bg-primary-glow/20 rounded-full blur-3xl animate-orb" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-20 left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-3xl " />
+        <div className="absolute top-40 right-1/4 w-96 h-96 bg-primary-glow/20 rounded-full blur-3xl " style={{ animationDelay: "2s" }} />
 
         <div className="container relative">
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-6 transition-colors">

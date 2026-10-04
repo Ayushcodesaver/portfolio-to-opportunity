@@ -161,8 +161,8 @@ export default function BlogPost() {
         </div>
       </nav>
 
-      <div className="absolute top-20 left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-3xl animate-orb pointer-events-none" />
-      <div className="absolute top-40 right-1/4 w-96 h-96 bg-primary-glow/20 rounded-full blur-3xl animate-orb pointer-events-none" style={{ animationDelay: "2s" }} />
+      <div className="absolute top-20 left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-3xl  pointer-events-none" />
+      <div className="absolute top-40 right-1/4 w-96 h-96 bg-primary-glow/20 rounded-full blur-3xl  pointer-events-none" style={{ animationDelay: "2s" }} />
 
       <div className="container relative pt-32 pb-20" style={{ perspective: "1500px" }}>
         <div className="grid lg:grid-cols-[1fr_280px] gap-10">

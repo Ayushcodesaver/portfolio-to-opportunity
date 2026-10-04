@@ -21,7 +21,7 @@ export default function Guides() {
         {guides.map((g, i) => (
           <Card3D key={g.title} delay={i * 0.05}>
             <div className="flex items-start gap-4">
-              <div className="h-12 w-12 rounded-xl bg-gradient-primary flex items-center justify-center shrink-0 glow-violet">
+              <div className="h-12 w-12 rounded-xl bg-gradient-primary flex items-center justify-center shrink-0 shadow-soft">
                 <BookOpen className="h-6 w-6 text-white" />
               </div>
               <div className="flex-1">
