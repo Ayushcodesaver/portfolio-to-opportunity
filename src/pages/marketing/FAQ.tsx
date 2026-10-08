@@ -1,9 +1,9 @@
 import { MarketingLayout } from "@/components/marketing/MarketingLayout";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { FaqAccordion } from "@/components/vengeance/faq-accordion";
 import { motion } from "framer-motion";
 
 const faqs = [
-  { q: "What is Xebure?", a: "Xebure is a complete internship management system: timeline tracks, daily tasks, real-time notifications, AI assistance, evaluations, and a public portfolio — all in one violet-and-black platform." },
+  { q: "What is Xebure?", a: "Xebure is a complete internship management system: timeline tracks, daily tasks, real-time notifications, AI assistance, evaluations, and a public portfolio — all in one focused, monochrome workspace." },
   { q: "Who is Xebure for?", a: "Interns, HR teams, and admins. Interns ship work and build portfolios. HR runs programs, reviews submissions, and evaluates. Admins moderate content and manage users." },
   { q: "How long are the internship programs?", a: "HR can configure programs for 30, 60, or 90 days (or any custom length). Visual milestones unlock at 25%, 50%, 75%, and 100% progress." },
   { q: "Is my data private?", a: "Yes. Every table uses row-level security, so users only see what they're allowed to see. Interns see their own data; HR sees their cohort; admins see the platform." },
@@ -20,20 +20,8 @@ export default function FAQ() {
       title="Questions, answered."
       subtitle="Everything you wanted to know about Xebure but were too busy shipping to ask."
     >
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="max-w-3xl mx-auto glass rounded-2xl p-6 md:p-10"
-        style={{ transformStyle: "preserve-3d" }}
-      >
-        <Accordion type="single" collapsible className="w-full">
-          {faqs.map((f, i) => (
-            <AccordionItem key={i} value={`item-${i}`} className="border-border/50">
-              <AccordionTrigger className="text-left hover:text-primary">{f.q}</AccordionTrigger>
-              <AccordionContent className="text-muted-foreground">{f.a}</AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl mx-auto">
+        <FaqAccordion items={faqs.map(({ q, a }) => ({ question: q, answer: a }))} title="Xebure support" />
       </motion.div>
     </MarketingLayout>
   );

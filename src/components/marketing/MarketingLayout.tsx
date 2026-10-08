@@ -67,7 +67,7 @@ export function MarketingLayout({ eyebrow, title, subtitle, children }: Marketin
                     ["Privacy", "/privacy"],
                     ["Terms", "/terms"],
                   ].map(([label, href]) => (
-                    <Link key={href} to={href} className="px-3 py-3 rounded-lg text-sm hover:bg-primary/10 hover:text-primary-glow transition-colors">
+                    <Link key={href} to={href} className="px-3 py-3 rounded-lg text-sm hover:bg-primary/10 hover:text-foreground transition-colors">
                       {label}
                     </Link>
                   ))}
@@ -80,8 +80,6 @@ export function MarketingLayout({ eyebrow, title, subtitle, children }: Marketin
 
       {/* HERO */}
       <section className="relative pt-36 pb-16 overflow-hidden">
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-3xl " />
-        <div className="absolute top-40 right-1/4 w-96 h-96 bg-primary-glow/20 rounded-full blur-3xl " style={{ animationDelay: "2s" }} />
 
         <div className="container relative">
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-6 transition-colors">
@@ -93,7 +91,7 @@ export function MarketingLayout({ eyebrow, title, subtitle, children }: Marketin
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-primary/30 text-xs uppercase tracking-wider text-primary-glow mb-5"
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-primary/30 text-xs uppercase tracking-wider text-foreground mb-5"
               >
                 {eyebrow}
               </motion.div>
@@ -165,7 +163,7 @@ export function MarketingLayout({ eyebrow, title, subtitle, children }: Marketin
   );
 }
 
-/** 3D tilting card with violet glow on hover */
+/** Restrained elevated content card. */
 export function Card3D({ children, className = "", delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
   return (
     <motion.div
@@ -175,9 +173,9 @@ export function Card3D({ children, className = "", delay = 0 }: { children: Reac
       transition={{ duration: 0.5, delay }}
       whileHover={{ rotateX: 4, rotateY: -4, translateY: -6 }}
       style={{ transformStyle: "preserve-3d", transformPerspective: 1000 }}
-      className={`glass rounded-2xl p-6 border border-primary/10 hover:border-primary/40 transition-colors relative group ${className}`}
+      className={`glass rounded-lg p-6 border border-primary/10 hover:border-primary/40 transition-colors relative group ${className}`}
     >
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+      <div className="absolute inset-0 rounded-lg bg-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
       <div className="relative" style={{ transform: "translateZ(20px)" }}>{children}</div>
     </motion.div>
   );

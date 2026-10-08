@@ -77,7 +77,7 @@ export default function Leaderboard() {
                 const rank = r === podium[0] ? 1 : r === podium[1] ? 2 : 3;
                 const heights = { 1: "h-44 md:h-52", 2: "h-36 md:h-40", 3: "h-32 md:h-36" } as const;
                 const Icon = rank === 1 ? Crown : rank === 2 ? Trophy : Medal;
-                const ringColor = { 1: "ring-yellow-400", 2: "ring-gray-300", 3: "ring-orange-400" } as const;
+                const ringColor = { 1: "ring-foreground", 2: "ring-muted-foreground", 3: "ring-border" } as const;
                 return (
                   <motion.div
                     key={r.user_id}

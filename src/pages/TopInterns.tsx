@@ -75,7 +75,7 @@ export default function TopInterns() {
               {podiumOrder.map((r: any, idx) => {
                 const rank = r === podium[0] ? 1 : r === podium[1] ? 2 : 3;
                 const heights = { 1: "h-72 md:h-80", 2: "h-56 md:h-64", 3: "h-48 md:h-56" } as const;
-                const ringColor = { 1: "ring-yellow-400", 2: "ring-gray-300", 3: "ring-orange-400" } as const;
+                const ringColor = { 1: "ring-foreground", 2: "ring-muted-foreground", 3: "ring-border" } as const;
                 const Icon = rank === 1 ? Crown : rank === 2 ? Trophy : Medal;
                 return (
                   <motion.div

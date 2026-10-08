@@ -1,9 +1,10 @@
 # XEBURE Roadmap
 
 ## In Progress
-- [ ] Complete premium monochrome Xebure redesign and integrate VengeanceUI components across real workflows.
+
 
 ## Recently Done
+- [x] Premium monochrome Xebure redesign with real-data component integrations and startup sequence.
 - [x] HR resume list `/hr/resumes`: search + role/date filters + per-row signed-URL download.
 - [x] Student profile page `/my-profile`: name, contact email, phone, role — visible to HR.
 - [x] Internship postings `/hr/postings` + student applications `/internships` with resume attached.
