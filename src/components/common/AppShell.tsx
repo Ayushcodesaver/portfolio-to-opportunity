@@ -13,6 +13,8 @@ import { useAuth } from "@/context/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { GooeySearch } from "@/components/vengeance/gooey-search";
+import { MagneticSpotlightMarquee } from "@/components/vengeance/magnetic-spotlight-marquee";
 
 interface NavItem { to: string; label: string; icon: any; }
 
@@ -107,6 +109,7 @@ export function AppShell({ variant }: { variant: "intern" | "hr" | "admin" }) {
   const { user, signOut, isHR, isAdmin } = useAuth();
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const searchItems = navs.map((item) => item.label);
 
   const navs = variant === "hr" ? hrNav : variant === "admin" ? adminNav : internNav;
 
@@ -154,9 +157,19 @@ export function AppShell({ variant }: { variant: "intern" | "hr" | "admin" }) {
       {/* Main */}
       <main className="flex-1 min-w-0 flex flex-col md:my-3 md:mr-3 md:rounded-lg md:glass-strong md:overflow-hidden">
         {/* Desktop top bar */}
-        <header className="hidden md:flex sticky top-0 z-30 items-center justify-end gap-2 px-6 h-14 border-b border-border/50 bg-background/40 backdrop-blur-md">
+        <header className="hidden md:flex sticky top-0 z-30 items-center justify-between gap-4 px-6 h-14 border-b border-border/50 bg-background/80 backdrop-blur-md">
+          <GooeySearch
+            items={searchItems}
+            onSelect={(label) => {
+              const destination = navs.find((item) => item.label === label);
+              if (destination) navigate(destination.to);
+            }}
+            placeholder="Search workspace"
+            buttonLabel="Search"
+          />
           <NotificationBell />
         </header>
+        <MagneticSpotlightMarquee items={["Xebure live", `${variant} workspace`, "Real-time activity", "Secure access"]} />
 
         {/* Mobile top bar */}
         <header className="md:hidden sticky top-0 z-40 flex items-center justify-between gap-3 px-4 h-14 border-b border-border/50 glass-strong">
