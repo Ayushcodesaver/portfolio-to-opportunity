@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   Sparkles, Code2, Layout, MessageCircle, TrendingUp, Award,
-  ArrowRight, Github, Twitter, Linkedin, Menu, Rocket,
+  ArrowRight, Menu, Rocket,
   GraduationCap, Eye,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,7 +15,6 @@ import { GlowButton } from "@/components/fx/GlowButton";
 import { TiltCard } from "@/components/fx/TiltCard";
 import { AnimatedNumber } from "@/components/vengeance/animated-number";
 import TextAnimation from "@/components/vengeance/staggerText";
-import { ScrollDissolveReveal } from "@/components/vengeance/scroll-dissolve-reveal";
 import workspaceImage from "@/assets/xebure-workspace.jpg";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 

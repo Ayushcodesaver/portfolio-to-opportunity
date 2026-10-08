@@ -836,9 +836,9 @@ const NandiFolder: React.FC<{
     label?: string;
 }> = ({ files, isHovered, colors, sizes, label }) => {
     const fileColorMap: Record<string, string> = {
-        txt: "fill-blue-300",
+        txt: "fill-muted-foreground",
         gif: "fill-teal-400",
-        mp3: "fill-amber-400",
+        mp3: "fill-muted-foreground",
         default: "fill-gray-400",
     };
 

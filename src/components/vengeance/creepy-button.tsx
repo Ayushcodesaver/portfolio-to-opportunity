@@ -83,7 +83,7 @@ export const CreepyButton = ({
         <button
             className={cn(
                 "relative min-w-[9em] rounded-xl bg-black cursor-pointer outline-none select-none group tap-highlight-transparent",
-                "focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-400",
+                "focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-ring",
                 className
             )}
             onClick={onClick}
