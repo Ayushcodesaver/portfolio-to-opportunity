@@ -10,6 +10,7 @@ import { AppShell } from "@/components/common/AppShell";
 import { CookieConsent } from "@/components/common/CookieConsent";
 import { useIdleSignOut } from "@/hooks/useIdleSignOut";
 import { Loader2 } from "lucide-react";
+import { StartupSequence } from "@/components/common/StartupSequence";
 
 import Landing from "./pages/Landing";
 
@@ -102,6 +103,7 @@ const AppInner = () => {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <StartupSequence />
       <Toaster />
       <Sonner theme="dark" />
       <BrowserRouter>

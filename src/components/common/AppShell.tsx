@@ -74,8 +74,8 @@ function NavList({ navs, variant, isHR, isAdmin, onNavigate }: { navs: NavItem[]
             cn(
               "flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-all",
               isActive
-                ? "bg-gradient-to-r from-primary/30 to-primary-glow/15 text-foreground shadow-premium border border-primary/40"
-                : "text-muted-foreground hover:bg-white/[0.04] hover:text-foreground"
+                ? "bg-secondary text-foreground shadow-soft border border-foreground/20"
+                : "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
             )
           }
         >
@@ -120,7 +120,7 @@ export function AppShell({ variant }: { variant: "intern" | "hr" | "admin" }) {
       <div className="p-5 border-b border-border/50">
         <Logo size="sm" />
         <div className="mt-2 flex gap-1">
-          <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary/20 text-primary-glow">
+          <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-secondary text-foreground border border-border">
             {variant}
           </span>
         </div>
@@ -130,7 +130,7 @@ export function AppShell({ variant }: { variant: "intern" | "hr" | "admin" }) {
 
       <div className="p-3 border-t border-border/50">
         <div className="flex items-center gap-2 p-2 rounded-lg">
-          <div className="h-8 w-8 rounded-full bg-gradient-primary flex items-center justify-center text-xs font-semibold shrink-0">
+          <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-semibold shrink-0">
             {user?.email?.[0]?.toUpperCase()}
           </div>
           <div className="flex-1 min-w-0">
@@ -147,26 +147,26 @@ export function AppShell({ variant }: { variant: "intern" | "hr" | "admin" }) {
   return (
     <div className="min-h-screen flex">
       {/* Desktop sidebar */}
-      <aside className="w-64 shrink-0 hidden md:flex flex-col m-3 rounded-3xl glass-strong overflow-hidden">
+      <aside className="w-64 shrink-0 hidden md:flex flex-col m-3 rounded-lg glass-strong overflow-hidden">
         {SidebarBody}
       </aside>
 
       {/* Main */}
-      <main className="flex-1 min-w-0 flex flex-col md:my-3 md:mr-3 md:rounded-3xl md:glass-strong md:overflow-hidden">
+      <main className="flex-1 min-w-0 flex flex-col md:my-3 md:mr-3 md:rounded-lg md:glass-strong md:overflow-hidden">
         {/* Desktop top bar */}
-        <header className="hidden md:flex sticky top-0 z-30 items-center justify-end gap-2 px-6 h-14 border-b border-white/5 bg-background/40 backdrop-blur-md">
+        <header className="hidden md:flex sticky top-0 z-30 items-center justify-end gap-2 px-6 h-14 border-b border-border/50 bg-background/40 backdrop-blur-md">
           <NotificationBell />
         </header>
 
         {/* Mobile top bar */}
-        <header className="md:hidden sticky top-0 z-40 flex items-center justify-between gap-3 px-4 h-14 border-b border-white/5 glass-strong">
+        <header className="md:hidden sticky top-0 z-40 flex items-center justify-between gap-3 px-4 h-14 border-b border-border/50 glass-strong">
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="h-9 w-9">
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="p-0 w-72 glass-strong border-white/5 flex flex-col">
+            <SheetContent side="left" className="p-0 w-72 glass-strong border-border/50 flex flex-col">
               {SidebarBody}
             </SheetContent>
           </Sheet>

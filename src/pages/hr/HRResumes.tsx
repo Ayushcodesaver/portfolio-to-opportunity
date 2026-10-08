@@ -3,9 +3,11 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { PageHeader, PageLoader, EmptyState } from "@/components/common/PageHeader";
 import { Input } from "@/components/ui/input";
+import { GooeySearch } from "@/components/vengeance/gooey-search";
+import { FolderPreview } from "@/components/vengeance/folder-preview";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Search, Download, FileText, Loader2 } from "lucide-react";
+import { Download, FileText, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
 interface Row {
@@ -109,14 +111,15 @@ export default function HRResumes() {
       <PageHeader title="Intern Resumes" description="Search, filter, and download resumes uploaded by interns." />
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mb-6">
-        <div className="relative lg:col-span-2">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input
+        <div className="lg:col-span-2 min-h-10">
+          <GooeySearch
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search by name, username, or file..."
-            className="pl-9 bg-input/50"
-            maxLength={100}
+            onValueChange={(value) => setSearch(value.slice(0, 100))}
+            items={(data ?? []).map((row) => row.full_name)}
+            onSelect={setSearch}
+            placeholder="Name, username, or file"
+            buttonLabel="Search resumes"
+            className="justify-start"
           />
         </div>
         <Select value={role} onValueChange={setRole}>
@@ -144,6 +147,7 @@ export default function HRResumes() {
           <table className="w-full text-sm">
             <thead className="bg-muted/30 text-xs uppercase tracking-wider text-muted-foreground">
               <tr>
+                <th className="w-20 p-3" aria-label="Document"></th>
                 <th className="text-left p-3">Intern</th>
                 <th className="text-left p-3 hidden md:table-cell">Role</th>
                 <th className="text-left p-3 hidden lg:table-cell">Contact</th>
@@ -155,6 +159,7 @@ export default function HRResumes() {
             <tbody>
               {filtered.map((r) => (
                 <tr key={r.id} className="border-t border-border/50 hover:bg-muted/20">
+                  <td className="p-3"><FolderPreview size="sm" variant="devi" label="" files={[{ name: r.file_name, type: "txt" }]} onClick={() => download(r)} /></td>
                   <td className="p-3">
                     <p className="font-medium">{r.full_name}</p>
                     <p className="text-xs text-muted-foreground">@{r.username}</p>
