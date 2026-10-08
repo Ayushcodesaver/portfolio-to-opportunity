@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   Sparkles, Code2, Layout, MessageCircle, TrendingUp, Award,
-  ArrowRight, Star, Github, Twitter, Linkedin, Menu, X, Rocket,
+  ArrowRight, Github, Twitter, Linkedin, Menu, Rocket,
   GraduationCap, Eye,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -13,7 +13,10 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { GlowButton } from "@/components/fx/GlowButton";
 import { TiltCard } from "@/components/fx/TiltCard";
-import { AnimatedCounter } from "@/components/fx/AnimatedCounter";
+import { AnimatedNumber } from "@/components/vengeance/animated-number";
+import TextAnimation from "@/components/vengeance/staggerText";
+import { ScrollDissolveReveal } from "@/components/vengeance/scroll-dissolve-reveal";
+import workspaceImage from "@/assets/xebure-workspace.jpg";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const features = [
@@ -30,18 +33,6 @@ const steps = [
   { n: "02", title: "Build", desc: "Ship real projects and document the journey." },
   { n: "03", title: "Share", desc: "Post to the feed and gather community feedback." },
   { n: "04", title: "Grow",  desc: "Earn certificates and unlock career opportunities." },
-];
-
-const showcaseProjects = [
-  { title: "AI Resume Builder",   desc: "GPT-powered resume builder with ATS optimization.", tags: ["React","OpenAI","Node"], likes: 234, comments: 45 },
-  { title: "Realtime Code Editor", desc: "Collaborative editor with live cursor sharing.",    tags: ["TypeScript","WebRTC","Monaco"], likes: 189, comments: 32 },
-  { title: "Portfolio Analytics",  desc: "Track engagement on your developer portfolio.",     tags: ["Next.js","Recharts"], likes: 156, comments: 28 },
-];
-
-const testimonials = [
-  { name: "Sarah Chen",    role: "Frontend Intern → Junior Dev @ Stripe", quote: "Xebure transformed how I document my work. AI feedback was a game-changer for my resume." },
-  { name: "Marcus Patel",  role: "Backend Intern @ Shopify",              quote: "0 to 12 real projects in 90 days. 4 job offers before my internship ended." },
-  { name: "Lila Romero",   role: "Fullstack Intern @ Vercel",             quote: "Community feedback pushed me to ship better code. Never grown faster as a dev." },
 ];
 
 const navLinks = [
@@ -70,6 +61,19 @@ export default function Landing() {
         supabase.from("projects").select("id", { count: "exact", head: true }).eq("status", "approved"),
       ]);
       return { interns: interns.count ?? 0, projects: projects.count ?? 0 };
+    },
+  });
+
+  const { data: projects = [] } = useQuery({
+    queryKey: ["landing-projects"],
+    queryFn: async () => {
+      const { data } = await supabase
+        .from("projects")
+        .select("id, title, description, tags, media_url, profiles:user_id(username)")
+        .eq("status", "approved")
+        .order("created_at", { ascending: false })
+        .limit(3);
+      return data ?? [];
     },
   });
 
@@ -134,32 +138,29 @@ export default function Landing() {
 
       {/* HERO */}
       <section className="relative pt-36 md:pt-40 pb-24 md:pb-32">
-        <div className="absolute inset-0">
-          <div className="absolute top-32 left-1/4 w-[36rem] h-[36rem] bg-primary/25 rounded-full blur-3xl " />
-          <div className="absolute top-48 right-1/4 w-[28rem] h-[28rem] bg-primary-glow/15 rounded-full blur-3xl " style={{ animationDelay: "2s" }} />
-        </div>
+        <img src={workspaceImage} alt="Graphite Xebure workspace" width={1536} height={1024} className="absolute inset-0 h-full w-full object-cover object-center opacity-45" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/20" />
 
         <div className="container relative">
           <motion.div
             initial="hidden" animate="show" variants={fadeUp}
-            className="max-w-4xl mx-auto text-center"
+            className="max-w-4xl text-left"
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-[11px] uppercase tracking-[0.2em] text-primary mb-8">
               <Sparkles className="h-3 w-3" />
               <span>Build · Learn · Get Noticed</span>
             </div>
 
-            <h1 className="text-[2.75rem] sm:text-6xl lg:text-7xl xl:text-[5rem] font-extrabold tracking-tight leading-[1.05] mb-6">
-              Build. Learn.{" "}
-              <span className="text-gradient">Get Noticed.</span>
+            <h1 className="text-[2.75rem] sm:text-6xl lg:text-7xl xl:text-[5rem] font-extrabold leading-[1.05] mb-6 max-w-3xl">
+              <TextAnimation divideBy="word">Build work that gets noticed.</TextAnimation>
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mb-10">
               Xebure is the portfolio platform for ambitious interns. Ship real projects,
               earn certificates, and get discovered by recruiters who care.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4">
               <GlowButton size="lg" onClick={() => navigate("/register")} className="h-14 px-8 text-base">
                 <GraduationCap className="h-5 w-5" /> Start Internship <ArrowRight className="h-4 w-4" />
               </GlowButton>
@@ -168,16 +169,16 @@ export default function Landing() {
               </GlowButton>
             </div>
 
-            <div className="grid grid-cols-3 gap-3 sm:gap-6 max-w-2xl mx-auto mt-16 md:mt-20">
+            <div className="grid grid-cols-3 gap-3 sm:gap-6 max-w-2xl mt-16 md:mt-20">
               {[
                 { v: stats?.interns ?? 0, l: "Active Interns",  suffix: "+" },
                 { v: stats?.projects ?? 0, l: "Projects Built", suffix: "+" },
-                { v: 12, l: "Partner Companies", suffix: "+" },
+                { v: projects.length, l: "Recently Featured", suffix: "" },
               ].map((s) => (
                 <TiltCard key={s.l} max={6} className="rounded-2xl">
                   <div className="panel-3d p-4 sm:p-5 text-center">
                     <div className="text-2xl sm:text-4xl font-bold text-gradient">
-                      <AnimatedCounter value={s.v} suffix={s.suffix} />
+                      <span className="inline-flex justify-center"><AnimatedNumber value={s.v} />{s.suffix}</span>
                     </div>
                     <div className="text-[10px] sm:text-xs text-muted-foreground mt-1 uppercase tracking-wider">{s.l}</div>
                   </div>
@@ -262,15 +263,15 @@ export default function Landing() {
             <p className="text-muted-foreground">Real work shipped by Xebure interns.</p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {showcaseProjects.map((p, i) => (
+            {projects.map((p: any, i) => (
               <motion.div key={p.title}
                 initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
                 transition={{ delay: i * 0.08 }}
               >
                 <TiltCard className="h-full">
                   <div className="panel-3d h-full overflow-hidden group">
-                    <div className="h-44 bg-gradient-to-br from-primary/30 via-primary-dark/20 to-transparent relative overflow-hidden">
-                      <Code2 className="absolute inset-0 m-auto h-16 w-16 text-primary/50 group-hover:scale-110 transition-transform" />
+                    <div className="h-44 bg-secondary relative overflow-hidden">
+                      {p.media_url ? <img src={p.media_url} alt={p.title} loading="lazy" className="h-full w-full object-cover grayscale transition-transform duration-500 group-hover:scale-105" /> : <Code2 className="absolute inset-0 m-auto h-16 w-16 text-muted-foreground" />}
                     </div>
                     <div className="p-5">
                       <h3 className="font-semibold text-lg mb-2">{p.title}</h3>
@@ -280,10 +281,7 @@ export default function Landing() {
                           <span key={t} className="text-xs px-2 py-0.5 rounded-full bg-primary/15 text-primary border border-primary/20">{t}</span>
                         ))}
                       </div>
-                      <div className="flex gap-4 text-xs text-muted-foreground">
-                        <span>❤ {p.likes}</span>
-                        <span>💬 {p.comments}</span>
-                      </div>
+                      <div className="text-xs text-muted-foreground">by @{p.profiles?.username ?? "xebure"}</div>
                     </div>
                   </div>
                 </TiltCard>
@@ -298,57 +296,18 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="py-24">
-        <div className="container">
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              Success <span className="text-gradient">Stories</span>
-            </h2>
-          </motion.div>
-          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {testimonials.map((t, i) => (
-              <motion.div key={t.name}
-                initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
-                transition={{ delay: i * 0.08 }}
-              >
-                <TiltCard className="h-full" max={6}>
-                  <div className="glass-strong rounded-2xl p-6 h-full">
-                    <div className="flex gap-1 mb-3">
-                      {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-primary text-primary" />)}
-                    </div>
-                    <p className="italic text-foreground/90 mb-5">"{t.quote}"</p>
-                    <div className="flex items-center gap-3">
-                      <div className="h-10 w-10 rounded-full bg-gradient-primary flex items-center justify-center text-sm font-semibold text-primary-foreground">
-                        {t.name.split(" ").map(n => n[0]).join("")}
-                      </div>
-                      <div>
-                        <div className="font-semibold text-sm">{t.name}</div>
-                        <div className="text-xs text-muted-foreground">{t.role}</div>
-                      </div>
-                    </div>
-                  </div>
-                </TiltCard>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="py-24">
         <div className="container">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
             className="glass-strong rounded-3xl p-10 md:p-16 text-center max-w-4xl mx-auto relative overflow-hidden border-primary/30"
           >
-            <div className="absolute -top-24 -right-24 w-72 h-72 bg-primary/30 rounded-full blur-3xl " />
-            <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-primary-glow/20 rounded-full blur-3xl " style={{ animationDelay: "3s" }} />
             <div className="relative">
               <h2 className="text-3xl md:text-5xl font-bold mb-4">
                 Ready to Start Your <span className="text-gradient">Journey?</span>
               </h2>
               <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-                Join thousands of interns building their careers, one project at a time.
+                Create your profile and start building your verified project record.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <GlowButton size="lg" onClick={() => navigate("/register")} className="h-14 px-8">
@@ -387,13 +346,7 @@ export default function Landing() {
         </div>
         <div className="container mt-10 pt-6 border-t border-primary/10 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Xebure. All rights reserved.</p>
-          <div className="flex gap-3">
-            {[Github, Twitter, Linkedin].map((Ic, i) => (
-              <a key={i} href="#" className="p-2 rounded-lg hover:bg-primary/10 hover:text-primary transition-colors">
-                <Ic className="h-4 w-4" />
-              </a>
-            ))}
-          </div>
+
         </div>
       </footer>
     </div>
