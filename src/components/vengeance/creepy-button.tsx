@@ -82,7 +82,7 @@ export const CreepyButton = ({
     return (
         <button
             className={cn(
-                "relative min-w-[9em] rounded-xl bg-black cursor-pointer outline-none select-none group tap-highlight-transparent",
+                "relative min-w-[9em] rounded-xl bg-background cursor-pointer outline-none select-none group tap-highlight-transparent",
                 "focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-ring",
                 className
             )}
@@ -104,7 +104,7 @@ export const CreepyButton = ({
             >
                 {/* Left Eye */}
                 <motion.span
-                    className="relative w-[0.75em] bg-white rounded-full overflow-hidden"
+                    className="relative w-[0.75em] bg-foreground rounded-full overflow-hidden"
                     animate={{ height: ["0.75em", "0.75em", "0em", "0.75em"] }}
                     transition={{
                         duration: 3,
@@ -114,13 +114,13 @@ export const CreepyButton = ({
                     }}
                 >
                     <span
-                        className="absolute top-1/2 left-1/2 w-[0.375em] h-[0.375em] bg-black rounded-full transition-transform duration-75 ease-out"
+                        className="absolute top-1/2 left-1/2 w-[0.375em] h-[0.375em] bg-background rounded-full transition-transform duration-75 ease-out"
                         style={pupilStyle}
                     />
                 </motion.span>
                 {/* Right Eye */}
                 <motion.span
-                    className="relative w-[0.75em] bg-white rounded-full overflow-hidden"
+                    className="relative w-[0.75em] bg-foreground rounded-full overflow-hidden"
                     animate={{ height: ["0.75em", "0.75em", "0em", "0.75em"] }}
                     transition={{
                         duration: 3,
@@ -130,7 +130,7 @@ export const CreepyButton = ({
                     }}
                 >
                     <span
-                        className="absolute top-1/2 left-1/2 w-[0.375em] h-[0.375em] bg-black rounded-full transition-transform duration-75 ease-out"
+                        className="absolute top-1/2 left-1/2 w-[0.375em] h-[0.375em] bg-background rounded-full transition-transform duration-75 ease-out"
                         style={pupilStyle}
                     />
                 </motion.span>
@@ -139,7 +139,7 @@ export const CreepyButton = ({
             {/* Button Cover */}
             <motion.span
                 className={cn(
-                    "absolute inset-0 block rounded-xl bg-secondary text-white font-bold tracking-wider",
+                    "absolute inset-0 block rounded-xl bg-secondary text-foreground font-bold tracking-wider",
                     "shadow-premium",
                     "flex items-center justify-center px-4 py-2",
                     "origin-[1.25em_50%]",

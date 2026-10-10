@@ -188,7 +188,7 @@ export function DiagonalCarousel({
       {showControls && (
         <div
           className={cn(
-            "absolute inset-x-4 bottom-5 z-10 mx-auto flex w-fit items-center justify-center gap-3 rounded-full border border-neutral-300/80 bg-neutral-200/70 px-2 text-neutral-700 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-neutral-900/70 dark:text-neutral-100",
+            "absolute inset-x-4 bottom-5 z-10 mx-auto flex w-fit items-center justify-center gap-3 rounded-full border border-neutral-300/80 bg-secondary/70 px-2 text-muted-foreground shadow-sm backdrop-blur-sm dark:border-border dark:bg-card/70 dark:text-foreground",
             controlsClassName
           )}
         >
@@ -196,7 +196,7 @@ export function DiagonalCarousel({
             type="button"
             aria-label="Show previous slide"
             disabled={isPreviousDisabled}
-            className="inline-flex size-9 items-center justify-center rounded-full transition-colors hover:bg-white/70 disabled:cursor-not-allowed disabled:opacity-35 dark:hover:bg-white/10"
+            className="inline-flex size-9 items-center justify-center rounded-full transition-colors hover:bg-foreground/70 disabled:cursor-not-allowed disabled:opacity-35 dark:hover:bg-secondary"
             onClick={() => selectSlide(currentIndex - 1)}
           >
             <ChevronLeft className="size-5" />
@@ -224,7 +224,7 @@ export function DiagonalCarousel({
             type="button"
             aria-label="Show next slide"
             disabled={isNextDisabled}
-            className="inline-flex size-9 items-center justify-center rounded-full transition-colors hover:bg-white/70 disabled:cursor-not-allowed disabled:opacity-35 dark:hover:bg-white/10"
+            className="inline-flex size-9 items-center justify-center rounded-full transition-colors hover:bg-foreground/70 disabled:cursor-not-allowed disabled:opacity-35 dark:hover:bg-secondary"
             onClick={() => selectSlide(currentIndex + 1)}
           >
             <ChevronRight className="size-5" />

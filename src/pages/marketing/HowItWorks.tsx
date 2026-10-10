@@ -22,7 +22,7 @@ export default function HowItWorks() {
             <div className="flex items-center gap-4 md:w-1/3">
               <span className="text-5xl font-bold text-gradient">{s.n}</span>
               <div className="h-14 w-14 rounded-xl bg-gradient-primary flex items-center justify-center shadow-soft">
-                <s.icon className="h-7 w-7 text-white" />
+                <s.icon className="h-7 w-7 text-foreground" />
               </div>
             </div>
             <div className="md:flex-1 mt-4 md:mt-0">

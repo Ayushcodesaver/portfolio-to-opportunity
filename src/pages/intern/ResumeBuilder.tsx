@@ -278,7 +278,7 @@ function ListSection<T extends object>({ title, items, setItems, blank, render }
 const ResumePreview = ({ resume, bare = false }: { resume: Resume; bare?: boolean }) => {
   const Wrapper = ({ children }: { children: React.ReactNode }) =>
     bare ? <div>{children}</div> : (
-      <div className="rounded-2xl bg-white text-slate-900 shadow-2xl p-10 max-w-[860px] mx-auto print:shadow-none print:p-0">
+      <div className="rounded-2xl bg-foreground text-slate-900 shadow-2xl p-10 max-w-[860px] mx-auto print:shadow-none print:p-0">
         {children}
       </div>
     );
