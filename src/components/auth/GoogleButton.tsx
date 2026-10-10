@@ -32,7 +32,7 @@ export function GoogleButton({ label = "Continue with Google" }: { label?: strin
       variant="outline"
       onClick={onClick}
       disabled={loading}
-      className="w-full h-11 bg-white/5 hover:bg-white/10 border-border gap-2"
+      className="w-full h-11 bg-secondary/50 hover:bg-secondary border-border gap-2"
     >
       {loading ? (
         <Loader2 className="h-4 w-4 animate-spin" />

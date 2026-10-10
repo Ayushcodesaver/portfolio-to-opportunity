@@ -196,7 +196,7 @@ export default function Pricing() {
                         : "glass border border-border/40"
                     }`}>
                       {isActive ? (
-                        <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-success text-white text-[10px] uppercase tracking-wider font-bold">
+                        <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-primary text-primary-foreground text-[10px] uppercase tracking-wider font-bold">
                           Your plan
                         </div>
                       ) : popular && (

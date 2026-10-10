@@ -139,9 +139,9 @@ export const LiquidMetalButton = forwardRef<
                     <div
                         className={cn(
                             "relative z-10 rounded-full flex items-center",
-                            "bg-white dark:bg-black",
+                            "bg-foreground dark:bg-background",
                             "transition-colors duration-200",
-                            "group-hover:bg-neutral-50 dark:group-hover:bg-neutral-900",
+                            "group-hover:bg-muted dark:group-hover:bg-card",
                             sizeStyles[size]
                         )}
                     >
@@ -149,17 +149,17 @@ export const LiquidMetalButton = forwardRef<
                             <div
                                 className={cn(
                                     "rounded-full flex items-center justify-center",
-                                    "bg-neutral-100 dark:bg-neutral-800",
+                                    "bg-secondary dark:bg-secondary",
                                     "shadow-premium",
                                     iconSizes[size]
                                 )}
                             >
-                                <span className="text-neutral-700 dark:text-neutral-300">
+                                <span className="text-muted-foreground dark:text-muted-foreground">
                                     {icon}
                                 </span>
                             </div>
                         )}
-                        <span className="font-medium tracking-tight text-neutral-900 dark:text-white">
+                        <span className="font-medium tracking-tight text-foreground dark:text-foreground">
                             {children}
                         </span>
                     </div>

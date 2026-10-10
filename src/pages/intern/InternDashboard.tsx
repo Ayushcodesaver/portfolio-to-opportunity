@@ -121,7 +121,7 @@ export default function InternDashboard() {
           </div>
           <span className="text-xs text-muted-foreground">{Math.round(pct)}% complete · {program.total_days - currentDay} days left</span>
         </div>
-        <div className="relative h-3 bg-black/40 rounded-full overflow-hidden">
+        <div className="relative h-3 bg-background/40 rounded-full overflow-hidden">
           <motion.div
             className="absolute inset-y-0 left-0 bg-gradient-to-r from-[hsl(var(--gauge-1))] via-[hsl(var(--gauge-3))] to-[hsl(var(--gauge-4))]"
             initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: 0.8 }}

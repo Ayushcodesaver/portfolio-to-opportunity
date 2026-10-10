@@ -28,7 +28,7 @@ export function FaqAccordion({
   return (
     <div className={cn("w-full max-w-3xl mx-auto py-8 relative font-sans", className)} {...props}>
       {title && (
-        <h2 className="text-center font-bold text-2xl md:text-3xl mb-10 text-neutral-500 dark:text-neutral-400">
+        <h2 className="text-center font-bold text-2xl md:text-3xl mb-10 text-muted-foreground dark:text-muted-foreground">
           {title}
         </h2>
       )}
@@ -51,8 +51,8 @@ export function FaqAccordion({
                   "flex flex-row items-center justify-start w-full min-h-[60px] py-4 relative m-0 px-4 pl-14 cursor-pointer",
                   "border-l-[6px] md:border-l-[10px] transition-colors duration-200 text-left outline-none text-base md:text-lg",
                   isActive 
-                    ? "border-l-neutral-900 dark:border-l-neutral-100 bg-neutral-100/50 dark:bg-neutral-800/30 text-neutral-900 dark:text-neutral-100 font-semibold" 
-                    : "border-l-neutral-300 dark:border-l-neutral-700 bg-transparent text-neutral-600 dark:text-neutral-400 hover:border-l-neutral-500 dark:hover:border-l-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-200 hover:bg-neutral-50 dark:hover:bg-neutral-900/50"
+                    ? "border-l-neutral-900 dark:border-l-neutral-100 bg-secondary/50 dark:bg-secondary/30 text-foreground dark:text-foreground font-semibold" 
+                    : "border-l-border dark:border-l-border bg-transparent text-muted-foreground dark:text-muted-foreground hover:border-l-muted-foreground dark:hover:border-l-muted-foreground hover:text-foreground dark:hover:text-foreground hover:bg-muted dark:hover:bg-card/50"
                 )}
                 onClick={() => toggleItem(index)}
                 aria-expanded={isActive}
@@ -62,7 +62,7 @@ export function FaqAccordion({
                 <span 
                   className={cn(
                     "absolute left-4 md:left-5 top-1/2 -translate-y-1/2 transition-all duration-200 leading-none",
-                    isActive ? "text-[32px] md:text-[40px] font-normal text-neutral-900 dark:text-neutral-100" : "text-[24px] md:text-[30px] font-normal text-neutral-400 dark:text-neutral-500"
+                    isActive ? "text-[32px] md:text-[40px] font-normal text-foreground dark:text-foreground" : "text-[24px] md:text-[30px] font-normal text-muted-foreground dark:text-muted-foreground"
                   )}
                 >
                   {isActive ? "-" : "+"}
@@ -83,11 +83,11 @@ export function FaqAccordion({
                 className={cn(
                   "grid transition-all duration-300 ease-in-out w-full",
                   "border-l-[6px] md:border-l-[10px]",
-                  isActive ? "grid-rows-[1fr] border-l-neutral-900 dark:border-l-neutral-100 bg-neutral-100/50 dark:bg-neutral-800/30" : "grid-rows-[0fr] border-l-neutral-300 dark:border-l-neutral-700 bg-transparent"
+                  isActive ? "grid-rows-[1fr] border-l-neutral-900 dark:border-l-neutral-100 bg-secondary/50 dark:bg-secondary/30" : "grid-rows-[0fr] border-l-border dark:border-l-border bg-transparent"
                 )}
               >
                 <div className="overflow-hidden">
-                  <div className="flex flex-row items-start justify-start w-full px-4 pl-14 pb-6 pt-2 text-base md:text-lg font-normal text-neutral-700 dark:text-neutral-300">
+                  <div className="flex flex-row items-start justify-start w-full px-4 pl-14 pb-6 pt-2 text-base md:text-lg font-normal text-muted-foreground dark:text-muted-foreground">
                     <span className="opacity-90">{item.answer}</span>
                   </div>
                 </div>

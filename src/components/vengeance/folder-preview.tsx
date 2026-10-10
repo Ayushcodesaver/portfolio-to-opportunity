@@ -264,7 +264,7 @@ const RudrasFolder: React.FC<{
                 </div>
 
                 {/* Paper Sheet Deco */}
-                <div className="absolute bottom-0.5 left-0.5 right-0.5 h-3/4 bg-white dark:bg-gray-200 rounded-lg" />
+                <div className="absolute bottom-0.5 left-0.5 right-0.5 h-3/4 bg-foreground dark:bg-muted rounded-lg" />
 
                 {/* Cover */}
                 <motion.div
@@ -485,7 +485,7 @@ const KuberaFolder: React.FC<{
                 </div>
 
                 {/* Paper Sheet Deco */}
-                <div className="absolute bottom-0.5 left-0.5 right-0.5 h-3/4 bg-white dark:bg-gray-200 rounded-lg" />
+                <div className="absolute bottom-0.5 left-0.5 right-0.5 h-3/4 bg-foreground dark:bg-muted rounded-lg" />
 
                 {/* Floating Previews */}
                 <div className={cn("absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2", sizes.thumb)}>
@@ -617,7 +617,7 @@ const HariFolder: React.FC<{
                 </div>
 
                 {/* Paper Sheet Deco */}
-                <div className="absolute bottom-0.5 left-0.5 right-0.5 h-3/4 bg-white/80 rounded-lg" />
+                <div className="absolute bottom-0.5 left-0.5 right-0.5 h-3/4 bg-foreground/80 rounded-lg" />
 
                 {/* Cover */}
                 <motion.div
@@ -675,7 +675,7 @@ const RaviFolder: React.FC<{
         <div className="relative">
             {/* Feedback Circle */}
             <motion.div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-white"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-foreground"
                 initial={{ opacity: 0, scale: 1 }}
                 animate={
                     !isHovered ? { opacity: [1, 0], scale: [1, 5] } : { opacity: 0, scale: 1 }
@@ -690,7 +690,7 @@ const RaviFolder: React.FC<{
                 </div>
 
                 {/* Paper Sheet */}
-                <div className="absolute bottom-0.5 left-0.5 right-0.5 h-3/4 bg-white rounded-lg" />
+                <div className="absolute bottom-0.5 left-0.5 right-0.5 h-3/4 bg-foreground rounded-lg" />
 
                 {/* Card Spread Previews */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[75px] h-[65px]">
@@ -797,7 +797,7 @@ const DurgaFolder: React.FC<{
                 </div>
 
                 {/* Paper Sheet */}
-                <div className="absolute bottom-0.5 left-0.5 right-0.5 h-3/4 bg-white dark:bg-gray-200 rounded-lg" />
+                <div className="absolute bottom-0.5 left-0.5 right-0.5 h-3/4 bg-foreground dark:bg-muted rounded-lg" />
 
                 {/* Cover */}
                 <motion.div
@@ -836,9 +836,9 @@ const NandiFolder: React.FC<{
     label?: string;
 }> = ({ files, isHovered, colors, sizes, label }) => {
     const fileColorMap: Record<string, string> = {
-        txt: "fill-muted-foreground",
+        txt: "fill-current",
         gif: "fill-teal-400",
-        mp3: "fill-muted-foreground",
+        mp3: "fill-current",
         default: "fill-gray-400",
     };
 
@@ -846,7 +846,7 @@ const NandiFolder: React.FC<{
         <div className="relative">
             {/* Magnifier Preview - compact bubble above folder */}
             <motion.div
-                className="absolute left-1/2 -translate-x-1/2 bg-white dark:bg-gray-100 rounded-2xl shadow-xl z-20 p-3 grid grid-cols-3 gap-2"
+                className="absolute left-1/2 -translate-x-1/2 bg-foreground dark:bg-muted rounded-2xl shadow-xl z-20 p-3 grid grid-cols-3 gap-2"
                 style={{ bottom: '100%', marginBottom: '8px', minWidth: '120px' }}
                 initial={{ opacity: 0, scale: 0.8, y: 10 }}
                 animate={
@@ -876,7 +876,7 @@ const NandiFolder: React.FC<{
                 </div>
 
                 {/* Paper Sheet */}
-                <div className="absolute bottom-0.5 left-0.5 right-0.5 h-3/4 bg-white dark:bg-gray-200 rounded-lg" />
+                <div className="absolute bottom-0.5 left-0.5 right-0.5 h-3/4 bg-foreground dark:bg-muted rounded-lg" />
 
                 {/* Cover */}
                 <motion.div

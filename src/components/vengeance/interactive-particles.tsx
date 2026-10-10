@@ -540,7 +540,7 @@ export function InteractiveParticles({
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="group absolute right-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] font-medium text-white/60 backdrop-blur-sm transition-all duration-200 hover:border-white/20 hover:bg-white/10 hover:text-white/90"
+            className="group absolute right-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full border border-border bg-secondary/50 px-3 py-1.5 text-[11px] font-medium text-foreground/60 backdrop-blur-sm transition-all duration-200 hover:border-white/20 hover:bg-secondary hover:text-foreground/90"
           >
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />

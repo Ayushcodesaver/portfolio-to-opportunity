@@ -27,7 +27,7 @@ export default function Features() {
         {features.map((f, i) => (
           <Card3D key={f.title} delay={i * 0.04}>
             <div className="h-12 w-12 rounded-xl bg-gradient-primary flex items-center justify-center mb-4 shadow-soft">
-              <f.icon className="h-6 w-6 text-white" />
+              <f.icon className="h-6 w-6 text-foreground" />
             </div>
             <h3 className="text-xl font-semibold mb-2">{f.title}</h3>
             <p className="text-sm text-muted-foreground">{f.desc}</p>

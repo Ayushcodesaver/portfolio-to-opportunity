@@ -118,9 +118,9 @@ function ArrowCursor({
         className={cn(
           "ml-2.5 -mt-1 px-2.5 py-1 text-[12px] font-semibold tracking-[-0.04em] sm:ml-3 sm:px-3 sm:text-[14px] lg:ml-4 lg:px-4 lg:py-1.5 lg:text-[17px]",
           inverted
-            ? "rounded-full bg-[#f2f2f2] text-black shadow-premium"
+            ? "rounded-full bg-[#f2f2f2] text-background shadow-premium"
             : cn(
-                "rounded-[22px] border border-white/60 bg-[#edff00] text-black",
+                "rounded-[22px] border border-white/60 bg-[#edff00] text-background",
                 active
                   ? "shadow-premium"
                   : "shadow-premium",
@@ -252,7 +252,7 @@ function DesignsPanel({
       </div>
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -top-[8%] z-[1] hidden h-[66%] w-[24%] rounded-full bg-white/[0.022] blur-[48px] dark:block"
+        className="pointer-events-none absolute -top-[8%] z-[1] hidden h-[66%] w-[24%] rounded-full bg-foreground/[0.022] blur-[48px] dark:block"
         animate={reduceMotion ? undefined : { x: ["-120%", "520%"] }}
         transition={{ duration: 14, repeat: Infinity, repeatDelay: 2.5, ease: "easeInOut" }}
       />
@@ -372,19 +372,19 @@ function InvoicePanel({ monthlyPrice, previousPrice, currency, locale, autoPlay,
               )}
             </div>
             <div className="mt-5 space-y-2.5">
-              <div className="h-1 w-[42%] rounded-full bg-black/[0.08] dark:bg-white/[0.07]" />
-              <div className="h-1 w-[27%] rounded-full bg-black/[0.055] dark:bg-white/[0.045]" />
+              <div className="h-1 w-[42%] rounded-full bg-background/[0.08] dark:bg-foreground/[0.07]" />
+              <div className="h-1 w-[27%] rounded-full bg-background/[0.055] dark:bg-foreground/[0.045]" />
             </div>
             <div className="mt-4 space-y-2.5">
               {INVOICE_BARS.map((width, index) => (
                 <div key={index} className="flex items-center justify-between gap-4">
                   <motion.span
-                    className="h-2.5 rounded-[3px] bg-black/[0.055] dark:bg-white/[0.045]"
+                    className="h-2.5 rounded-[3px] bg-background/[0.055] dark:bg-foreground/[0.045]"
                     style={{ width: `${width}%` }}
                     animate={reduceMotion ? undefined : { opacity: [0.35, 0.62, 0.35] }}
                     transition={{ duration: 3.5, delay: index * 0.28, repeat: Infinity, ease: "easeInOut" }}
                   />
-                  <span className="h-3 w-[28%] rounded-[4px] bg-black/[0.08] dark:bg-white/[0.07]" />
+                  <span className="h-3 w-[28%] rounded-[4px] bg-background/[0.08] dark:bg-foreground/[0.07]" />
                 </div>
               ))}
             </div>
@@ -408,7 +408,7 @@ function InvoicePanel({ monthlyPrice, previousPrice, currency, locale, autoPlay,
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-px bg-black/[0.04] dark:bg-white/[0.025]"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-px bg-background/[0.04] dark:bg-foreground/[0.025]"
       />
 
       <FeatureCopy className="sm:right-1/2 sm:pr-3" title={title}>{description}</FeatureCopy>
@@ -560,7 +560,7 @@ export function ResearchBentoGrid({
       {...props}
       className={cn(
         "flex h-full w-full overflow-y-auto bg-[#eeeeeb] p-2 text-zinc-950 [--bento-tile-cutout:#e4e4e1] [container-type:inline-size] sm:p-3",
-        "dark:bg-[#020202] dark:text-white dark:[--bento-tile-cutout:#171717]",
+        "dark:bg-[#020202] dark:text-foreground dark:[--bento-tile-cutout:#171717]",
         className,
       )}
     >

@@ -32,7 +32,7 @@ export default function Support() {
           {channels.map((c, i) => (
             <Card3D key={c.title} delay={i * 0.05}>
               <div className="h-11 w-11 rounded-xl bg-gradient-primary flex items-center justify-center mb-3 shadow-soft">
-                <c.icon className="h-5 w-5 text-white" />
+                <c.icon className="h-5 w-5 text-foreground" />
               </div>
               <h3 className="font-semibold mb-1">{c.title}</h3>
               <p className="text-sm text-muted-foreground mb-2">{c.desc}</p>

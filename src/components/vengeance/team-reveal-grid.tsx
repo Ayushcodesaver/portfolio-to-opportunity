@@ -54,7 +54,7 @@ function Portrait({ member, active }: { member: TeamRevealMember; active: boolea
     <div
       style={style}
       className={cn(
-        "relative h-full overflow-hidden rounded-[1.05rem] bg-neutral-100 transition-colors duration-500 dark:bg-neutral-900",
+        "relative h-full overflow-hidden rounded-[1.05rem] bg-secondary transition-colors duration-500 dark:bg-card",
         active && "bg-[color-mix(in_srgb,var(--team-accent)_10%,white)] dark:bg-[color-mix(in_srgb,var(--team-accent)_13%,#0a0a0a)]",
       )}
     >
@@ -89,18 +89,18 @@ function Portrait({ member, active }: { member: TeamRevealMember; active: boolea
           <div
             aria-hidden="true"
             className={cn(
-              "absolute top-[13%] aspect-square h-[36%] rounded-full bg-neutral-300 transition-[transform,background-color] duration-500 dark:bg-neutral-700",
+              "absolute top-[13%] aspect-square h-[36%] rounded-full bg-muted transition-[transform,background-color] duration-500 dark:bg-muted",
               active && "-translate-y-0.5 scale-105 bg-[var(--team-accent)]",
             )}
           />
           <div
             aria-hidden="true"
             className={cn(
-              "absolute -bottom-[12%] h-[66%] w-[82%] rounded-t-[48%] bg-neutral-300/90 transition-[transform,background-color] duration-500 dark:bg-neutral-700/90",
+              "absolute -bottom-[12%] h-[66%] w-[82%] rounded-t-[48%] bg-muted/90 transition-[transform,background-color] duration-500 dark:bg-muted/90",
               active && "scale-105 bg-[var(--team-accent)]",
             )}
           />
-          <span className="relative z-10 mb-[18%] text-2xl font-semibold tracking-[-0.08em] text-white mix-blend-difference">
+          <span className="relative z-10 mb-[18%] text-2xl font-semibold tracking-[-0.08em] text-foreground mix-blend-difference">
             {initials(member.name)}
           </span>
         </div>
@@ -166,7 +166,7 @@ export function TeamRevealGrid({
   return (
     <section
       className={cn(
-        "@container relative h-full min-h-[620px] w-full overflow-x-hidden overflow-y-auto bg-white px-4 py-10 text-neutral-950 dark:bg-neutral-950 dark:text-white sm:px-7 sm:py-12",
+        "@container relative h-full min-h-[620px] w-full overflow-x-hidden overflow-y-auto bg-foreground px-4 py-10 text-foreground dark:bg-background dark:text-foreground sm:px-7 sm:py-12",
         className,
       )}
       {...props}
@@ -183,7 +183,7 @@ export function TeamRevealGrid({
 
       <div className="relative mx-auto w-full max-w-5xl">
         <header className="mx-auto mb-8 max-w-2xl text-center">
-          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-neutral-500 dark:text-neutral-400">
+          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground dark:text-muted-foreground">
             {eyebrow}
           </p>
           <h2 className="text-balance text-3xl font-semibold tracking-[-0.045em] sm:text-4xl">
@@ -205,7 +205,7 @@ export function TeamRevealGrid({
               </svg>
             </span>
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-pretty text-sm leading-6 text-neutral-600 dark:text-neutral-400">
+          <p className="mx-auto mt-6 max-w-xl text-pretty text-sm leading-6 text-muted-foreground dark:text-muted-foreground">
             {description}
           </p>
         </header>
@@ -244,10 +244,10 @@ export function TeamRevealGrid({
                   <div
                     style={{ "--team-accent": member.accent ?? "hsl(var(--foreground))" } as React.CSSProperties}
                     className={cn(
-                      "relative overflow-hidden rounded-[1.35rem] border bg-white p-1.5 shadow-premium transition-[border-color,box-shadow,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none dark:bg-neutral-900",
+                      "relative overflow-hidden rounded-[1.35rem] border bg-foreground p-1.5 shadow-premium transition-[border-color,box-shadow,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none dark:bg-card",
                       active
                         ? "-translate-y-1 border-[color-mix(in_srgb,var(--team-accent)_55%,transparent)] shadow-[0_22px_48px_-28px_color-mix(in_srgb,var(--team-accent)_55%,transparent)]"
-                        : "border-black/10 dark:border-white/10",
+                        : "border-black/10 dark:border-border",
                       "focus-visible:ring-2 focus-visible:ring-[var(--team-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-950",
                     )}
                   >
@@ -267,7 +267,7 @@ export function TeamRevealGrid({
                         active ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
                       )}
                     >
-                      <p className="line-clamp-3 text-[11px] leading-[1.45] text-white/78 @min-[560px]:text-xs">
+                      <p className="line-clamp-3 text-[11px] leading-[1.45] text-foreground/78 @min-[560px]:text-xs">
                         {member.expertise}
                       </p>
                     </div>
@@ -279,7 +279,7 @@ export function TeamRevealGrid({
                     </h3>
                     <p
                       className={cn(
-                        "mt-0.5 truncate text-xs text-neutral-500 transition-colors duration-300 dark:text-neutral-400",
+                        "mt-0.5 truncate text-xs text-muted-foreground transition-colors duration-300 dark:text-muted-foreground",
                         active && "text-[var(--team-accent)] dark:text-[var(--team-accent)]",
                       )}
                       style={{ "--team-accent": member.accent ?? "hsl(var(--foreground))" } as React.CSSProperties}
