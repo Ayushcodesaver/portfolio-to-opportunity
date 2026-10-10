@@ -52,7 +52,7 @@ export function FaqAccordion({
                   "border-l-[6px] md:border-l-[10px] transition-colors duration-200 text-left outline-none text-base md:text-lg",
                   isActive 
                     ? "border-l-neutral-900 dark:border-l-neutral-100 bg-secondary/50 dark:bg-secondary/30 text-foreground dark:text-foreground font-semibold" 
-                    : "border-l-neutral-300 dark:border-l-neutral-700 bg-transparent text-muted-foreground dark:text-muted-foreground hover:border-l-neutral-500 dark:hover:border-l-neutral-500 hover:text-foreground dark:hover:text-foreground hover:bg-neutral-50 dark:hover:bg-card/50"
+                    : "border-l-border dark:border-l-border bg-transparent text-muted-foreground dark:text-muted-foreground hover:border-l-muted-foreground dark:hover:border-l-muted-foreground hover:text-foreground dark:hover:text-foreground hover:bg-muted dark:hover:bg-card/50"
                 )}
                 onClick={() => toggleItem(index)}
                 aria-expanded={isActive}
@@ -83,7 +83,7 @@ export function FaqAccordion({
                 className={cn(
                   "grid transition-all duration-300 ease-in-out w-full",
                   "border-l-[6px] md:border-l-[10px]",
-                  isActive ? "grid-rows-[1fr] border-l-neutral-900 dark:border-l-neutral-100 bg-secondary/50 dark:bg-secondary/30" : "grid-rows-[0fr] border-l-neutral-300 dark:border-l-neutral-700 bg-transparent"
+                  isActive ? "grid-rows-[1fr] border-l-neutral-900 dark:border-l-neutral-100 bg-secondary/50 dark:bg-secondary/30" : "grid-rows-[0fr] border-l-border dark:border-l-border bg-transparent"
                 )}
               >
                 <div className="overflow-hidden">

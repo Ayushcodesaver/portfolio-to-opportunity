@@ -141,7 +141,7 @@ export const LiquidMetalButton = forwardRef<
                             "relative z-10 rounded-full flex items-center",
                             "bg-foreground dark:bg-background",
                             "transition-colors duration-200",
-                            "group-hover:bg-neutral-50 dark:group-hover:bg-card",
+                            "group-hover:bg-muted dark:group-hover:bg-card",
                             sizeStyles[size]
                         )}
                     >
