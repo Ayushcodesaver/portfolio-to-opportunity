@@ -109,9 +109,9 @@ export function AppShell({ variant }: { variant: "intern" | "hr" | "admin" }) {
   const { user, signOut, isHR, isAdmin } = useAuth();
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const searchItems = navs.map((item) => item.label);
 
   const navs = variant === "hr" ? hrNav : variant === "admin" ? adminNav : internNav;
+  const searchItems = navs.map((item) => item.label);
 
   const handleSignOut = async () => {
     await signOut();

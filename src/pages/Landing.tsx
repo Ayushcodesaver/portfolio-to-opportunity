@@ -136,7 +136,7 @@ export default function Landing() {
       </nav>
 
       {/* HERO */}
-      <section className="relative pt-36 md:pt-40 pb-24 md:pb-32">
+      <section className="relative pt-28 md:pt-40 pb-16 md:pb-32">
         <img src={workspaceImage} alt="Graphite Xebure workspace" width={1536} height={1024} className="absolute inset-0 h-full w-full object-cover object-center opacity-45" />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/20" />
 
@@ -168,7 +168,7 @@ export default function Landing() {
               </GlowButton>
             </div>
 
-            <div className="grid grid-cols-3 gap-3 sm:gap-6 max-w-2xl mt-16 md:mt-20">
+            <div className="grid grid-cols-3 gap-3 sm:gap-6 max-w-2xl mt-10 md:mt-20">
               {[
                 { v: stats?.interns ?? 0, l: "Active Interns",  suffix: "+" },
                 { v: stats?.projects ?? 0, l: "Projects Built", suffix: "+" },
@@ -299,7 +299,7 @@ export default function Landing() {
       <section className="py-24">
         <div className="container">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
-            className="glass-strong rounded-3xl p-10 md:p-16 text-center max-w-4xl mx-auto relative overflow-hidden border-primary/30"
+            className="glass-strong rounded-lg p-10 md:p-16 text-center max-w-4xl mx-auto relative overflow-hidden border-primary/30"
           >
             <div className="relative">
               <h2 className="text-3xl md:text-5xl font-bold mb-4">
