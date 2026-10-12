@@ -147,21 +147,20 @@ export default function Landing() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-[11px] uppercase tracking-[0.2em] text-primary mb-8">
               <Sparkles className="h-3 w-3" />
-              <span>Build · Learn · Get Noticed</span>
+              <span>The Internship Project Platform</span>
             </div>
 
             <h1 className="text-[2.75rem] sm:text-6xl lg:text-7xl xl:text-[5rem] font-extrabold leading-[1.05] mb-6 max-w-3xl">
-              <TextAnimation divideBy="word">Build work that gets noticed.</TextAnimation>
+              <TextAnimation divideBy="word">Your Internship Should Produce More Than a Certificate.</TextAnimation>
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mb-10">
-              Xebure is the portfolio platform for ambitious interns. Ship real projects,
-              earn certificates, and get discovered by recruiters who care.
+              Xebure helps interns work on real projects, document measurable contributions, get feedback from experienced people, and turn their internship experience into a portfolio recruiters can evaluate.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <GlowButton size="lg" onClick={() => navigate("/register")} className="h-14 px-8 text-base">
-                <GraduationCap className="h-5 w-5" /> Start Internship <ArrowRight className="h-4 w-4" />
+                <GraduationCap className="h-5 w-5" /> Start Your Internship <ArrowRight className="h-4 w-4" />
               </GlowButton>
               <GlowButton size="lg" tone="glass" onClick={() => navigate("/feed")} className="h-14 px-8 text-base">
                 <Eye className="h-5 w-5" /> Explore Projects
