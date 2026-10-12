@@ -1,7 +1,7 @@
 # XEBURE Roadmap
 
 ## In Progress
-
+- [ ] Integrate the uploaded monochrome 3D robot illustration into the homepage while preserving its current copy and destinations.
 
 ## Recently Done
 - [x] Premium monochrome Xebure redesign with real-data component integrations and startup sequence.
