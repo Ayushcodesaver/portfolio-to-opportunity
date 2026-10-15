@@ -70,7 +70,7 @@ function RobotFigure({ reducedMotion }: { reducedMotion: boolean }) {
           <sphereGeometry args={[0.302, 40, 32]} />
           <meshPhysicalMaterial color={shadow} roughness={0.12} metalness={0.25} clearcoat={1} clearcoatRoughness={0.1} />
         </mesh>
-        <group ref={eyesRef} position={[0, -0.025, 0.342]}>
+        <group ref={eyesRef} position={[0, -0.025, 0.612]}>
           <mesh position={[-0.105, 0, 0]}>
             <sphereGeometry args={[0.043, 24, 20]} />
             <meshBasicMaterial color={screen} toneMapped={false} />
