@@ -1,9 +1,10 @@
 # XEBURE Roadmap
 
 ## In Progress
-- [ ] Integrate the uploaded monochrome 3D robot illustration into the homepage while preserving its current copy and destinations.
+
 
 ## Recently Done
+- [x] Integrated the uploaded monochrome 3D robot artwork into the homepage without changing the supplied copy or destinations.
 - [x] Premium monochrome Xebure redesign with real-data component integrations and startup sequence.
 - [x] HR resume list `/hr/resumes`: search + role/date filters + per-row signed-URL download.
 - [x] Student profile page `/my-profile`: name, contact email, phone, role — visible to HR.
