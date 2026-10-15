@@ -1,6 +1,7 @@
 # XEBURE Roadmap
 
 ## In Progress
+- [ ] Add the supplied monochrome spider cursor as a lightweight homepage hero effect.
 
 
 ## Recently Done
