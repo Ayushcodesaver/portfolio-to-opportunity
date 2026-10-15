@@ -41,6 +41,7 @@
     --robot-shell: 0 0% 78%;
     --robot-shadow: 0 0% 12%;
     --robot-screen: 0 0% 96%;
+    --robot-trim: 0 0% 56%;
     --radius: 0.65rem;
     --gradient-primary: linear-gradient(135deg, hsl(0 0% 100%), hsl(0 0% 85%));
     --gradient-card: linear-gradient(180deg, hsl(0 0% 11%), hsl(0 0% 7%));

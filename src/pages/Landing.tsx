@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -17,6 +17,8 @@ import { AnimatedNumber } from "@/components/vengeance/animated-number";
 import TextAnimation from "@/components/vengeance/staggerText";
 import workspaceImage from "@/assets/xebure-workspace.jpg";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+
+const RobotHero = lazy(() => import("@/components/ui/robot-hero"));
 
 const features = [
   { icon: Sparkles, title: "AI Assistant", desc: "AI-powered help to refine your code, writeups, and project pitch." },
@@ -51,6 +53,7 @@ export default function Landing() {
   const { user } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [showRobot, setShowRobot] = useState(false);
 
   const { data: stats } = useQuery({
     queryKey: ["landing-stats"],
@@ -80,6 +83,14 @@ export default function Landing() {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const desktopQuery = window.matchMedia("(min-width: 1024px)");
+    const updateRobotVisibility = () => setShowRobot(desktopQuery.matches);
+    updateRobotVisibility();
+    desktopQuery.addEventListener("change", updateRobotVisibility);
+    return () => desktopQuery.removeEventListener("change", updateRobotVisibility);
   }, []);
 
   return (
@@ -140,17 +151,17 @@ export default function Landing() {
         <img src={workspaceImage} alt="Graphite Xebure workspace" width={1536} height={1024} className="absolute inset-0 h-full w-full object-cover object-center opacity-45" />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/20" />
 
-        <div className="container relative">
+        <div className="container relative grid items-center gap-2 lg:grid-cols-[minmax(0,1.2fr)_minmax(300px,0.8fr)]">
           <motion.div
             initial="hidden" animate="show" variants={fadeUp}
-            className="max-w-4xl text-left"
+            className="relative z-10 max-w-4xl text-left"
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-[11px] uppercase tracking-[0.2em] text-primary mb-8">
               <Sparkles className="h-3 w-3" />
               <span>The Internship Project Platform</span>
             </div>
 
-            <h1 className="text-[2.75rem] sm:text-6xl lg:text-7xl xl:text-[5rem] font-extrabold leading-[1.05] mb-6 max-w-3xl">
+            <h1 className="text-[2.75rem] sm:text-6xl lg:text-6xl xl:text-[4.5rem] font-extrabold leading-[1.05] mb-6 max-w-3xl">
               <TextAnimation divideBy="word">Your Internship Should Produce More Than a Certificate.</TextAnimation>
             </h1>
 
@@ -184,6 +195,13 @@ export default function Landing() {
               ))}
             </div>
           </motion.div>
+          {showRobot && (
+            <div className="pointer-events-auto relative z-0 hidden h-[420px] min-w-0 lg:block xl:h-[500px]" aria-label="A polished silver Xebure robot mascot">
+              <Suspense fallback={<div className="h-full w-full" />}>
+                <RobotHero />
+              </Suspense>
+            </div>
+          )}
         </div>
       </section>
 
