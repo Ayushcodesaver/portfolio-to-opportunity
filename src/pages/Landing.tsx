@@ -151,11 +151,6 @@ export default function Landing() {
       <section className="relative pt-28 md:pt-40 pb-16 md:pb-32">
         <img src={workspaceImage} alt="Graphite Xebure workspace" width={1536} height={1024} className="absolute inset-0 h-full w-full object-cover object-center opacity-45" />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-background/20" />
-        <div className="pointer-events-none absolute inset-0 z-0">
-          <Suspense fallback={null}>
-            <SpiderCursor />
-          </Suspense>
-        </div>
 
         <div className="container relative grid items-center gap-2 lg:grid-cols-[minmax(0,1.2fr)_minmax(300px,0.8fr)]">
           <motion.div
@@ -203,6 +198,9 @@ export default function Landing() {
           </motion.div>
           {showRobot && (
             <div className="pointer-events-auto relative z-0 hidden h-[420px] min-w-0 lg:block xl:h-[500px]" aria-label="A polished silver Xebure robot mascot">
+              <Suspense fallback={null}>
+                <SpiderCursor />
+              </Suspense>
               <Suspense fallback={<div className="h-full w-full" />}>
                 <RobotHero />
               </Suspense>
