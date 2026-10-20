@@ -175,7 +175,7 @@ export function SpiderCursor() {
     };
   }, []);
 
-  return <canvas ref={canvasRef} aria-hidden="true" className="pointer-events-none absolute inset-0 z-[1] block h-full w-full" />;
+  return <canvas ref={canvasRef} aria-hidden="true" className="pointer-events-none fixed inset-0 z-40 block h-dvh w-screen" />;
 }
 
 export default SpiderCursor;
