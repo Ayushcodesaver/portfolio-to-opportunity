@@ -13,6 +13,7 @@ import { Loader2 } from "lucide-react";
 import { StartupSequence } from "@/components/common/StartupSequence";
 
 import Landing from "./pages/Landing";
+const SpiderCursor = lazy(() => import("@/components/ui/spider-cursor").then((module) => ({ default: module.SpiderCursor })));
 
 const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
@@ -104,6 +105,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <StartupSequence />
+      <Suspense fallback={null}><SpiderCursor /></Suspense>
       <Toaster />
       <Sonner theme="dark" />
       <BrowserRouter>

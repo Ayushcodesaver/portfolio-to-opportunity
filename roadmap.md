@@ -2,9 +2,8 @@
 
 ## In Progress
 
-
 ## Recently Done
-- [x] Integrated the supplied monochrome spider cursor into the homepage hero with reduced-motion and pointer support.
+- [x] Expanded the supplied monochrome spider cursor to a site-wide overlay and verified it on the homepage and pricing page.
 - [x] Integrated the uploaded monochrome 3D robot artwork into the homepage without changing the supplied copy or destinations.
 - [x] Premium monochrome Xebure redesign with real-data component integrations and startup sequence.
 - [x] HR resume list `/hr/resumes`: search + role/date filters + per-row signed-URL download.
