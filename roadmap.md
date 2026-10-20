@@ -1,9 +1,9 @@
 # XEBURE Roadmap
 
 ## In Progress
-- [ ] Expand the spider cursor from the homepage hero to a site-wide overlay and verify it persists across routes.
 
 ## Recently Done
+- [x] Expanded the supplied monochrome spider cursor to a site-wide overlay and verified it on the homepage and pricing page.
 - [x] Integrated the uploaded monochrome 3D robot artwork into the homepage without changing the supplied copy or destinations.
 - [x] Premium monochrome Xebure redesign with real-data component integrations and startup sequence.
 - [x] HR resume list `/hr/resumes`: search + role/date filters + per-row signed-URL download.
