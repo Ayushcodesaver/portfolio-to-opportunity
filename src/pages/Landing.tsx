@@ -19,6 +19,7 @@ import workspaceImage from "@/assets/xebure-workspace.jpg";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const RobotHero = lazy(() => import("@/components/ui/robot-hero"));
+const SpiderCursor = lazy(() => import("@/components/ui/spider-cursor").then((module) => ({ default: module.SpiderCursor })));
 
 const features = [
   { icon: Sparkles, title: "AI Assistant", desc: "AI-powered help to refine your code, writeups, and project pitch." },
@@ -197,6 +198,9 @@ export default function Landing() {
           </motion.div>
           {showRobot && (
             <div className="pointer-events-auto relative z-0 hidden h-[420px] min-w-0 lg:block xl:h-[500px]" aria-label="A polished silver Xebure robot mascot">
+              <Suspense fallback={null}>
+                <SpiderCursor />
+              </Suspense>
               <Suspense fallback={<div className="h-full w-full" />}>
                 <RobotHero />
               </Suspense>
